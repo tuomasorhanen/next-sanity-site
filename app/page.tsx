@@ -1,0 +1,50 @@
+import { notFound } from "next/navigation";
+import HeroService from "../_lib/services/HeroService";
+import MainHero from "../components/hero/MainHero";
+import MapContent from "../components/MapContent";
+import ContentService from "../_lib/services/ContentService";
+import MenuService from "../_lib/services/MenuService";
+import Header from "../components/header/Header";
+import MyFooter from "../components/footer/Footer";
+import MetadataService from "../_lib/services/MetadataService";
+
+export async function generateMetadata() {
+  const metadataService = new MetadataService();
+  const pageMetadata = await metadataService.FetchPageMetadata("etusivu");
+  const { title, description, image, } =pageMetadata.metadata;
+
+  let metadata = {
+    ...(title && { title }),
+    ...(description && { description }),
+    openGraph: {
+      ...(title && { title: title }),
+      ...(description && { description: description }),
+      ...(image && image && { image: image.asset.url }),
+    },
+  };
+
+  return metadata;
+}
+
+async function Home() {
+  const [{ menu, logo }, mainHero] = await Promise.all([
+    new MenuService().Fetch(),
+    new HeroService().Fetch("etusivu"),
+  ]);
+
+  const content = await new ContentService().Fetch("etusivu");
+
+
+  if (!mainHero) {
+    notFound();
+  }
+  return (
+<>      
+    <Header items={menu} logo={logo} />
+      <MainHero mainHero={mainHero} />
+      <MapContent content={content} />
+      <MyFooter items={menu} />
+      </>  );
+}
+
+export default Home;
