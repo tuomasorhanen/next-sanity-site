@@ -22,7 +22,7 @@ const HeroSection = (props: IHero) => {
               <div className="sm:hidden">
                 <CustomImage
                   {...image}
-                  className="w-full rounded-app object-cover"
+                  className="w-full rounded-app object-cover shadow-app"
                   alt={image.alt}
                   width={607}
                   aspectRatio={1 / 1}
@@ -43,7 +43,7 @@ const HeroSection = (props: IHero) => {
               {image && (
                 <CustomImage
                   {...image}
-                  className="w-full rounded-app object-cover"
+                  className="w-full rounded-app object-cover shadow-app"
                   alt={image.alt}
                   width={607}
                   aspectRatio={1 / 1}
@@ -66,7 +66,7 @@ const HeroSection = (props: IHero) => {
               {image && (
                 <CustomImage
                   {...image}
-                  className="w-full rounded-app object-cover"
+                  className="w-full rounded-app object-cover shadow-app"
                   alt={image.alt}
                   width={607}
                   loading="eager"
@@ -86,7 +86,7 @@ const HeroSection = (props: IHero) => {
               {image && (
                 <CustomImage
                   {...image}
-                  className="w-full rounded-app object-cover"
+                  className="w-full rounded-app object-cover shadow-app"
                   alt={image.alt}
                   width={607}
                   aspectRatio={1 / 1}
@@ -143,7 +143,7 @@ const HeroSection = (props: IHero) => {
             >
               <CustomImage
                 {...image}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover shadow-app"
                 alt={image.alt}
                 width={1960}
                 loading="eager"

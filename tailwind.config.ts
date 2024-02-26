@@ -24,7 +24,7 @@ module.exports = {
         'app': '10px',
       },
       boxShadow: {
-        'app': '0 0 10px 0 rgba(0, 0, 0, 0.3)',
+        'app': 'rgba(0, 0, 0, 0.15) 0px 3px 3px 0px',
       },
     },
   },
