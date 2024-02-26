@@ -6,7 +6,7 @@ const BlogPost = (blogPost: IRefernceItem) => {
   return (
     <section>
       <Link href={`/blogi/${blogPost.slug.current}`}>
-        <div className="transition-transform duration-300 ease-in-out hover:scale-105 bg-secondary rounded-app">
+        <div className="transition-scale-small bg-layer shadow-app rounded-app">
           <CustomImage
             {...blogPost.image}
             width={395}

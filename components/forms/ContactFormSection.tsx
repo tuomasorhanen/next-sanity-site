@@ -4,7 +4,7 @@ import ContactForm from './ContactForm';
 import { IContactForm } from '../../_lib/types/types';
 
 const ContactFormSection = (props: IContactForm) => {
-  const { _id, layout, _key, thankYouMessage, description, buttonText } = props;
+  const { _id, layout, _key, thankYouMessage, title, description, buttonText } = props;
 
   const [isModalOpen, setModalOpen] = useState(false);
   const toggleModal = () => setModalOpen(!isModalOpen);
@@ -12,8 +12,8 @@ const ContactFormSection = (props: IContactForm) => {
   switch (layout) {
     case 'simple-right':
       return (
-        <div className="mx-auto max-w-xl px-4">
-          <ContactForm thankYouMessage={thankYouMessage} description={description} />
+        <div className="mt-16 col-span-12">
+          <ContactForm thankYouMessage={thankYouMessage} description={description} title={title}/>
         </div>
       );
     case 'pop-up':
@@ -30,7 +30,7 @@ const ContactFormSection = (props: IContactForm) => {
                   X
                 </button>
                 <div>
-                  <ContactForm thankYouMessage={thankYouMessage} description={description} />
+                  <ContactForm thankYouMessage={thankYouMessage} description={description} title={title}/>
                 </div>
               </div>
             </div>

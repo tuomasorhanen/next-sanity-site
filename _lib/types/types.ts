@@ -141,7 +141,7 @@ export type IHero = {
   content: any[];
   image?: ISanityImage;
   buttons?: ICallToAction[];
-  layout: 'image-bg-center-slim' | 'simple-image-right' | 'simple-image-left' | 'image-bg-center';
+  layout: 'image-bg-center-slim' | 'simple-image-right' | 'simple-image-left' | 'image-bg-center' | 'image-bg-center-wide';
   opacity?: number;
   heroBgColor?: IColor;
   CtaBgColor?: IColor;
@@ -172,6 +172,8 @@ export type ICarousel = {
   _type: string;
   title: string;
   carouselTextColor?: IColor;
+  carouselBgColor?: IColor;
+  opacity?: number;
   carouselItems: any[];
 };
 
@@ -220,6 +222,7 @@ export type IContactForm = {
   _type: string;
   layout: 'simple-right' | 'pop-up';
   thankYouMessage: string;
+  title: string;
   description: string;
   buttonText: string;
 };

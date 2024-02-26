@@ -7,12 +7,12 @@ const Faq = (props: IFaqList) => {
   const { faqList } = props;
 
   return (
-    <section key={props._key} className="mx-auto mt-8 max-w-5xl pb-8 md:pb-16">
+    <section key={props._key} className="col-span-12 mt-16">
       {faqList.map((faq: IFaq) => (
-        <Disclosure as="div" key={faq.question} className="px-4 py-2">
+        <Disclosure as="div" key={faq.question}>
           {({ open }) => (
-            <>
-              <Disclosure.Button className="flex w-full group justify-between rounded-app bg-secondary px-4 py-2 text-left transition-colors ease-in-out duration-300 text-black hover:bg-layer hover:text-bg">
+            <div className='my-2'>
+              <Disclosure.Button className="flex w-full group justify-between rounded-app bg-accent p-2">
                 <span>{faq.question}</span>
                 {open ? (
                   <FiChevronDown className="h-5 w-5 text-black group-hover:text-white transition-colors ease-in-out duration-300" />
@@ -20,8 +20,8 @@ const Faq = (props: IFaqList) => {
                   <FiChevronRight className="h-5 w-5 text-black group-hover:text-white transition-colors ease-in-out duration-300" />
                 )}
               </Disclosure.Button>
-              <Disclosure.Panel className="px-4 pb-2 pt-4">{faq.answer}</Disclosure.Panel>
-            </>
+              <Disclosure.Panel className=" bg-layer p-2 rounded-app">{faq.answer}</Disclosure.Panel>
+            </div>
           )}
         </Disclosure>
       ))}

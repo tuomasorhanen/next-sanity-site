@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 
-export default function ContactForm({ description, thankYouMessage }) {
+export default function ContactForm({ description, title, thankYouMessage }) {
   const [loading, setLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -42,8 +42,9 @@ export default function ContactForm({ description, thankYouMessage }) {
   }
   return (
     <>
-      <div>{description}</div>
-      <form onSubmit={handleSubmit}>
+      <h2 className="text-2xl font-bold text-center">{title}</h2>
+      <p className='mx-auto max-w-xl text-center'>{description}</p>
+      <form onSubmit={handleSubmit} className='max-w-xl mx-auto'>
         <div className="my-4 flex w-full flex-col">
           <label className="font-bold text-gray-800" htmlFor="name"></label>
           <input
@@ -79,10 +80,10 @@ export default function ContactForm({ description, thankYouMessage }) {
             minLength={10}
             maxLength={500}
             name="message"
-            className="w-full rounded-app border border-accent  bg-white p-4 "
+            className="w-full rounded-app border border-accent bg-white p-4 "
           />
         </div>
-        <button type="submit" disabled={loading} className="button mt-2 mb-4 bg-accent text-white">
+        <button type="submit" disabled={loading} className="button mt-2 transition-scale">
           Lähetä
         </button>
       </form>

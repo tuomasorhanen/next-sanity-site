@@ -20,61 +20,77 @@
     @apply font-gideon;
   }
   h1 {
-    font-size: 2.5rem; 
-    @media (min-width: 700px) { 
-      font-size: 2.5rem; 
-    }
+    font-size: 40px; 
+    line-height: 120%;
     @media (min-width: 1100px) { 
-      font-size: 3.5rem; 
+      font-size: 56px; 
+      line-height: 120%;
+    }
+  }
+  h2 {
+    font-size: 36px; 
+    line-height: 120%;
+    @media (min-width: 1100px) { 
+      font-size: 48px; 
       line-height: 120%;
     }
   }
   
-  h2 {
-    font-size: 2rem; 
-    @media (min-width: 700px) { 
-      font-size: 2rem; 
-    }
-    @media (min-width: 1100px) { 
-      font-size: 3rem;
-      line-height: 120%; 
-    }
-  }
-  
   h3 {
-    font-size: 1.5rem; 
+    font-size: 32px; 
+    line-height: 120%;
     @media (min-width: 1100px) { 
-      font-size: 2rem; 
+      font-size: 40px; 
+      line-height: 120%;
     }
   }
   
   h4 {
-    font-size: 1.25rem; 
-    @media (min-width: 700px) { 
-      font-size: 1.5rem; 
+    font-size: 24px; 
+    line-height: 140%;
+    @media (min-width: 1100px) { 
+      font-size: 32px; 
+      line-height: 130%;
     }
   }
   
   h5 {
-    font-size: 1.25rem; 
-  }
+    font-size: 20px; 
+    line-height: 140%;
+    @media (min-width: 1100px) { 
+      font-size: 24px; 
+      line-height: 140%;
+    }  }
   
   h6 {
-    font-size: 1.125rem; 
-  }
+    font-size: 18px; 
+    line-height: 140%;
+    @media (min-width: 1100px) { 
+      font-size: 20px; 
+      line-height: 140%;
+    }  }
   p {
-    font-size: 1.125rem; 
-    @media (min-width: 700px) { 
-      font-size: 1.125rem; 
+    font-size: 18px;
+    line-height: 150%; 
+    @media (min-width: 1100px) { 
+      font-size: 18px;
+      line-height: 150%; 
     }
   }
 }
 @layer components {
 
 .button {
-  @apply bg-accent text-bg px-4 py-2 rounded-app;
+  @apply flex flex-shrink bg-accent text-bg px-4 py-2 rounded-app shadow-app;
 }
 
+.transition-scale {
+  @apply hover:scale-110 transition-transform ease-in-out duration-300;
+}
+
+.transition-scale-small {
+  @apply hover:scale-105 transition-transform ease-in-out duration-300;
+}
 
 .nav {
   z-index: 2;
@@ -267,226 +283,4 @@ z-index: 1000;
 
 .hero-title {
   text-shadow: 0 5px 10px #0004;
-}
-
-.carousel {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  position: relative;
-}
-.carousel .list .item {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0 0 0 0;
-}
-.carousel .list .item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.carousel .list .item .content {
-  position: absolute;
-  top: 20%;
-  width: 1140px;
-  max-width: 80%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-right: 30%;
-  box-sizing: border-box;
-  text-shadow: 0 5px 10px #0004;
-}
-
-.thumbnail {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  width: max-content;
-  z-index: 30;
-  display: flex;
-  gap: 20px;
-}
-.thumbnail .item {
-  width: 150px;
-  height: 220px;
-  flex-shrink: 0;
-  position: relative;
-  border-radius: 16px;
-}
-.thumbnail .item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-}
-.thumbnail .item .content {
-  color: #fff;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-}
-.thumbnail .item .content .title {
-  font-weight: 500;
-}
-
-.arrows {
-  position: absolute;
-  bottom: 50px;
-  left: 5%;
-  z-index: 30;
-  width: 300px;
-  max-width: 30%;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.carousel .list .item:nth-child(1) {
-  z-index: 1;
-}
-
-.carousel .list .item:nth-child(1) .content .title,
-.carousel .list .item:nth-child(1) .content .des {
-  transform: translateY(50px);
-  filter: blur(20px);
-  opacity: 0;
-  animation: showContent 0.5s 0.5s linear 1 forwards;
-}
-
-.hero .content {
-  transform: translatex(50px);
-  filter: blur(20px);
-  opacity: 0;
-  animation: showHeroContent 0.5s 1s linear 1 forwards;
-}
-
-@keyframes showHeroContent {
-  to {
-    transform: translatex(0px);
-    filter: blur(0px);
-    opacity: 1;
-  }
-}
-@keyframes showContent {
-  to {
-    transform: translateY(0px);
-    filter: blur(0px);
-    opacity: 1;
-  }
-}
-.carousel .list .item:nth-child(1) .content .title {
-  animation-delay: 1.2s !important;
-}
-.carousel .list .item:nth-child(1) .content .des {
-  animation-delay: 1.4s !important;
-}
-
-.carousel.next .list .item:nth-child(1) img {
-  width: 150px;
-  height: 220px;
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  border-radius: 30px;
-  animation: showImage 0.5s linear 1 forwards;
-}
-@keyframes showImage {
-  to {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-  }
-}
-.carousel.prev .list .item:nth-child(2) .content .title,
-.carousel.prev .list .item:nth-child(2) .content .des {
-  animation: contentOut 1.5s linear 1 forwards !important;
-}
-
-.carousel.next .thumbnail .item:nth-last-child(1) {
-  overflow: hidden;
-  animation: showThumbnail 0.5s linear 1 forwards;
-}
-.carousel.prev .list .item img {
-  z-index: 100;
-}
-@keyframes showThumbnail {
-  from {
-    width: 0;
-    opacity: 0;
-  }
-}
-.carousel.next .thumbnail {
-  animation: effectNext 0.5s linear 1 forwards;
-}
-
-@keyframes effectNext {
-  from {
-    transform: translateX(150px);
-  }
-}
-
-.carousel.prev .list .item:nth-child(2) {
-  z-index: 2;
-}
-
-.carousel.prev .list .item:nth-child(2) img {
-  animation: outFrame 0.5s linear 1 forwards;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-@keyframes outFrame {
-  to {
-    width: 150px;
-    height: 220px;
-    bottom: 50px;
-    left: 50%;
-    border-radius: 20px;
-  }
-}
-
-.carousel.prev .thumbnail .item:nth-child(1) {
-  overflow: hidden;
-  opacity: 0;
-  animation: showThumbnail 0.5s linear 1 forwards;
-}
-.carousel.next .arrows button,
-.carousel.prev .arrows button {
-  pointer-events: none;
-}
-.carousel.prev .list .item:nth-child(2) .content .title,
-.carousel.prev .list .item:nth-child(2) .content .des {
-  animation: contentOut 1.5s linear 1 forwards !important;
-}
-
-@keyframes contentOut {
-  to {
-    transform: translateY(-150px);
-    filter: blur(20px);
-    opacity: 0;
-  }
-}
-@media screen and (max-width: 678px) {
-  .carousel .list .item .content {
-    padding-right: 0;
-  }
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateX(0) scale(1);
-  }
-  50% {
-    transform: translateX(5px) scale(1.3);
-  }
-}
-
-.bounce {
-  animation: bounce 1.5s 5s infinite;
 }

@@ -17,13 +17,13 @@ type IMapContentProps = {
 
 const MapContent = ({ content }: IMapContentProps) => {
   return (
-    <main className="mx-auto overflow-hidden">
+    <main className="mx-auto max-w-7xl grid grid-cols-12 px-4">
       {content.map(item => {
         switch (item._type) {
           case 'cta':
             return <HeroSection key={item._key} {...item} />;
           case 'grid':
-            return <GridSection key={item._key} {...item} />;
+            return <div className='mt-16 col-span-12'><GridSection key={item._key} {...item} /></div>;
           case 'headingAndTitle':
             return <HeadingAndTitle key={item._key} {...item} />;
           case 'uiElement':

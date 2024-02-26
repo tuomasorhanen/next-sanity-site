@@ -1,118 +1,110 @@
-'use client';
-import React, { useEffect,useState } from 'react';
-import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
-import { ICarousel } from '../../_lib/types/types';
-import ButtonRenderer from '../ButtonRenderer';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
 import CustomImage from '../CustomImage';
+import { ICarousel } from '../../_lib/types/types';
+import { Content } from '../Content';
+
 
 const CarouselComponent = (props: ICarousel) => {
-  const { carouselItems, carouselTextColor } = props;
+  const { carouselItems, opacity } = props;
+  const opacityStyle = opacity ? { opacity: opacity / 100 } : {};
 
-  const textStyle = carouselTextColor ? { color: carouselTextColor.hex } : {};
-  const renderButtons = () =>
-    currentItem.buttons?.map(btn => <ButtonRenderer key={`${btn.callToAction}`} _ref={btn._ref} />);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isBouncing, setIsBouncing] = useState(true);
-  const [animationDirection, setAnimationDirection] = useState<null | 'next' | 'prev'>(null);
 
-  const nextIndex = () => {
-    setCurrentIndex((currentIndex + 1) % carouselItems.length);
-    setAnimationDirection('next');
-    setIsBouncing(false);
-  };
-
-  const prevIndex = () => {
-    setCurrentIndex((currentIndex - 1 + carouselItems.length) % carouselItems.length);
-    setAnimationDirection('prev');
-    setIsBouncing(false);
-  };
-
-  const prevItemIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
-  const nextItemIndex = (currentIndex + 1) % carouselItems.length;
-  const currentItem = carouselItems[currentIndex];
-  const prevItem = carouselItems[prevItemIndex];
-  const nextItem = carouselItems[nextItemIndex];
-  const thumbnails = [...carouselItems.slice(currentIndex + 1), ...carouselItems.slice(0, currentIndex)];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsBouncing(false);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (animationDirection !== null) {
-      const timer = setTimeout(() => {
-        setAnimationDirection(null);
-      }, 1800);
-
-      return () => clearTimeout(timer);
-    }
-  }, [animationDirection]);
-
-  return (
-    <div className={`carousel ${animationDirection}`}>
-      <div className="list">
-        <div key={currentItem._key} className="item">
-          <CustomImage {...currentItem.image} alt={currentItem.title} width={1280} className="" />
-          <div className="content" style={textStyle}>
-            <p className="title text-4xl font-bold md:text-6xl">{currentItem.title}</p>
-            <p className="des mt-4 max-w-xl text-lg">{currentItem.description}</p>
-            <nav className="flex flex-shrink items-center justify-center space-x-4 md:-ml-2 md:justify-start">
-              {renderButtons()}
-            </nav>
-          </div>
-        </div>
-        {animationDirection === 'prev' ? (
-          <div key={nextItem._key} className="item">
-            <CustomImage {...nextItem.image} alt={nextItem.title} width={1280} className="" />
-            <div className="content" style={textStyle}>
-              <p className="title text-4xl font-bold md:text-6xl">{nextItem.title}</p>
-              <p className="des mt-4 max-w-xl text-lg">{nextItem.description}</p>
-            </div>
-          </div>
-        ) : (
-          <div key={prevItem._key} className="item">
-            <CustomImage {...prevItem.image} alt={prevItem.title} width={1280} className="" />
-            <div className="content" style={textStyle}>
-              <p className="title text-4xl font-bold md:text-6xl">{prevItem.title}</p>
-              <p className="des mt-4 max-w-xl text-lg">{prevItem.description}</p>
-            </div>
-          </div>
-        )}
+  const renderCarouselItems = () => {
+    return carouselItems.map((item: any, index: number) => (
+    <div
+      key={index}
+      className="relative flex h-full items-center justify-center p-12" 
+>
+  <div style={opacityStyle}>
+      {item.image && (
+        <CustomImage
+          {...item?.image}
+          className="absolute inset-0 h-full w-full object-cover"
+          alt={item.image.alt}
+          width={1280}
+          />
+      )}
       </div>
-      <div className="thumbnail">
-        {thumbnails.map(item => (
-          <div key={item._key} className="item bg-gradient-to-b from-transparent via-black to-black">
-            <CustomImage {...item.image} alt={item.title} width={160} aspectRatio={15 / 22} className=" opacity-70" />
-
-            <div className="content">
-              <p className="title">{item.title}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="arrows">
-        <button
-          onClick={prevIndex}
-          className="prev z-20 rounded-full bg-accent text-white transition duration-300 hover:scale-125">
-          <BiChevronLeft className="h-8 w-8" />
-        </button>
-        <button
-          onClick={nextIndex}
-          className={`next z-20 rounded-full bg-accent text-white transition duration-300 hover:scale-125 ${
-            isBouncing ? 'bounce' : ''
-          }`}>
-          <BiChevronRight className="h-8 w-8" />
-        </button>
+      <div className="relative z-10 max-w-4xl">
+        <Content {...item} />
       </div>
     </div>
+    ));
+  };
+  
+  const renderArrowPrev = (onClickHandler, hasPrev, label) =>
+    hasPrev && (
+      <button
+        type="button"
+        onClick={onClickHandler}
+        title={label}
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 ml-3 p-2 transition-colors duration-300 ease-in-out text-bg rounded-full hover:bg-accent hover:text-white lg:ml-5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          className="h-6 w-6"
+          >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+    );
+
+  const renderArrowNext = (onClickHandler, hasNext, label) =>
+    hasNext && (
+      <button
+        type="button"
+        onClick={onClickHandler}
+        title={label}
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 mr-3 p-2 transition-colors duration-300 ease-in-out text-bg rounded-full hover:bg-accent hover:text-white lg:mr-5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          className="h-6 w-6"
+          >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    );
+  const renderIndicator = (onClickHandler, isSelected, index, label) => {
+    if (isSelected) {
+      return (
+        <li className="mr-3 inline-block">
+          <button
+            className="block h-3 w-3 rounded-full bg-accent text-accent"
+            onClick={onClickHandler}
+            aria-label={`Slide ${index + 1}`}></button>
+        </li>
+      );
+    }
+    return (
+      <li className="mr-3 inline-block">
+        <button
+          className="block h-3 w-3 rounded-full bg-white text-accent"
+          onClick={onClickHandler}
+          aria-label={`Slide ${index + 1}`}></button>
+      </li>
+    );
+  };
+
+  
+ return (
+  <section key={props._id} className="col-span-12 mt-16">
+  <Carousel
+    showThumbs={false}
+    showStatus={false}
+    infiniteLoop={true}
+    renderArrowPrev={renderArrowPrev}
+    renderArrowNext={renderArrowNext}
+    renderIndicator={renderIndicator}
+    className="overflow-hidden rounded-app shadow-app bg-black">
+    {renderCarouselItems()}
+  </Carousel>
+</section>
   );
 };
 

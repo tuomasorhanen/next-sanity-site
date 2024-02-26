@@ -5,13 +5,14 @@ import MetadataService from "../_lib/services/MetadataService";
 export async function generateMetadata() {
   const metadataService = new MetadataService();
   const pageMetadata = await metadataService.FetchDefaultMetadata();
-  const { title, description, image, domain } = pageMetadata;
+  const { title, description, image, domain, keywords } = pageMetadata;
 
   return {
     title: title,
     metadataBase: new URL(`https://${domain}`),
     description: description,
     robots: "index, follow",
+    keywords: keywords.join(", "),
     openGraph: {
       title: title,
       description: description,

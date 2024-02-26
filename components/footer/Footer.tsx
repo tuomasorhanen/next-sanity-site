@@ -1,14 +1,38 @@
 import Link from 'next/link';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { IPage } from '../../_lib/types/types';
+import { FaLinkedin, FaXTwitter } from 'react-icons/fa6';
+
+const socialMediaIcons = {
+  facebook: FaFacebookF,
+  instagram: FaInstagram,
+  LinkedIn: FaLinkedin,
+  x: FaXTwitter,
+  youtube: FaYoutube
+};
+
+const year = new Date().getFullYear();
 
 type IMenuProps = {
   items: IPage[];
+  footer: {
+    socialMedia: any[];
+    companyName: string;
+  };
   key?: string;
 };
 
 const MyFooter = (props: IMenuProps) => {
-  const { items } = props;
+  const { items, footer } = props;
+
+  const socialMediaLinks = footer.socialMedia.map((media) => {
+    const Icon = socialMediaIcons[media.name.toLowerCase()];
+    return <a href={media.url} className="hover:text-accent transition-colors ease-in-out duration-300" key={media._key}>
+    <span className="sr-only">{media.name}</span>
+    <Icon className="h-6 w-6" aria-hidden="true" />
+  </a>
+  }
+  );
 
   // First, filter items that should show in the footer
   const filteredItems = items.filter(item => item.showInFooter);
@@ -29,29 +53,22 @@ const MyFooter = (props: IMenuProps) => {
   });
 
   return (
-    <footer className="">
-      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-8 lg:px-8">
-        <nav className="-mb-6 flex columns-2 flex-wrap justify-center space-x-4 sm:space-x-12" aria-label="Footer">
+    <footer>
+      <div className="mx-auto max-w-7xl overflow-hidden px-4 pt-16 pb-8">
+        <nav className="flex columns-2 flex-wrap justify-center space-x-4 sm:space-x-12" aria-label="Footer">
           {updatedItems.map(item => (
             <div key={item.slug.current}>
-              <Link href={'/' + item.slug.current} className="pb-6">
-                <div className="text-sm leading-6 text-gray-700 hover:text-gray-900">{item.name}</div>
+              <Link href={'/' + item.slug.current}>
+                <div className="text-sm leading-6gf forced-color-adjust-nonefddf df hover:opacity-50 transition-opacity ease-in-out duration-300">{item.name}</div>
               </Link>
             </div>
           ))}
         </nav>
-        <p className="mt-10 text-center text-xs leading-5 text-gray-700">
-          &copy; 2024 Fysiosarianne | All rights reserved.
+        <p className="text-center mt-4 text-xs leading-5 opacity-70">
+          &copy; {year} {footer.companyName} | All rights reserved.
         </p>
-        <div className="mt-4 flex justify-center space-x-10">
-          <a href="https://www.facebook.com/" className="text-gray-700 hover:text-accent">
-            <span className="sr-only">Facebook</span>
-            <FaFacebookF className="h-6 w-6" aria-hidden="true" />
-          </a>
-          <a href="https://www.instagram.com/" className="text-gray-700 hover:text-accent">
-            <span className="sr-only">Instagram</span>
-            <FaInstagram className="h-6 w-6" aria-hidden="true" />
-          </a>
+        <div className="flex justify-center mt-4 space-x-10">
+        {socialMediaLinks}
         </div>
       </div>
     </footer>

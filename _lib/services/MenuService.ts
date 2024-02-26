@@ -8,7 +8,11 @@ class MenuService {
         let logo = await client.fetch(
             `*[_type == 'siteSettings'][0]{logo}`);
 
-            return { menu, logo };
+        let footer = await client.fetch(
+            `*[_type == 'siteSettings'][0]{socialMedia, companyName}`);
+
+
+            return { menu, logo, footer };
         }
 }
 

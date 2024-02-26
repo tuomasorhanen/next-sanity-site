@@ -5,17 +5,16 @@ import CustomImage from "../CustomImage";
 
 const HeroSection = (props: IHero) => {
   const { image, buttons, layout, opacity, CtaBgColor, content } = props;
-  const bgColorStyle = CtaBgColor
-    ? { backgroundColor: CtaBgColor.value }
-    : {};
-  const opacityClass = `opacity-${opacity || 100}`;
-  
+
+  const bgColorStyle = CtaBgColor ? { backgroundColor: CtaBgColor.value } : {};
+  const opacityStyle = opacity ? { opacity: opacity / 100 } : {};
+
   switch (layout) {
     case "simple-image-right":
       return (
         <section
           key={`${props._key}-simple-image-right`}
-          className="mt-16"
+          className="flex items-center mt-[77px] sm:mt-[124px]"
           style={bgColorStyle}
         >
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2">
@@ -26,17 +25,19 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1/1}
+                  aspectRatio={1 / 1}
+                  loading="eager"
                 />
               </div>
             )}
             <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left">
               <Content content={content} />
-              <nav className="flex flex-shrink items-center justify-center gap-4">
-               {buttons && buttons.map((button, index) => (
-            <ButtonRenderer key={button._id || index} button={button}/>
-            ))}
-              </nav>
+              <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+                {buttons &&
+                  buttons.map((button, index) => (
+                    <ButtonRenderer key={button._id || index} button={button} />
+                  ))}
+              </div>
             </div>
             <div className="hidden sm:block">
               {image && (
@@ -45,7 +46,8 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1/1}
+                  aspectRatio={1 / 1}
+                  loading="eager"
                 />
               )}
             </div>
@@ -56,10 +58,10 @@ const HeroSection = (props: IHero) => {
       return (
         <section
           key={`${props._key}-simple-image-left`}
-          className="mt-16"
+          className="mt-16 col-span-12"
           style={bgColorStyle}
         >
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 items-center">
             <div className="hidden sm:block">
               {image && (
                 <CustomImage
@@ -67,16 +69,18 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1/1}                />
+                  loading="eager"
+                />
               )}
             </div>
             <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left">
               <Content content={content} />
-              <nav className="flex flex-shrink items-center justify-center gap-4">
-               {buttons && buttons.map((button, index) => (
-            <ButtonRenderer key={button._id || index} button={button}/>
-            ))}
-              </nav>
+              <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+                {buttons &&
+                  buttons.map((button, index) => (
+                    <ButtonRenderer key={button._id || index} button={button} />
+                  ))}
+              </div>
             </div>
             <div className="sm:hidden">
               {image && (
@@ -85,8 +89,42 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1/1}                />
+                  aspectRatio={1 / 1}
+                  loading="eager"
+                />
               )}
+            </div>
+          </div>
+        </section>
+      );
+    case "image-bg-center-wide":
+      return (
+        <section
+          key={`${props._key}-image-bg-center-slim`}
+          className="col-span-12 mt-16 overflow-hidden relative py-12 w-screen place-self-center"
+          style={bgColorStyle}
+        >
+          {image && (
+            <div
+              className="absolute left-0 top-0 z-10 h-full w-full"
+              style={opacityStyle}
+            >
+              <CustomImage
+                {...image}
+                className="h-full w-full object-cover"
+                alt={image.alt}
+                width={1960}
+                loading="eager"
+              />
+            </div>
+          )}
+          <div className="z-30 mx-auto max-w-5xl text-center px-4 md:px-0">
+            <Content content={content} />
+            <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+              {buttons &&
+                buttons.map((button, index) => (
+                  <ButtonRenderer key={button._id || index} button={button} />
+                ))}
             </div>
           </div>
         </section>
@@ -95,30 +133,34 @@ const HeroSection = (props: IHero) => {
       return (
         <section
           key={`${props._key}-image-bg-center-slim`}
-          className="relative mt-16 grid h-[400px] w-full grid-cols-1 items-center justify-center"
+          className="col-span-12 mt-16 overflow-hidden rounded-app relative py-12 place-self-center"
           style={bgColorStyle}
         >
-          <div
-            className={`absolute left-0 top-0 z-10 h-full w-full ${opacityClass}`}
-          >            {image && (
+          {image && (
+            <div
+              className="absolute left-0 top-0 z-10 h-full w-full"
+              style={opacityStyle}
+            >
               <CustomImage
                 {...image}
                 className="h-full w-full object-cover"
                 alt={image.alt}
-                width={1280}
-                aspectRatio={4.255}
+                width={1960}
+                loading="eager"
               />
-            )}
-          </div>
-          <div className="z-30 mx-auto max-w-6xl px-4 text-center">
+            </div>
+          )}
+          <div className="z-30 mx-auto text-center px-4 md:px-0">
             <Content content={content} />
-            {buttons && buttons.map((button, index) => (
-            <ButtonRenderer key={button._id || index} button={button}/>
-            ))}
+            <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+              {buttons &&
+                buttons.map((button, index) => (
+                  <ButtonRenderer key={button._id || index} button={button} />
+                ))}
+            </div>
           </div>
         </section>
       );
-
     default:
       return <></>;
   }

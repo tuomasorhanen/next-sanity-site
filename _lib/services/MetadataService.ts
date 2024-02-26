@@ -1,5 +1,4 @@
 import { client } from "../client/client";
-import { ISiteSettings, IPage } from "../types/types";
 
 class MetadataService {
 

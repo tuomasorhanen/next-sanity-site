@@ -28,7 +28,7 @@ export async function generateMetadata({ params: { ...params } }) {
 type HomeProps = { params: { slug: string } };
 
 async function Home(props: HomeProps) {
-  const [{ menu, logo }, mainHero] = await Promise.all([
+  const [{ menu, logo, footer }, mainHero] = await Promise.all([
     new MenuService().Fetch(),
     new HeroService().Fetch(props.params.slug),
   ]);
@@ -40,7 +40,7 @@ async function Home(props: HomeProps) {
     <Header items={menu} logo={logo} />
       <MainHero mainHero={mainHero} />
       <MapContent content={content} />
-      <MyFooter items={menu} />
+      <MyFooter items={menu} footer={footer} />
       </>  );
 }
 

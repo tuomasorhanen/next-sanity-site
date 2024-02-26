@@ -27,7 +27,7 @@ export async function generateMetadata() {
 type HomeProps = { params: { slug: string } };
 
 async function Home(props: HomeProps) {
-  const { menu, logo } = await new MenuService().Fetch();
+  const { menu, logo, footer } = await new MenuService().Fetch();
   const Post = await new BlogPostService().Fetch(props.params.slug);
 
   return (
@@ -38,7 +38,7 @@ async function Home(props: HomeProps) {
           <Content content={Post.content} />
         </div>
       </div>
-      <MyFooter items={menu} />
+      <MyFooter items={menu} footer={footer} />
       </>  );
 }
 

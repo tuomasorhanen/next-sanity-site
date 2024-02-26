@@ -34,10 +34,12 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
             )}
             <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left">
               <Content content={content} />
-              {buttons &&
-                buttons.map((button, index) => (
-                  <ButtonRenderer key={button._id || index} button={button} />
-                ))}
+              <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+      {buttons &&
+        buttons.map((button, index) => (
+          <ButtonRenderer key={button._id || index} button={button} />
+        ))}
+    </div>
             </div>
             <div className="hidden sm:block">
               {image && (
@@ -58,7 +60,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
       return (
         <section
           key={`${mainHero._key}-simple-image-left`}
-          className="flex items-center pt-[64px] sm:pt-[124px]"
+          className="flex items-center pt-[77px] sm:pt-[124px]"
           style={bgColorStyle}
         >
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:py-16">
@@ -76,10 +78,12 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
             </div>
             <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left">
               <Content content={content} />
-              {buttons &&
-                buttons.map((button, index) => (
-                  <ButtonRenderer key={button._id || index} button={button} />
-                ))}
+              <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+      {buttons &&
+        buttons.map((button, index) => (
+          <ButtonRenderer key={button._id || index} button={button} />
+        ))}
+    </div>
             </div>
             <div className="sm:hidden">
               {image && (
@@ -100,7 +104,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
       return (
         <section
           key={`${mainHero._key}-image-bg-center-slim`}
-          className="hero relative grid h-[500px] w-full grid-cols-1 items-center justify-center md:h-screen"
+          className="relative flex h-[500px] w-full items-center justify-center md:h-screen"
           style={bgColorStyle}
         >
           <div
@@ -116,12 +120,14 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
               />
             )}
           </div>
-          <div className="z-30 mx-auto max-w-5xl text-center px-4 md:px-0">
+          <div className="z-30 mx-auto max-w-5xl text-center px-4">
             <Content content={content} />
-            {buttons &&
-              buttons.map((button, index) => (
-                <ButtonRenderer key={button._id || index} button={button} />
-              ))}
+            <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+      {buttons &&
+        buttons.map((button, index) => (
+          <ButtonRenderer key={button._id || index} button={button} />
+        ))}
+    </div>
           </div>
         </section>
       );

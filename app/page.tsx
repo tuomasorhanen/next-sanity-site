@@ -27,13 +27,12 @@ export async function generateMetadata() {
 }
 
 async function Home() {
-  const [{ menu, logo }, mainHero] = await Promise.all([
+  const [{ menu, logo, footer }, mainHero] = await Promise.all([
     new MenuService().Fetch(),
     new HeroService().Fetch("etusivu"),
   ]);
 
   const content = await new ContentService().Fetch("etusivu");
-
 
   if (!mainHero) {
     notFound();
@@ -43,7 +42,7 @@ async function Home() {
     <Header items={menu} logo={logo} />
       <MainHero mainHero={mainHero} />
       <MapContent content={content} />
-      <MyFooter items={menu} />
+      <MyFooter items={menu} footer={footer} />
       </>  );
 }
 

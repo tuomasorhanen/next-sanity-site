@@ -56,7 +56,6 @@ const resolveLinks = async (content) => {
   const contentFetchPromises = content.content.map(async (cnt) => {
     switch (cnt._type) {
       case 'cta':
-      case 'grid':
         return processButtons(cnt);
       case 'priceTable':
     
@@ -74,6 +73,15 @@ const resolveLinks = async (content) => {
         });
         cnt.service = await Promise.all(servicePromises);
         return cnt;
+        case 'grid':
+          const cardPromises = cnt.items.map(async (item) => {
+            if (item.buttons) {
+              item = await processButtons(item);
+            }
+            return item;
+          });
+          cnt.cards = await Promise.all(cardPromises);
+          return cnt;
       default:
         return cnt;
     }

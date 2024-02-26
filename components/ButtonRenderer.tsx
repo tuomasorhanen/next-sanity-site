@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ICallToAction } from '../_lib/types/types';
 import CustomImage from './CustomImage';
+import React from 'react';
 
 interface ButtonRendererProps {
   button: ICallToAction;
@@ -8,46 +9,51 @@ interface ButtonRendererProps {
 }
 
 const ButtonRenderer: React.FC<ButtonRendererProps> = ({ button, className }) => {
-  const { callToAction, navigateToPage, linkType, navigateToUrl, image } = button;
+  try {
+    const { callToAction, navigateToPage, linkType, navigateToUrl, image } = button;
 
-  switch (linkType) {
-    case 'internal':
-      return (
-        <Link href={navigateToPage || '/etusivu'}>
-          <div>
+    switch (linkType) {
+      case 'internal':
+        return (
+          <Link href={navigateToPage || '/etusivu'}>
+            <button className='transition-scale'>
+              {image ? (
+                <button className={`${className}`}>
+                  <CustomImage {...image} alt={callToAction} width={50} className="object-cover w-6" />
+                </button>
+              ) : (
+                <span className={`button ${className}`}>
+                  {callToAction}
+                </span>
+              )}
+            </button>
+          </Link>
+        );
+      case 'external':
+        return (
+          <a href={navigateToUrl} className='transition-scale'> 
             {image ? (
               <button className={`${className}`}>
-                <CustomImage {...image} alt={callToAction} width={50} className="object-cover" />
+                <CustomImage {...image} alt={callToAction} width={50} className="object-cover w-6" />
               </button>
             ) : (
               <span className={`button ${className}`}>
                 {callToAction}
               </span>
             )}
-          </div>
-        </Link>
-      );
-    case 'external':
-      return (
-        <a href={navigateToUrl}>
-          {image ? (
-            <button className={`${className}`}>
-              <CustomImage {...image} alt={callToAction} width={50} className="object-cover" />
-            </button>
-          ) : (
-            <span className={`button ${className}`}>
-              {callToAction}
-            </span>
-          )}
-        </a>
-      );
-    default:
-      console.warn('Received an unprocessable button:', button);
-      return (
-        <button className={`button ${className}`}>
-          SHIT
-        </button>
-      );
+          </a>
+        );
+      default:
+        console.warn('Received an unprocessable button:', button);
+        return (
+          <span className={`button bg-red-500 text-white ${className}`}>
+            Broken button
+          </span>
+        );
+    }
+  } catch (error) {
+    console.error('Error rendering button:', error);
+    return <></>;
   }
 };
 

@@ -12,15 +12,14 @@ const Card = (props: ICard) => {
       return (
         <figure key={props._key}>
           {image && (
-            <div className="bg-layer rounded-app border-accent border-2">
+            <div className="rounded-app bg-layer shadow-app">
               <CustomImage {...image} alt={image.alt} width={645} className="object-cover rounded-t-app " />
-              <div className="px-4 pt-4 pb-2 flex justify-between">
+              <div className="p-4">
                 <Content content={content} />
-            {buttons && buttons.map(btn => <ButtonRenderer key={btn._key} _ref={btn._ref} className='button' />)}
+            {buttons && buttons.map(button => <ButtonRenderer key={button._key} button={button} />)}
               </div>
             </div>
           )}
-          
         </figure>
       );
     case 'image-bg':
@@ -35,11 +34,11 @@ const Card = (props: ICard) => {
                 className="object-cover rounded-app"
               />
             )}
-            <div className="absolute inset-0 flex items-center justify-center p-5">
+            <div className="absolute inset-0 flex items-center justify-center p-4">
               <div className="flex flex-col items-center justify-center text-center">
                 <Content content={content} />
                 <nav>
-                  {buttons && buttons.map(btn => <ButtonRenderer key={`${layout}-${btn._key}`} _ref={btn._ref} className='button'  />)}
+                {buttons && buttons.map(button => <ButtonRenderer key={button._key} button={button} />)}
                 </nav>
               </div>
             </div>

@@ -5,7 +5,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],  theme: {
-   
+    screens: {
+      sm: '700px', //tablet
+      md: '1100px', //small desktop or laptop
+      lg: '1920px', // bigger desktop
+    },
     extend: {
       fontFamily: {
         'gideon': ['"Gideon Roman"', 'serif']
@@ -18,6 +22,9 @@ module.exports = {
       },
       borderRadius: {
         'app': '10px',
+      },
+      boxShadow: {
+        'app': '0 0 10px 0 rgba(0, 0, 0, 0.3)',
       },
     },
   },

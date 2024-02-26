@@ -9,7 +9,7 @@ import MainHero from "../../components/hero/MainHero";
 
 
 async function Blog() {
-  const [{ menu, logo }, mainHero] = await Promise.all([
+  const [{ menu, logo, footer }, mainHero] = await Promise.all([
     new MenuService().Fetch(),
     new HeroService().Fetch("blogi"),
   ]);
@@ -25,7 +25,7 @@ async function Blog() {
             <BlogPosts key={index} {...blogPost} />
           ))}
         </div>
-      <MyFooter items={menu} />
+        <MyFooter items={menu} footer={footer} />
       </>  );
 }
 

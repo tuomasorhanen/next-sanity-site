@@ -8,13 +8,13 @@ const PriceTable = (props: IPriceTable) => {
   const { service } = props;
 
   return (
-    <section className="mx-auto mt-8 max-w-7xl">
+    <section className="col-span-12 mt-16">
       {service.map((service: IService) => (
-        <div key={service.name} className="mt-4 px-4 py-2">
+        <div key={service.name} className="">
           <Link href={service.slug.current}>
-            <button className="text-xl text-left transition-transform duration-300 ease-in-out hover:scale-105">
+            <h2 className="text-xl">
               {service.name}
-            </button>
+            </h2>
           </Link>
           {service.priceOptions.map((priceOption, index) => (
             <div key={index} className="mt-2 flex justify-between border-b border-accent">
@@ -23,12 +23,12 @@ const PriceTable = (props: IPriceTable) => {
                   <p className="font-bold">
                     {priceOption.duration} {priceOption.unit}
                   </p>
-                  <p>{priceOption.description}</p>
+                  {priceOption.description && <p>{priceOption.description}</p>}
                 </div>
                 <div className="my-2 flex items-center">
-                  <p className="mr-4 font-bold">{priceOption.price}€</p>
+                  <p className="mr-4 font-bold ">{priceOption.price}€</p>
                   {priceOption.button && (
-                    <ButtonRenderer button={priceOption.button} className='w-8 hover:scale-125 transition-transform ease-in-out duration-300' />
+                    <ButtonRenderer button={priceOption.button} className='transition-scale' />
                   )}
                 </div>
               </div>

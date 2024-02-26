@@ -6,7 +6,7 @@ const OffecCard = (offecCard: IRefernceItem) => {
   return (
     <section>
       <Link href={`/tarjoukset/${offecCard.slug.current}`}>
-        <div className="transition-transform duration-300 ease-in-out hover:scale-105 rounded-app bg-secondary">
+        <div className="transition-scale-small rounded-app bg-secondary">
           <CustomImage
             {...offecCard.image}
             width={395}
