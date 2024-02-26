@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import ContentService from "../../_lib/services/ContentService";
 import HeroService from "../../_lib/services/HeroService";
 import MenuService from "../../_lib/services/MenuService";
@@ -10,6 +11,10 @@ import MainHero from "../../components/hero/MainHero";
 export async function generateMetadata({ params: { ...params } }) {
   const metadataService = new MetadataService();
   const pageMetadata = await metadataService.FetchPageMetadata(params.slug);
+
+  if (!pageMetadata) {
+    notFound();
+  }
   const { title, description, image, } =pageMetadata.metadata;
 
   let metadata = {
@@ -27,7 +32,7 @@ export async function generateMetadata({ params: { ...params } }) {
 
 type HomeProps = { params: { slug: string } };
 
-async function Home(props: HomeProps) {
+async function Slug(props: HomeProps) {
   const [{ menu, logo, footer }, mainHero] = await Promise.all([
     new MenuService().Fetch(),
     new HeroService().Fetch(props.params.slug),
@@ -44,4 +49,4 @@ async function Home(props: HomeProps) {
       </>  );
 }
 
-export default Home;
+export default Slug;

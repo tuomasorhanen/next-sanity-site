@@ -6,7 +6,7 @@ const GroupPost = (group: IRefernceItem) => {
   return (
     <section>
       <Link href={`/pienryhmat/${group.slug.current}`}>
-        <div className="transition-scale-small bg-secondary rounded-app">
+      <div className="transition-scale-small bg-layer shadow-app rounded-app">
         <CustomImage
             {...group.image}
             width={395}

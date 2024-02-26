@@ -1,22 +1,22 @@
 import { notFound } from "next/navigation";
-import BlogService from "../../_lib/services/BlogService";
+import GroupService from "../../_lib/services/GroupService";
 import HeroService from "../../_lib/services/HeroService";
 import MenuService from "../../_lib/services/MenuService";
 import MetadataService from "../../_lib/services/MetadataService";
-import BlogPosts from "../../components/ReferenceCards/BlogPosts";
+import GroupPost from "../../components/ReferenceCards/GroupPost";
 import MyFooter from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import MainHero from "../../components/hero/MainHero";
 
 export async function generateMetadata() {
   const metadataService = new MetadataService();
-  const pageMetadata = await metadataService.FetchPageMetadata("blogi");
+  const pageMetadata = await metadataService.FetchPageMetadata("pienryhmat");
 
   if (!pageMetadata) {
     notFound();
   }
   
-  const { title, description, image, } =pageMetadata;
+  const { title, description, image, } = pageMetadata;
 
   let metadata = {
     ...(title && { title }),
@@ -31,25 +31,25 @@ export async function generateMetadata() {
   return metadata;
 }
 
-async function Blogs() {
+async function Groups() {
   const [{ menu, logo, footer }, mainHero] = await Promise.all([
     new MenuService().Fetch(),
-    new HeroService().Fetch("blogi"),
+    new HeroService().Fetch("pienryhmat"),
   ]);
 
-  const Blogs = await new BlogService().Fetch();
+  const Groups = await new GroupService().Fetch();
 
   return (
 <>      
     <Header items={menu} logo={logo} />
       <MainHero mainHero={mainHero} />
       <div className="mx-auto mt-8 grid max-w-7xl grid-cols-1 gap-4 px-4 sm:grid-cols-2 md:grid-cols-3">
-          {Blogs.map((post, index) => (
-            <BlogPosts key={index} {...post} />
+          {Groups.map((groupPost, index) => (
+            <GroupPost key={index} {...groupPost} />
           ))}
         </div>
         <MyFooter items={menu} footer={footer} />
       </>  );
 }
 
-export default Blogs;
+export default Groups;
