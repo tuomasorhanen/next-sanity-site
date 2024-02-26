@@ -23,7 +23,7 @@ const MapContent = ({ content }: IMapContentProps) => {
           case 'cta':
             return <HeroSection key={item._key} {...item} />;
           case 'grid':
-            return <div className='mt-16 col-span-12'><GridSection key={item._key} {...item} /></div>;
+            return <div key={item._key} className='mt-16 col-span-12'><GridSection {...item} /></div>;
           case 'headingAndTitle':
             return <HeadingAndTitle key={item._key} {...item} />;
           case 'uiElement':

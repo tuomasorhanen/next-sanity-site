@@ -12,15 +12,24 @@ export async function generateMetadata() {
     metadataBase: new URL(`https://${domain}`),
     description: description,
     robots: "index, follow",
-    keywords: keywords.join(", "),
+    keywords: keywords.join(", "),    
     openGraph: {
       title: title,
       description: description,
-      image: image && image.asset.url,
+      image: image.asset.url,
       url: new URL(`https://${domain}`),
       type: "website",
       locale: "fi_FI",
     },
+    icons: {
+      icon: "/favicon.ico",
+      appleTouchIcon: "/apple-touch-icon.png",
+      maskIcon: "/safari-pinned-tab.svg",
+      msTileImage: "/mstile-150x150.png",
+      msTileColor: "#00aba9",
+      themeColor: "#ffffff",
+      manifest: "/site.webmanifest",
+    }
   };
 }
 
