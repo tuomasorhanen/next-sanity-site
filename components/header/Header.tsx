@@ -30,7 +30,7 @@ const Header = (props: IMenuProps & { logo: any }) => {
               return (
                 <li key={item.slug.current} className="group relative">
                   <Link href={'/' + item.slug.current} aria-current="page">
-                    <span className="transition-color flex items-center px-2 py-2 text-text duration-300 ease-in-out hover:text-layer">
+                    <span className="transition-color flex items-center px-2 py-2 text-text duration-300 ease-in-out hover:text-accent">
                       {item.name.toUpperCase()}
                       {item.hasSubPages && (
                         <svg
@@ -45,7 +45,7 @@ const Header = (props: IMenuProps & { logo: any }) => {
                     </span>
                   </Link>
                   {item.hasSubPages && item.subPages && (
-                    <ul className="invisible absolute rounded-app bg-layer border border-layer opacity-0 transition-opacity duration-500 ease-in-out group-hover:visible group-hover:opacity-100">
+                    <ul className="invisible absolute rounded-app bg-layer border border-accent opacity-0 transition-opacity duration-500 ease-in-out group-hover:visible group-hover:opacity-100">
                       {item.subPages.map(subItem => (
                         <li key={subItem._id}>
                           <Link href={'/' + subItem.slug.current}>
