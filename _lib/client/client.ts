@@ -7,11 +7,13 @@ const apiVersion =
   process.env.NEXT_PUBLIC_SANITY_API_VERSION || config.apiVersion;
 const useCdn: boolean =
   !!process.env.NEXT_PUBLIC_SANITY_USE_CDN || config.useCdn;
+const token = process.env.SANITY_API_TOKEN
 
 export const client = createClient({
   projectId,
   dataset,
   apiVersion,
   useCdn,
-  perspective: "published"
+  perspective: "previewDrafts",
+  token
 });
