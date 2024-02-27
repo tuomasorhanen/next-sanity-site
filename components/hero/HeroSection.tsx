@@ -98,7 +98,7 @@ const HeroSection = (props: IHero) => {
       return (
         <section
           key={`${props._key}-image-bg-center-slim`}
-          className="col-span-12 mt-16 overflow-hidden relative py-12 w-screen place-self-center"
+          className="col-span-12 mt-16 overflow-hidden relative py-8 md:py-12 w-screen place-self-center"
           style={bgColorStyle}
         >
           {image && (
@@ -130,7 +130,7 @@ const HeroSection = (props: IHero) => {
       return (
         <section
           key={`${props._key}-image-bg-center-slim`}
-          className="col-span-12 mt-16 overflow-hidden rounded-app relative py-12 place-self-center"
+          className="col-span-12 mt-16 overflow-hidden rounded-app relative py-8 md:py-12 place-self-center"
           style={bgColorStyle}
         >
           {image && (
