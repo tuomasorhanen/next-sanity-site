@@ -98,12 +98,12 @@ const HeroSection = (props: IHero) => {
       return (
         <section
           key={`${props._key}-image-bg-center-slim`}
-          className="col-span-12 mt-16 overflow-hidden relative py-8 md:py-12 w-screen place-self-center"
+          className="col-span-12 mt-16 overflow-hidden -z-30 relative py-8 md:py-12 w-screen place-self-center"
           style={bgColorStyle}
         >
           {image && (
             <div
-              className="absolute left-0 top-0 z-10 h-full w-full"
+              className="absolute left-0 top-0 -z-10 h-full w-full"
               style={opacityStyle}
             >
               <CustomImage
@@ -117,7 +117,7 @@ const HeroSection = (props: IHero) => {
           )}
           <div className="z-30 mx-auto max-w-5xl text-center px-4 md:px-0">
             <Content content={content} />
-            <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+            <div className="flex justify-center gap-2 mt-4">
               {buttons &&
                 buttons.map((button, index) => (
                   <ButtonRenderer key={button._id || index} button={button} />
@@ -130,26 +130,26 @@ const HeroSection = (props: IHero) => {
       return (
         <section
           key={`${props._key}-image-bg-center-slim`}
-          className="col-span-12 mt-16 overflow-hidden rounded-app relative py-8 md:py-12 place-self-center"
+          className="col-span-12 mt-16 overflow-hidden -z-30 relative py-8 md:py-12 rounded-app"
           style={bgColorStyle}
         >
           {image && (
             <div
-              className="absolute left-0 top-0 z-10 h-full w-full"
+              className="absolute left-0 top-0 -z-10 h-full w-full"
               style={opacityStyle}
             >
               <CustomImage
                 {...image}
-                className="h-full w-full object-cover shadow-app"
+                className="h-full w-full object-cover"
                 alt={image.alt}
                 width={1960}
                 loading="eager"
               />
             </div>
           )}
-          <div className="z-30 mx-auto text-center px-4 md:px-0">
+          <div className="z-30 mx-auto max-w-5xl text-center px-4 md:px-0">
             <Content content={content} />
-            <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+            <div className="flex justify-center gap-2 mt-4">
               {buttons &&
                 buttons.map((button, index) => (
                   <ButtonRenderer key={button._id || index} button={button} />

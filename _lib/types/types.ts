@@ -164,6 +164,7 @@ export type IGrid = {
   columns: IColumns;
   topMargin: string;
   items: ICard[] | IRefernceItem[];
+  style: 'default' | 'carousel';
 };
 
 export type ICarousel = {
