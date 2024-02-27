@@ -1,7 +1,12 @@
+"use client";
 import Card from './Card';
 import { IGrid, ICard, IRefernceItem } from '../../_lib/types/types';
 import BlogPost from '../ReferenceCards/BlogPosts';
 import { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+
 
 interface GridSectionProps extends IGrid {}
 
@@ -13,8 +18,10 @@ const BlogItem = (item: IRefernceItem) => {
 };
 
 const GridSection = (props: GridSectionProps) => {
-  const { columns, items } = props;
+  const { columns, items, style } = props;
   const [columnStyles, setColumnStyles] = useState({});
+  const [slidesPerView, setSlidesPerView] = useState(1.1);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,6 +37,7 @@ const GridSection = (props: GridSectionProps) => {
       }
 
       setColumnStyles({ gridTemplateColumns: `repeat(${numColumns}, 1fr)` });
+      setSlidesPerView(numColumns + 0.1);
     };
 
     handleResize();
@@ -51,15 +59,36 @@ const GridSection = (props: GridSectionProps) => {
     }
   };
 
-  return (
-    <section key={props._key}>
+  
+
+  switch (style) {
+    case 'carousel':
+      return (
+        <Swiper
+          slidesPerView={slidesPerView}
+          autoplay={{ delay:0 }}
+          loop={true}
+        >
+          {itemsArray.map((item, index) => (
+            <SwiperSlide key={item._id || index}>
+              <div className='mx-2'>{renderGridItem(item)}</div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      );
+    case'default':
+      return (
+        <section key={props._key}>
     <div className="grid gap-2 md:gap-4" style={columnStyles}>
       {itemsArray.map((item, index) => (
         <figure key={item._id || index}>{renderGridItem(item)}</figure>
       ))}
     </div>
   </section>
-  );
+      );
+    default:
+      return <></>;
+};
 };
 
 export default GridSection;
