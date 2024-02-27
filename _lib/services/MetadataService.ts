@@ -36,6 +36,41 @@ class MetadataService {
 
         return groupMetadata;
     }
+
+    public async FetchDomain() {
+        const domainData = await client.fetch(`*[_type == 'siteSettings'][0]{domain}`);
+        let domain = domainData
+
+        return domain;
+    }
+
+    public async FetchSitemap() {
+        const pageMap = await client.fetch(`*[_type == 'page']{slug}`);
+        let pages = pageMap
+
+        return pages;
+    }
+
+    public async FetchBlogSitemap() {
+        const blogMap = await client.fetch(`*[_type == 'post']{slug}`);
+        let blogs = blogMap
+
+        return blogs;
+    }
+
+    public async FetchOfferSitemap() {
+        const offerMap = await client.fetch(`*[_type == 'offers']{slug}`);
+        let offers = offerMap
+
+        return offers;
+    }
+
+    public async FetchGroupSitemap() {
+        const groupMap = await client.fetch(`*[_type == 'groups']{slug}`);
+        let groups = groupMap
+
+        return groups;
+    }
 }
 
 export default MetadataService;
