@@ -9,7 +9,6 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
   const bgColorStyle = heroBgColor
     ? { backgroundColor: heroBgColor.value }
     : {};
-  const opacityClass = `opacity-${opacity || 100}`;
 
   switch (layout) {
     case "simple-image-right":
@@ -27,7 +26,6 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1 / 1}
                   loading="eager"
                 />
               </div>
@@ -48,7 +46,6 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1 / 1}
                   loading="eager"
                 />
               )}
@@ -71,7 +68,6 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1 / 1}
                   loading="eager"
                 />
               )}
@@ -92,10 +88,41 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1 / 1}
                   loading="eager"
                 />
               )}
+            </div>
+          </div>
+        </section>
+      );
+    case "banner":
+      return (
+        <section
+          key={`${mainHero._key}-image-bg-center-slim`}
+          className="col-span-12 pt-[77px] sm:pt-[124px] overflow-hidden relative py-12 w-screen place-self-center"
+          style={bgColorStyle}
+        >
+          {image && (
+            <div
+              className="absolute left-0 top-0 z-10 h-full w-full"
+              style={{opacity: opacity / 100}}
+            >
+              <CustomImage
+                {...image}
+                className="h-full w-full object-cover"
+                alt={image.alt}
+                width={1960}
+                loading="eager"
+              />
+            </div>
+          )}
+          <div className="z-30 mx-auto max-w-5xl text-center px-4 md:px-0">
+            {content && <Content content={content} />}
+            <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+              {buttons &&
+                buttons.map((button, index) => (
+                  <ButtonRenderer key={button._id || index} button={button} />
+                ))}
             </div>
           </div>
         </section>
@@ -108,7 +135,8 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
           style={bgColorStyle}
         >
           <div
-            className={`absolute left-0 top-0 z-10 h-full w-full ${opacityClass}`}
+            className={`absolute left-0 top-0 z-10 h-full w-full`}
+            style={{opacity: opacity / 100}}
           >
             {image && (
               <CustomImage

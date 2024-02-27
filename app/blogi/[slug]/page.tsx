@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
-import BlogPostService from "../../../_lib/services/BlogPostService";
 import MenuService from "../../../_lib/services/MenuService";
 import MetadataService from "../../../_lib/services/MetadataService";
 import { Content } from "../../../components/Content";
 import MyFooter from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
+import BlogService from "../../../_lib/services/BlogService";
 
 export async function generateMetadata({ params: { ...params } }) {
   const metadataService = new MetadataService();
@@ -32,7 +32,7 @@ type BlogsProps = { params: { slug: string } };
 
 async function BlogPost(props: BlogsProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
-  const Post = await new BlogPostService().Fetch(props.params.slug);
+  const Post = await new BlogService().FetchPost(props.params.slug);
 
   return (
 <>      

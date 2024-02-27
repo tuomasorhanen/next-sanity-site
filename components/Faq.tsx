@@ -20,7 +20,7 @@ const Faq = (props: IFaqList) => {
                   <FiChevronRight className="h-5 w-5 text-black group-hover:text-white transition-colors ease-in-out duration-300" />
                 )}
               </Disclosure.Button>
-              <Disclosure.Panel className=" bg-layer p-2 rounded-app">{faq.answer}</Disclosure.Panel>
+              <Disclosure.Panel className="border-2 border-accent p-2 rounded-app">{faq.answer}</Disclosure.Panel>
             </div>
           )}
         </Disclosure>

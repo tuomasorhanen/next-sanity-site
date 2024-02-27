@@ -3,7 +3,7 @@ import { client } from "../client/client";
 class HeroService {
     public async Fetch(slug: string) {
         let HeroData = await client.fetch(
-            `*[_type == 'page' && slug.current == '${slug}'][0] {
+            `*[slug.current == '${slug}'][0] {
                 hero {
                   ...,
                   buttons[]->{

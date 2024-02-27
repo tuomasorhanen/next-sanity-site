@@ -61,7 +61,7 @@ const HeroSection = (props: IHero) => {
           className="mt-16 col-span-12"
           style={bgColorStyle}
         >
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 items-center">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <div className="hidden sm:block">
               {image && (
                 <CustomImage
@@ -73,7 +73,7 @@ const HeroSection = (props: IHero) => {
                 />
               )}
             </div>
-            <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left">
+            <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left hero-title">
               <Content content={content} />
               <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
                 {buttons &&

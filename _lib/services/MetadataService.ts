@@ -10,7 +10,7 @@ class MetadataService {
     }
 
     public async FetchPageMetadata(slug: string) {
-        const pageData = await client.fetch(`*[_type == 'page' && slug.current == '${slug}'][0]{metadata{..., image{..., asset->{...,}}}}`, {}, { cache: "no-store" } );
+        const pageData = await client.fetch(`*[slug.current == '${slug}'][0]{metadata{..., image{..., asset->{...,}}}}`, {}, { cache: "no-store" } );
         let metadata = pageData
 
         return metadata;

@@ -20,7 +20,7 @@
     @apply font-gideon;
   }
   h1 {
-    font-size: 40px; 
+    font-size: 36px; 
     line-height: 120%;
     @media (min-width: 1100px) { 
       font-size: 56px; 

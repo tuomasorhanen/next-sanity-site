@@ -1,11 +1,10 @@
 import { notFound } from "next/navigation";
-import BlogPostService from "../../../_lib/services/BlogPostService";
 import MenuService from "../../../_lib/services/MenuService";
 import MetadataService from "../../../_lib/services/MetadataService";
-import OfferPostService from "../../../_lib/services/OfferPostService";
 import { Content } from "../../../components/Content";
 import MyFooter from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
+import OfferService from "../../../_lib/services/OfferService";
 
 export async function generateMetadata({ params: { ...params } }) {
   const metadataService = new MetadataService();
@@ -33,7 +32,7 @@ type HomeProps = { params: { slug: string } };
 
 async function Offer(props: HomeProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
-  const Post = await new OfferPostService().Fetch(props.params.slug);
+  const Post = await new OfferService().FetchOfferPost(props.params.slug);
 
   return (
 <>      

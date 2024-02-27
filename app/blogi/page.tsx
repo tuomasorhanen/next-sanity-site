@@ -37,7 +37,7 @@ async function Blogs() {
     new HeroService().Fetch("blogi"),
   ]);
 
-  const Blogs = await new BlogService().Fetch();
+  const Blogs = await new BlogService().FetchBlogs();
 
   return (
 <>      

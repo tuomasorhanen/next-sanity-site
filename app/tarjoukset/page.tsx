@@ -35,7 +35,7 @@ async function Offers() {
     new HeroService().Fetch("tarjoukset"),
   ]);
 
-  const Offers = await new OfferService().Fetch();
+  const Offers = await new OfferService().FetchOffers();
 
   return (
 <>      

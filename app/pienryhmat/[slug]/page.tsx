@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
-import GroupPostService from "../../../_lib/services/GroupPostService";
 import MenuService from "../../../_lib/services/MenuService";
 import MetadataService from "../../../_lib/services/MetadataService";
 import { Content } from "../../../components/Content";
 import MyFooter from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
+import GroupService from "../../../_lib/services/GroupService";
 
 export async function generateMetadata({ params: { ...params } }) {
   const metadataService = new MetadataService();
@@ -33,7 +33,7 @@ type GrouProps = { params: { slug: string } };
 
 async function Group(props: GrouProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
-  const group = await new GroupPostService().Fetch(props.params.slug);
+  const group = await new GroupService().FetchGroup(props.params.slug);
 
   return (
 <>      
