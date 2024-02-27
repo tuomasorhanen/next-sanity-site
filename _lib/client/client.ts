@@ -1,19 +1,16 @@
 import { createClient } from "next-sanity";
-import config from "./config";
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || config.projectId;
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || config.dataset;
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
 const apiVersion =
-  process.env.NEXT_PUBLIC_SANITY_API_VERSION || config.apiVersion;
-const useCdn: boolean =
-  !!process.env.NEXT_PUBLIC_SANITY_USE_CDN || config.useCdn;
+  process.env.NEXT_PUBLIC_SANITY_API_VERSION
 const token = process.env.SANITY_API_TOKEN
 
 export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn,
   perspective: "previewDrafts",
+  useCdn: false,
   token
 });
