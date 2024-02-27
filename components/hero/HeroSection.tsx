@@ -14,10 +14,10 @@ const HeroSection = (props: IHero) => {
       return (
         <section
           key={`${props._key}-simple-image-right`}
-          className="flex items-center mt-[77px] sm:mt-[124px]"
+          className="mt-16 col-span-12"
           style={bgColorStyle}
         >
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             {image && (
               <div className="sm:hidden">
                 <CustomImage
@@ -25,12 +25,11 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover shadow-app"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1 / 1}
                   loading="eager"
                 />
               </div>
             )}
-            <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left">
+            <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left hero-title">
               <Content content={content} />
               <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
                 {buttons &&
@@ -46,7 +45,6 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover shadow-app"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1 / 1}
                   loading="eager"
                 />
               )}
@@ -89,7 +87,6 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover shadow-app"
                   alt={image.alt}
                   width={607}
-                  aspectRatio={1 / 1}
                   loading="eager"
                 />
               )}

@@ -44,7 +44,7 @@ const YoutubeComponent: React.FC<{ value: { url: string } }> = ({ value }) => {
 
   return (
     <div className="player-wrapper">
-      <ReactPlayer className="react-player" url={value.url} width="100%" height="100%" />
+      <ReactPlayer className="react-player my-4 rounded-app overflow-hidden" url={value.url} width="100%" height="100%" />
     </div>
   );
 };
