@@ -84,6 +84,10 @@
   @apply flex flex-shrink bg-accent text-bg px-4 py-2 rounded-app shadow-app;
 }
 
+.my-content a {
+  @apply text-accent;
+}
+
 .transition-scale {
   @apply hover:scale-110 transition-transform ease-in-out duration-300;
 }
