@@ -5,7 +5,12 @@ import BlogPost from '../ReferenceCards/BlogPosts';
 import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/autoplay';
+import 'swiper/css/navigation';
+import SwiperCore from 'swiper';
+import { A11y, Navigation, Pagination } from 'swiper/modules';
+import { SwiperNavButtons } from '../SwiperNavButton';
+
+SwiperCore.use([Navigation]);
 
 
 interface GridSectionProps extends IGrid {}
@@ -20,24 +25,27 @@ const BlogItem = (item: IRefernceItem) => {
 const GridSection = (props: GridSectionProps) => {
   const { columns, items, style } = props;
   const [columnStyles, setColumnStyles] = useState({});
-  const [slidesPerView, setSlidesPerView] = useState(1.1);
+  const [slidesPerView, setSlidesPerView] = useState(1);
 
 
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
       let numColumns = 1;
+    let slidesView = 1;
 
-      if (screenWidth >= 1100) {
-        numColumns = parseInt(columns.large);
-      } else if (screenWidth >= 700) {
-        numColumns = parseInt(columns.medium);
-      } else {
-        numColumns = parseInt(columns.small);
-      }
-
+    if (screenWidth >= 1100) {
+      numColumns = parseInt(columns.large);
+      slidesView = numColumns;
+    } else if (screenWidth >= 700) {
+      numColumns = parseInt(columns.medium);
+      slidesView = numColumns;
+    } else {
+      numColumns = parseInt(columns.small);
+      slidesView = numColumns + 0.1;
+    }
       setColumnStyles({ gridTemplateColumns: `repeat(${numColumns}, 1fr)` });
-      setSlidesPerView(numColumns + 0.1);
+      setSlidesPerView(slidesView);
     };
 
     handleResize();
@@ -58,23 +66,27 @@ const GridSection = (props: GridSectionProps) => {
       return <>Failed to load grid items</>;
     }
   };
-
   
 
   switch (style) {
     case 'carousel':
       return (
+        <>
         <Swiper
+          modules={[Navigation, Pagination, A11y]}
+          spaceBetween={30}
           slidesPerView={slidesPerView}
-          autoplay={{ delay:0 }}
-          loop={true}
-        >
-          {itemsArray.map((item, index) => (
-            <SwiperSlide key={item._id || index}>
-              <div className='mx-2'>{renderGridItem(item)}</div>
-            </SwiperSlide>
-          ))}
+          >
+        {itemsArray.map((item, index) => (
+              <SwiperSlide key={item._id || index}>
+                <div>{renderGridItem(item)}</div>
+              </SwiperSlide>
+            ))}
+            <div className='hidden sm:block'>
+          <SwiperNavButtons />
+          </div>
         </Swiper>
+        </>
       );
     case'default':
       return (
