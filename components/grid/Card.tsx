@@ -25,7 +25,7 @@ const Card = (props: ICard) => {
     case 'image-bg':
       return (
         <figure key={props._key}>
-          <div className="relative flex justify-center text-bg rounded-app">
+          <div className="relative flex justify-center text-bg rounded-app shadow-app">
             {image && (
               <CustomImage
                 {...image}
