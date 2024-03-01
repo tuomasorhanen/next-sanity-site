@@ -16,8 +16,13 @@ const Card = (props: ICard) => {
               <CustomImage {...image} alt={image.alt} width={645} className="object-cover rounded-t-app " />
               <div className="p-4">
                 <Content content={content} />
-            {buttons && buttons.map(button => <ButtonRenderer key={button._key} button={button} />)}
-              </div>
+                {buttons && buttons.length > 0 && (
+          <div className="flex gap-2 mt-2">
+            {buttons.map((button, index) => (
+              <ButtonRenderer key={button._id || index} button={button} />
+            ))}
+          </div>
+        )}              </div>
             </div>
           )}
         </figure>

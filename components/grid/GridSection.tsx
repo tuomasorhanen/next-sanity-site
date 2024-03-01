@@ -42,7 +42,7 @@ const GridSection = (props: GridSectionProps) => {
       slidesView = numColumns;
     } else {
       numColumns = parseInt(columns.small);
-      slidesView = numColumns + 0.1;
+      slidesView = numColumns + 0.2;
     }
       setColumnStyles({ gridTemplateColumns: `repeat(${numColumns}, 1fr)` });
       setSlidesPerView(slidesView);
@@ -74,7 +74,7 @@ const GridSection = (props: GridSectionProps) => {
         <>
         <Swiper
           modules={[Navigation, Pagination, A11y]}
-          spaceBetween={30}
+          spaceBetween={16}
           slidesPerView={slidesPerView}
           >
         {itemsArray.map((item, index) => (

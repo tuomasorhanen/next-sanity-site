@@ -6,12 +6,12 @@ export const SwiperNavButtons = () => {
   const swiper = useSwiper();
 
   return (
-    <div className='flex justify-center gap-4 mt-4'>
+    <div className='flex justify-center gap-2 mt-4'>
         <button
         type="button"
         onClick={() => swiper.slidePrev()}        
         title="prev"
-        className="z-10 p-2 text-bg rounded-full bg-accent transition-scale">
+        className="z-10 p-1 text-bg rounded-full bg-accent transition-scale">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -26,7 +26,7 @@ export const SwiperNavButtons = () => {
         type="button"
         onClick={() => swiper.slideNext()}
         title="next"
-        className="z-10 p-2 text-bg rounded-full bg-accent transition-scale">
+        className="z-10 p-1 text-bg rounded-full bg-accent transition-scale">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
