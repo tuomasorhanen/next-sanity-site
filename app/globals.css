@@ -288,3 +288,8 @@ z-index: 1000;
 .hero-title {
   text-shadow: 0 5px 10px #0004;
 }
+
+.hyphenate {
+  hyphens: auto;
+  word-wrap: break-word;
+}
