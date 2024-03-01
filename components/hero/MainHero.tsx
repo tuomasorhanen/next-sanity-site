@@ -118,12 +118,13 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
           )}
           <div className="z-30 mx-auto max-w-5xl text-center px-4 md:px-0">
             {content && <Content content={content} />}
-            <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
-              {buttons &&
-                buttons.map((button, index) => (
-                  <ButtonRenderer key={button._id || index} button={button} />
-                ))}
-            </div>
+              {buttons && buttons.length > 0 && (
+          <div className="flex justify-center gap-2 mt-4">
+            {buttons.map((button, index) => (
+              <ButtonRenderer key={button._id || index} button={button} />
+            ))}
+          </div>
+        )}
           </div>
         </section>
       );

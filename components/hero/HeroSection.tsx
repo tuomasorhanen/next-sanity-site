@@ -96,20 +96,20 @@ const HeroSection = (props: IHero) => {
       );
     case "image-bg-center-wide":
       return (
-        
         <section
         key={`${props._key}-image-bg-center-slim`}
         className="col-span-12 mt-16 overflow-hidden relative py-8 md:py-12 w-screen place-self-center"
         style={bgColorStyle}
       >
-        <div className="z-10 relative mx-auto max-w-5xl text-center px-4 md:px-0">
+        <div className="z-10 relative mx-auto max-w-5xl text-center">
           <Content content={content} />
+          {buttons && buttons.length > 0 && (
           <div className="flex justify-center gap-2 mt-4">
-            {buttons &&
-              buttons.map((button, index) => (
-                <ButtonRenderer key={button._id || index} button={button} />
-              ))}
+            {buttons.map((button, index) => (
+              <ButtonRenderer key={button._id || index} button={button} />
+            ))}
           </div>
+        )}
         </div>
         {image && (
           <div
@@ -137,12 +137,13 @@ const HeroSection = (props: IHero) => {
       >
         <div className="z-10 relative mx-auto max-w-5xl text-center px-4 md:px-0">
           <Content content={content} />
+          {buttons && buttons.length > 0 && (
           <div className="flex justify-center gap-2 mt-4">
-            {buttons &&
-              buttons.map((button, index) => (
-                <ButtonRenderer key={button._id || index} button={button} />
-              ))}
+            {buttons.map((button, index) => (
+              <ButtonRenderer key={button._id || index} button={button} />
+            ))}
           </div>
+        )}
         </div>
         {image && (
           <div
