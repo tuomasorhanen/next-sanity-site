@@ -76,6 +76,7 @@ const GridSection = (props: GridSectionProps) => {
           modules={[Navigation, Pagination, A11y]}
           spaceBetween={16}
           slidesPerView={slidesPerView}
+          autoHeight={true}
           >
         {itemsArray.map((item, index) => (
               <SwiperSlide key={item._id || index}>
