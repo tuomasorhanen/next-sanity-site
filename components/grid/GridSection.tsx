@@ -23,7 +23,7 @@ const BlogItem = (item: IRefernceItem) => {
 };
 
 const GridSection = (props: GridSectionProps) => {
-  const { columns, items, style } = props;
+  const { columns, items, style, marginTop } = props;
   const [columnStyles, setColumnStyles] = useState({});
   const [slidesPerView, setSlidesPerView] = useState(1);
 
@@ -66,12 +66,13 @@ const GridSection = (props: GridSectionProps) => {
       return <>Failed to load grid items</>;
     }
   };
-  
+
+  const marginTopClass = marginTop === 'small' ? 'mt-8' : 'mt-16';
 
   switch (style) {
     case 'carousel':
       return (
-        <>
+        <section className={marginTopClass}>
         <Swiper
           modules={[Navigation, Pagination, A11y]}
           spaceBetween={16}
@@ -87,11 +88,11 @@ const GridSection = (props: GridSectionProps) => {
           <SwiperNavButtons />
           </div>
         </Swiper>
-        </>
+        </section>
       );
     case'default':
       return (
-        <section key={props._key}>
+        <section key={props._key} className={marginTopClass}>
     <div className="grid gap-2 md:gap-4" style={columnStyles}>
       {itemsArray.map((item, index) => (
         <figure key={item._id || index}>{renderGridItem(item)}</figure>

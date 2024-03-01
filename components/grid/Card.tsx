@@ -62,6 +62,21 @@ const Card = (props: ICard) => {
           </div>
         </figure>
       );
+    case "simple":
+      return (
+        <div key={props._key} className="rounded-app bg-layer shadow-app">
+          <div className="p-4 hyphenate">
+            <Content content={content} />
+            {buttons && buttons.length > 0 && (
+              <div className="flex gap-2 mt-2">
+                {buttons.map((button, index) => (
+                  <ButtonRenderer key={button._id || index} button={button} />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      );
 
     default:
       return <></>;

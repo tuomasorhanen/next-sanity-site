@@ -154,13 +154,14 @@ export type ICard = {
   content: any[];
   image?: ISanityImage;
   buttons?: ICallToAction[];
-  layout: 'image-top' | 'image-bg';
+  layout: 'image-top' | 'image-bg' | 'simple';
 };
 
 export type IGrid = {
   _id: string;
   _key: string;
   title: string;
+  marginTop?: string;
   columns: IColumns;
   items: ICard[] | IRefernceItem[];
   style: 'default' | 'carousel';
