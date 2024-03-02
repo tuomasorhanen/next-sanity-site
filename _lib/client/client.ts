@@ -10,7 +10,7 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  perspective: "previewDrafts",
+  perspective: "published",
   useCdn,
   token,
 });
