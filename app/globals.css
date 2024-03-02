@@ -84,6 +84,10 @@
   @apply flex flex-shrink bg-accent text-bg px-4 py-2 rounded-app shadow-app;
 }
 
+.button2 {
+  @apply flex flex-shrink border-2 border-accent px-4 py-2 rounded-app shadow-app;
+}
+
 .my-content a {
   @apply text-accent;
 }

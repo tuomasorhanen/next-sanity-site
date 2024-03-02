@@ -35,15 +35,12 @@ export type ICallToAction = {
   _id: string;
   _type: string;
   callToAction: string;
+  buttonName: string;
   navigateToPage?: string;
   navigateToUrl?: string;
   linkType: string;
-  buttonContent: string;
   image?: ISanityImage;
-  backgroundColor?: string;
-  textColor?: string;
-  border?: boolean;
-  borderColor: string;
+  style: 'style1' | 'style2';
 };
 
 export type IService = {

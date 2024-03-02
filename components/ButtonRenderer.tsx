@@ -9,20 +9,23 @@ interface ButtonRendererProps {
 }
 
 const ButtonRenderer: React.FC<ButtonRendererProps> = ({ button, className }) => {
-  try {
-    const { callToAction, navigateToPage, linkType, navigateToUrl, image } = button;
 
-    switch (linkType) {
+  try {
+    const { callToAction, navigateToPage, linkType, navigateToUrl, image, style } = button;
+    const styleClassName = style === 'style1' ? 'button' : 'button2';
+    const buttonClass = `${className} ${styleClassName}`;
+
+    switch (linkType) { 
       case 'internal':
         return (
           <Link href={navigateToPage || '/etusivu'}>
-            <button className='transition-scale'>
+            <button className={`transition-scale`}>
               {image ? (
                 <button className={`${className}`}>
                   <CustomImage {...image} alt={callToAction} width={50} className="object-cover w-6" />
                 </button>
               ) : (
-                <span className={`button ${className}`}>
+                <span className={buttonClass}>
                   {callToAction}
                 </span>
               )}
@@ -31,14 +34,14 @@ const ButtonRenderer: React.FC<ButtonRendererProps> = ({ button, className }) =>
         );
       case 'external':
         return (
-          <a href={navigateToUrl} className='transition-scale'> 
+          <a href={navigateToUrl} className={`transition-scale`}> 
             {image ? (
               <button className={`${className}`}>
                 <CustomImage {...image} alt={callToAction} width={50} className="object-cover w-6" />
               </button>
             ) : (
-              <span className={`button ${className}`}>
-                {callToAction}
+              <span className={buttonClass}>
+              {callToAction}
               </span>
             )}
           </a>
@@ -46,7 +49,7 @@ const ButtonRenderer: React.FC<ButtonRendererProps> = ({ button, className }) =>
       default:
         console.warn('Received an unprocessable button:', button);
         return (
-          <span className={`button bg-red-500 text-white ${className}`}>
+          <span className={`button bg-red-500 text-white`}>
             Broken button
           </span>
         );

@@ -30,6 +30,7 @@ const processButton = async (button) => {
       linkType,
       navigateToUrl,
       image,
+      style,
       navigateToPage->{slug{current}}
     }`;
     const ctaResult = await fetchData(ctaQuery);
@@ -41,6 +42,7 @@ const processButton = async (button) => {
     return {
       ...button,
       callToAction,
+      style: ctaResult.style,
       navigateToPage: resolveUrl(navResult),
       linkType: navigateToUrl ? 'external' : 'internal',
       navigateToUrl,

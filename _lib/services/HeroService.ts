@@ -12,6 +12,7 @@ class HeroService {
                     linkType,
                     navigateToUrl,
                     image,
+                    style,
                     navigateToPage->{
                       slug{
                         current
