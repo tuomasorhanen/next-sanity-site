@@ -6,7 +6,7 @@ const fetchData = async (query) => {
 };
 const resolveUrl = (navResult) => {
   if (!navResult || !navResult.slug || !navResult.slug.current) return '';
-  return navResult._type === 'page' ? `${navResult.slug.current}` : '';
+  return navResult._type === 'page' || navResult._type === 'service' ? `${navResult.slug.current}` : '';
 };
 const processButtons = async (content) => {
   if (content.buttons) {
