@@ -75,6 +75,7 @@ const GridSection = (props: GridSectionProps) => {
         <section className={marginTopClass}>
         <Swiper
           modules={[Navigation, Pagination, A11y]}
+          style={{overflow: 'visible'}}
           spaceBetween={16}
           slidesPerView={slidesPerView}
           autoHeight={true}
