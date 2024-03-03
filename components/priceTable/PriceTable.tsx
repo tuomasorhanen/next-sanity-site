@@ -5,12 +5,17 @@ import {IPriceTable, IService } from '../../_lib/types/types';
 import ButtonRenderer from '../ButtonRenderer';
 
 const PriceTable = (props: IPriceTable) => {
-  const { service, location } = props;
+  const { service, location, additionalInfo } = props;
 
   return (
     <section className="col-span-12 mt-16">
+      <div className='border border-accent rounded-app shadow-app p-4'>
+      <h3 className='flex justify-center'>{location}</h3>
+      {additionalInfo && (
+      <p className='flex justify-center max-w-4xl mx-auto'>{additionalInfo}</p>
+      )}
       {service.map((service: IService) => (
-        <div key={service.name} className="border-b-2 pt-8  border-accent">
+        <div key={service.name} className="border-b pt-8  border-accent">
           <Link href={service.slug.current}>
             <h2 className="text-xl font-bold">
               {service.name}
@@ -38,6 +43,7 @@ const PriceTable = (props: IPriceTable) => {
             ))}
         </div>
       ))}
+      </div>
     </section>
   );
 };
