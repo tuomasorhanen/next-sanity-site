@@ -10,25 +10,25 @@ const PriceTable = (props: IPriceTable) => {
   return (
     <section className="col-span-12 mt-16">
       {service.map((service: IService) => (
-        <div key={service.name} className="">
+        <div key={service.name} className="border-b-2 pt-8  border-accent">
           <Link href={service.slug.current}>
-            <h2 className="text-xl">
+            <h2 className="text-xl font-bold">
               {service.name}
             </h2>
           </Link>
-          {service.priceOptions.map((priceOption, index) => (
-            <div key={index} className="mt-2 flex justify-between border-b border-accent">
-              <div className="flex w-full items-center justify-between">
+          {service.priceOptions.map((price, index) => (
+            <div key={index} className="flex justify-between">
+              <div className="flex w-full justify-between mt-2">
                 <div>
                   <p className="font-bold">
-                    {priceOption.duration} {priceOption.unit}
+                    {price.duration} {price.unit}
                   </p>
-                  {priceOption.description && <p>{priceOption.description}</p>}
+                  {price.description && <p>{price.description}</p>}
                 </div>
-                <div className="my-2 flex items-center">
-                  <p className="mr-4 font-bold ">{priceOption.price}€</p>
-                  {priceOption.button && (
-                    <ButtonRenderer button={priceOption.button} className='transition-scale' />
+                <div className="flex items-center">
+                  <p className="font-bold ">{price.price}€</p>
+                  {price.button && (
+                      <ButtonRenderer button={price.button} className='py-1 px-2 ml-2'/>
                   )}
                 </div>
               </div>

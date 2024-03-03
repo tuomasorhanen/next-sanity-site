@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import SwiperCore from 'swiper';
-import { A11y, Navigation, Pagination } from 'swiper/modules';
+import { Navigation} from 'swiper/modules';
 import { SwiperNavButtons } from '../SwiperNavButton';
 
 SwiperCore.use([Navigation]);
@@ -74,8 +74,7 @@ const GridSection = (props: GridSectionProps) => {
       return (
         <section className={marginTopClass}>
         <Swiper
-          modules={[Navigation, Pagination, A11y]}
-          style={{overflow: 'visible'}}
+          modules={[Navigation]}
           spaceBetween={16}
           slidesPerView={slidesPerView}
           autoHeight={true}
