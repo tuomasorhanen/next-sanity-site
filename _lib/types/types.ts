@@ -59,6 +59,7 @@ export type IPrice = {
   description: string;
   unit: string;
   button: ICallToAction;
+  location: 'Tampere' | 'Pirkkala' | 'Lielahti' | 'all';
 };
 
 export type IPriceTable = {
@@ -66,6 +67,7 @@ export type IPriceTable = {
   _key: string;
   _type: string;
   service: IService[];
+  location: 'Tampere' | 'Pirkkala' | 'Lielahti' | 'all';
 };
 
 export type IRefernceItem = {
