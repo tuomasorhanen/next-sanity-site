@@ -60,7 +60,7 @@ const HeroSection = (props: IHero) => {
           style={bgColorStyle}
         >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-            <div className="hidden sm:block">
+            <div className="">
               {image && (
                 <CustomImage
                   {...image}
@@ -79,17 +79,6 @@ const HeroSection = (props: IHero) => {
                     <ButtonRenderer key={button._id || index} button={button} />
                   ))}
               </div>
-            </div>
-            <div className="sm:hidden">
-              {image && (
-                <CustomImage
-                  {...image}
-                  className="w-full rounded-app object-cover shadow-app"
-                  alt={image.alt}
-                  width={607}
-                  loading="eager"
-                />
-              )}
             </div>
           </div>
         </section>

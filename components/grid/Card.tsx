@@ -12,7 +12,7 @@ const Card = (props: ICard) => {
       return (
         <figure key={props._key}>
           {image && (
-            <div className="rounded-app bg-layer shadow-app">
+            <div className="rounded-app bg-layer">
               <CustomImage
                 {...image}
                 alt={image.alt}
@@ -27,6 +27,7 @@ const Card = (props: ICard) => {
                       <ButtonRenderer
                         key={button._id || index}
                         button={button}
+                        className="py-1 px-2"
                       />
                     ))}
                   </div>

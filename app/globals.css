@@ -85,7 +85,7 @@
 }
 
 .button2 {
-  @apply flex flex-shrink border-2 border-accent px-4 py-2 rounded-app shadow-app;
+  @apply flex flex-shrink border-2 bg-bg border-accent px-4 py-2 rounded-app shadow-app;
 }
 
 .my-content a {
