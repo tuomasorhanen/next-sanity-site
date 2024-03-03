@@ -9,6 +9,8 @@ import 'swiper/css/navigation';
 import SwiperCore from 'swiper';
 import { Navigation} from 'swiper/modules';
 import { SwiperNavButtons } from '../SwiperNavButton';
+import OffecCard from '../ReferenceCards/OfferCard';
+import GroupPost from '../ReferenceCards/GroupPost';
 
 SwiperCore.use([Navigation]);
 
@@ -21,6 +23,12 @@ const CardItem = (item: ICard) => {
 const BlogItem = (item: IRefernceItem) => {
   return <BlogPost {...item} />;
 };
+const OfferItem = (item: IRefernceItem) => {
+  return <OffecCard {...item} />;
+}
+const GroupItem = (item: IRefernceItem) => {
+  return <GroupPost {...item} />;
+}
 
 const GridSection = (props: GridSectionProps) => {
   const { columns, items, style, marginTop } = props;
@@ -60,6 +68,10 @@ const GridSection = (props: GridSectionProps) => {
   const renderGridItem = (item: ICard | IRefernceItem) => {
     if (item._type === 'card') {
       return CardItem(item as ICard);
+    } else if (item._type === 'offers') {
+      return OfferItem(item as IRefernceItem);
+    } else if (item._type === 'groups') {
+      return GroupItem(item as IRefernceItem);
     } else if (item._type === 'post') {
       return BlogItem(item as IRefernceItem);
     } else {

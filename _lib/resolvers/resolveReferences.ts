@@ -44,7 +44,7 @@ const resolveReferences = async (page: IPage) => {
             item.items = await Promise.all(
               item.items.map(async (gridItem: any) => {
                 const { _ref, _type } = gridItem;
-                if (_type === 'post' && _ref) {
+                if (_type === 'post' || _type === 'offers' || _type === 'groups' && _ref) {
                   return fetchReference(_ref, groq`*[_id == $refId][0]`);
                 }
                 return gridItem;
