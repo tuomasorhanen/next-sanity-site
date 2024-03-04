@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { IRefernceItem } from '../../_lib/types/types';
 import CustomImage from '../CustomImage';
+import { Content } from '../Content';
 
 const BlogPost = (blogPost: IRefernceItem) => {
   return (
@@ -10,12 +11,11 @@ const BlogPost = (blogPost: IRefernceItem) => {
           <CustomImage
             {...blogPost.image}
             width={395}
-            alt=""
+            alt={blogPost.image.alt}
             className="w-full object-cover rounded-t-app"
           />
           <div className="px-6 py-2">
-            <h2 className="text-xl">{blogPost.title}</h2>
-            <p className="mt-2 text-sm">{blogPost.excerpt}</p>  
+          <Content content={blogPost.excerpt} />
           </div>
         </div>
       </Link>

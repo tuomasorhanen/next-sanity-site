@@ -79,7 +79,7 @@ export type IRefernceItem = {
   slug: ISlug;
   image: ISanityImage;
   content: any[];
-  excerpt: string;
+  excerpt: any[];
 };
 
 export type IColor = {
