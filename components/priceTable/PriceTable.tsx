@@ -16,11 +16,9 @@ const PriceTable = (props: IPriceTable) => {
       )}
       {service.map((service: IService) => (
         <div key={service.name} className="border-b pt-8  border-accent">
-          <Link href={service.slug.current}>
             <h2 className="text-xl">
               {service.name}
             </h2>
-          </Link>
           {service.priceOptions
             .filter(price => price.location === location)
             .map((price, index) => (
