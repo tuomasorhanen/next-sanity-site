@@ -29,9 +29,9 @@ const HeroSection = (props: IHero) => {
                 />
               </div>
             )}
-            <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left hero-title">
+            <div className="flex flex-col justify-center items-start text-left hero-title hyphenate">
               <Content content={content} />
-              <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+              <div className="flex flex-row sm:justify-center gap-2 mt-4">
                 {buttons &&
                   buttons.map((button, index) => (
                     <ButtonRenderer key={button._id || index} button={button} />
@@ -71,9 +71,9 @@ const HeroSection = (props: IHero) => {
                 />
               )}
             </div>
-            <div className="flex flex-col items-center justify-center text-center sm:items-start sm:text-left hero-title">
+            <div className="flex flex-col justify-center items-start text-left hero-title hyphenate">
               <Content content={content} />
-              <div className="flex flex-col sm:flex-row sm:justify-center gap-2 mt-4">
+              <div className="flex flex-row sm:justify-center gap-2 mt-4">
                 {buttons &&
                   buttons.map((button, index) => (
                     <ButtonRenderer key={button._id || index} button={button} />
