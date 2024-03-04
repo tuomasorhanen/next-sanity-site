@@ -1,20 +1,28 @@
 "use client";
-import { PortableText, PortableTextMarkComponentProps, PortableTextProps } from '@portabletext/react';
-import { PortableTextBlock } from '@portabletext/types';
-import Link from 'next/link';
-import React, { FC, useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
-import { resolveHrefFromRef } from '../_lib/resolvers/resolveLinks';
-import CustomImage from './CustomImage';
+import {
+  PortableText,
+  PortableTextMarkComponentProps,
+  PortableTextProps,
+} from "@portabletext/react";
+import { PortableTextBlock } from "@portabletext/types";
+import Link from "next/link";
+import React, { FC, useEffect, useState } from "react";
+import ReactPlayer from "react-player";
+import { resolveHrefFromRef } from "../_lib/resolvers/resolveLinks";
+import CustomImage from "./CustomImage";
+import { FaHeart } from "react-icons/fa";
 
-const InternalLinkComponent: FC<PortableTextMarkComponentProps<any>> = ({ value, children }) => {
-  const [_href, setHref] = useState<string>('/');
+const InternalLinkComponent: FC<PortableTextMarkComponentProps<any>> = ({
+  value,
+  children,
+}) => {
+  const [_href, setHref] = useState<string>("/");
 
   useEffect(() => {
     if (value?.reference?._ref) {
       const fetchHref = async () => {
         const href = await resolveHrefFromRef(value.reference._ref);
-        setHref(href || '/');
+        setHref(href || "/");
       };
 
       fetchHref();
@@ -44,16 +52,26 @@ const YoutubeComponent: React.FC<{ value: { url: string } }> = ({ value }) => {
 
   return (
     <div className="player-wrapper">
-      <ReactPlayer className="react-player my-4 rounded-app overflow-hidden" url={value.url} width="100%" height="100%" />
+      <ReactPlayer
+        className="react-player my-4 rounded-app overflow-hidden"
+        url={value.url}
+        width="100%"
+        height="100%"
+      />
     </div>
   );
 };
 
-const myPortableTextComponents: Partial<PortableTextProps['components']> = {
+const myPortableTextComponents: Partial<PortableTextProps["components"]> = {
   types: {
-    youtube: props => <YoutubeComponent {...props} />,
+    youtube: (props) => <YoutubeComponent {...props} />,
     image: ({ value }) => (
-      <CustomImage {...value} width={1280} className="h-full mx-auto my-4 rounded-app object-cover" alt={value.alt} />
+      <CustomImage
+        {...value}
+        width={1280}
+        className="h-full mx-auto my-4 rounded-app object-cover"
+        alt={value.alt}
+      />
     ),
   },
   block: {
@@ -71,9 +89,11 @@ const myPortableTextComponents: Partial<PortableTextProps['components']> = {
     },
   },
   marks: {
-    textColor: ({children, value}) => <span style={{color: value.value}}>{children}</span>,
-    highlightColor: ({children, value}) => (
-      <span style={{background: value.value}}>{children}</span>
+    textColor: ({ children, value }) => (
+      <span style={{ color: value.value }}>{children}</span>
+    ),
+    highlightColor: ({ children, value }) => (
+      <span style={{ background: value.value }}>{children}</span>
     ),
     strong: ({ children }) => <strong className="font-bold">{children}</strong>,
     em: ({ children }) => <em>{children}</em>,
@@ -88,11 +108,16 @@ const myPortableTextComponents: Partial<PortableTextProps['components']> = {
     internalLink: InternalLinkComponent,
   },
   list: {
-    bullet: ({ children }) => <ul className="list-disc pl-5">{children}</ul>,
-    number: ({ children }) => <ol className="list-decimal pl-5">{children}</ol>,
+    bullet: ({ children }) => <ul className="list-none">{children}</ul>,
+    number: ({ children }) => <ol className="list-decimal">{children}</ol>,
   },
   listItem: {
-    bullet: ({ children }) => <li className="text-lg">{children}</li>,
+    bullet: ({ children }) => (
+      <li className="text-lg flex items-start text-left">
+      <FaHeart className="text-accent mr-2 mt-1 shrink-0" />    
+        {children}
+      </li>
+    ),
     number: ({ children }) => <li className="text-lg">{children}</li>,
   },
 };
