@@ -65,7 +65,7 @@ const Card = (props: ICard) => {
       );
     case "simple":
       return (
-        <div key={props._key} className="rounded-app bg-layer shadow-app">
+        <div key={props._key} className="rounded-app bg-layer">
           <div className="p-4 hyphenate">
             <Content content={content} />
             {buttons && buttons.length > 0 && (

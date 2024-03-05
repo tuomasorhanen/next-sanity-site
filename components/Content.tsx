@@ -87,6 +87,11 @@ const myPortableTextComponents: Partial<PortableTextProps["components"]> = {
       }
       return <p>{children}</p>;
     },
+    blockquote: ({ children }) => (
+      <blockquote className="pl-8 border-l-4 border-accent rounded-app italic font-serif text-lg">
+        {children}
+      </blockquote>
+    ),
   },
   marks: {
     textColor: ({ children, value }) => (
