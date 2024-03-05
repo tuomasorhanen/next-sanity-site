@@ -6,8 +6,25 @@ const fetchData = async (query) => {
 };
 const resolveUrl = (navResult) => {
   if (!navResult || !navResult.slug || !navResult.slug.current) return '';
-  return navResult._type === 'page' || navResult._type === 'service' ? `${navResult.slug.current}` : '';
+  let basePath = '';
+  switch (navResult._type) {
+    case 'page':
+    case 'service':
+      basePath = '';
+      break;
+    case 'post':
+      basePath = 'blogi/';
+      break;
+    case 'groups':
+      basePath = 'pienryhmat/';
+      break;
+    case 'offers':
+      basePath = 'tarjoukset/';
+      break;
+  }
+  return `${basePath}${navResult.slug.current}`;
 };
+
 const processButtons = async (content) => {
   if (content.buttons) {
 
