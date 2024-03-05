@@ -39,8 +39,8 @@ async function Group(props: GrouProps) {
   return (
 <>      
     <Header items={menu} logo={logo} />
-    <div key={group._key} className=" pt-24 md:pt-40">
-    <div className="sm:-px-6 mx-auto max-w-3xl px-6 lg:max-w-4xl">
+    <div key={group._key} className=" pt-24 md:pt-40 px-4">
+    <div className="mx-auto max-w-3xl lg:max-w-4xl">
           <Content content={group.content} />
         </div>
         {group.showForm && (
