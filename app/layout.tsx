@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MetadataService from "../_lib/services/MetadataService";
+import { Analytics } from "@vercel/analytics/react"
 
 export async function generateMetadata() {
   const metadataService = new MetadataService();
@@ -42,7 +43,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fi">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+      <Analytics/>
+      </body>
     </html>
   );
 }
