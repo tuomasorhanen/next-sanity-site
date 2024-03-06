@@ -20,7 +20,7 @@ const ButtonRenderer: React.FC<ButtonRendererProps> = ({ button, className }) =>
         return (
           <Link href={navigateToPage || '/etusivu'}>
             <button className={`transition-scale`}>
-              {image ? (
+              {image?.asset ? (
                 <button className={`${className}`}>
                   <CustomImage {...image} alt={callToAction} width={50} className="object-cover w-6" />
                 </button>
@@ -35,7 +35,7 @@ const ButtonRenderer: React.FC<ButtonRendererProps> = ({ button, className }) =>
       case 'external':
         return (
           <a href={navigateToUrl} className={`transition-scale`}> 
-            {image ? (
+            {image?.asset ? (
               <button className={`${className}`}>
                 <CustomImage {...image} alt={callToAction} width={50} className="object-cover w-6" />
               </button>

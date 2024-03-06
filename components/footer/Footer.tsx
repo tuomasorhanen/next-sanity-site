@@ -34,10 +34,7 @@ const MyFooter = (props: IMenuProps) => {
   }
   );
 
-  // First, filter items that should show in the footer
   const filteredItems = items.filter(item => item.showInFooter);
-
-  // Then, sort the filtered items by menuOrder
   const sortedAndFilteredItems = filteredItems.sort((a, b) => {
     if (a.menuOrder && b.menuOrder) {
       return a.menuOrder - b.menuOrder;

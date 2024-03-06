@@ -141,7 +141,7 @@ export type IHero = {
   content: any[];
   image?: ISanityImage;
   buttons?: ICallToAction[];
-  layout: 'image-bg-center-slim' | 'simple-image-right' | 'simple-image-left' | 'image-bg-center' | 'image-bg-center-wide' | 'banner';
+  layout: 'image-bg-center-slim' | 'simple-image-right' | 'simple-image-left' | 'image-bg-center' | 'image-bg-center-wide' | 'banner' | 'none';
   opacity?: number;
   heroBgColor?: IColor;
   CtaBgColor?: IColor;
@@ -221,9 +221,8 @@ export type IContactForm = {
   _id: string;
   _key: string;
   _type: string;
-  layout: 'simple-right' | 'pop-up';
+  layout: 'simple-right';
   thankYouMessage: string;
   title: string;
   description: string;
-  buttonText: string;
 };

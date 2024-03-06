@@ -19,7 +19,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
           style={bgColorStyle}
         >
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2">
-            {image && (
+            {image?.asset && (
               <div className="sm:hidden">
                 <CustomImage
                   {...image}
@@ -40,7 +40,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
     </div>
             </div>
             <div className="hidden sm:block">
-              {image && (
+              {image?.asset && (
                 <CustomImage
                   {...image}
                   className="w-full rounded-app object-cover"
@@ -62,7 +62,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
         >
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:py-16">
             <div className="hidden sm:block">
-              {image && (
+              {image?.asset && (
                 <CustomImage
                   {...image}
                   className="w-full rounded-app object-cover"
@@ -82,7 +82,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
     </div>
             </div>
             <div className="sm:hidden">
-              {image && (
+              {image?.asset && (
                 <CustomImage
                   {...image}
                   className="w-full rounded-app object-cover"
@@ -102,7 +102,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
           className="col-span-12 pt-[77px] sm:pt-[124px] overflow-hidden relative py-12 w-screen place-self-center"
           style={bgColorStyle}
         >
-          {image && (
+          {image?.asset && (
             <div
               className="absolute left-0 top-0 z-10 h-full w-full"
               style={{opacity: opacity / 100}}
@@ -139,7 +139,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
             className={`absolute left-0 top-0 z-10 h-full w-full`}
             style={{opacity: opacity / 100}}
           >
-            {image && (
+            {image?.asset && (
               <CustomImage
                 {...image}
                 className="h-full w-full object-cover"
@@ -160,6 +160,8 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
           </div>
         </section>
       );
+      case "none":
+        return <div className="mt-[13px] sm:mt-[60px]"></div>
     default:
       return <></>;
   }

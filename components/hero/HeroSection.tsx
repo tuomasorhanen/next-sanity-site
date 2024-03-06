@@ -18,7 +18,7 @@ const HeroSection = (props: IHero) => {
           style={bgColorStyle}
         >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-            {image && (
+            {image?.asset && (
               <div className="sm:hidden">
                 <CustomImage
                   {...image}
@@ -39,7 +39,7 @@ const HeroSection = (props: IHero) => {
               </div>
             </div>
             <div className="hidden sm:block">
-              {image && (
+              {image?.asset && (
                 <CustomImage
                   {...image}
                   className="w-full rounded-app object-cover shadow-app"
@@ -61,7 +61,7 @@ const HeroSection = (props: IHero) => {
         >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <div className="">
-              {image && (
+              {image?.asset && (
                 <CustomImage
                   {...image}
                   className="w-full rounded-app object-cover shadow-app"
@@ -100,7 +100,7 @@ const HeroSection = (props: IHero) => {
           </div>
         )}
         </div>
-        {image && (
+        {image?.asset && (
           <div
             className="absolute left-0 top-0 h-full w-full z-0"
             style={opacityStyle}

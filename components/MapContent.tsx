@@ -8,7 +8,6 @@ import GridSection from './grid/GridSection';
 import HeadingAndTitle from './headingandTitle/HeadingAndTitle';
 import HeroSection from './hero/HeroSection';
 import PriceTable from './priceTable/PriceTable';
-import Spacer from './Spacer';
 import UiElement from './uIElements/UiElements';
 
 type IMapContentProps = {
@@ -28,8 +27,6 @@ const MapContent = ({ content }: IMapContentProps) => {
             return <HeadingAndTitle key={item._key} {...item} />;
           case 'uiElement':
             return <UiElement key={item._key} {...item} />;
-          case 'spacer':
-            return <Spacer key={item._key} {...item} />;
           case 'faqList':
             return <Faq key={item._key} {...item} />;
           case 'carousel':
