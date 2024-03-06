@@ -45,7 +45,7 @@ export default function RootLayout({
     <html lang="fi">
       <body className={inter.className}>
         {children}
-      <Analytics/>
+      <Analytics mode={'production'}/>
       </body>
     </html>
   );

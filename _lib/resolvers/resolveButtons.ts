@@ -48,12 +48,13 @@ const processButton = async (button) => {
       callToAction,
       linkType,
       navigateToUrl,
+      buttonName,
       image,
       style,
       navigateToPage->{slug{current}}
     }`;
     const ctaResult = await fetchData(ctaQuery);
-    const { callToAction, navigateToUrl, image } = ctaResult;
+    const { callToAction, navigateToUrl, image, buttonName } = ctaResult;
 
     const navQuery = groq`*[_id == '${button._ref}']{navigateToPage->}[0].navigateToPage`;
     const navResult = await fetchData(navQuery);
@@ -61,6 +62,7 @@ const processButton = async (button) => {
     return {
       ...button,
       callToAction,
+      buttonName,
       style: ctaResult.style,
       navigateToPage: resolveUrl(navResult),
       linkType: navigateToUrl ? 'external' : 'internal',

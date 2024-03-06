@@ -1,5 +1,7 @@
 "use client";
 import { useState } from 'react';
+import { track } from "@vercel/analytics";
+
 
 export default function ContactForm({ description, title, thankYouMessage }) {
   const [loading, setLoading] = useState(false);
@@ -83,7 +85,9 @@ export default function ContactForm({ description, title, thankYouMessage }) {
             className="w-full rounded-app border border-accent bg-white p-4 "
           />
         </div>
-        <button type="submit" disabled={loading} className="button mt-2 transition-scale">
+        <button type="submit" disabled={loading} className="button mt-2 transition-scale" onClick={() => {
+                  track('Lomake lähetetty');
+                }}>
           Lähetä
         </button>
       </form>
