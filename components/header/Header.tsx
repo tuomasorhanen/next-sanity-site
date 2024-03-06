@@ -28,7 +28,7 @@ const Header = (props: IMenu) => {
     .sort((a, b) => (a.menuOrder ?? 0) - (b.menuOrder ?? 0));
 
   const renderDesktopNav = () => (
-    <nav className={`fixed top-0 z-40 w-full bg-bg border-2 border-b-accent`}>
+    <nav className={`fixed top-0 z-40 w-full bg-bg border-2 border-b-accent hidden md:block`}>
       <div className="flex justify-between py-1">
         <Link href="/" className="z-40 flex items-center">
           <CustomImage
@@ -97,7 +97,7 @@ const Header = (props: IMenu) => {
     };
 
     return (
-      <nav className="nav z-40">
+      <nav className="nav z-40 md:hidden">
         <div className="nav-container">
           <div className="navbar absolute z-50 flex items-center justify-between">
             <Link href="/">
