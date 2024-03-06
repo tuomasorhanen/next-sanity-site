@@ -8,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import SwiperCore from 'swiper';
 import { Navigation} from 'swiper/modules';
-import { SwiperNavButtons } from '../SwiperNavButton';
+import { SwiperNavButtons } from './SwiperNavButton';
 import OffecCard from '../ReferenceCards/OfferCard';
 import GroupPost from '../ReferenceCards/GroupPost';
 

@@ -76,7 +76,7 @@ export default function ContactForm({ description, title, thankYouMessage }) {
           <textarea
             rows={4}
             required
-            placeholder="Kurssin nimi ja aloitus päivämäärä."
+            placeholder="Viesti."
             minLength={10}
             maxLength={500}
             name="message"

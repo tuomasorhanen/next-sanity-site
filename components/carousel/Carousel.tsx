@@ -17,7 +17,7 @@ const CarouselComponent = (props: ICarousel) => {
       className="relative flex h-full items-center justify-center p-12" 
 >
   <div style={opacityStyle}>
-      {item.image && (
+      {item.image?.asset && (
         <CustomImage
           {...item?.image}
           className="absolute inset-0 h-full w-full object-cover"

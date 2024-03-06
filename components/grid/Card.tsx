@@ -11,7 +11,7 @@ const Card = (props: ICard) => {
     case "image-top":
       return (
         <figure key={props._key}>
-          {image && (
+          {image?.asset && (
             <div className="rounded-app bg-layer">
               <CustomImage
                 {...image}
@@ -31,7 +31,7 @@ const Card = (props: ICard) => {
                       />
                     ))}
                   </div>
-                )}{" "}
+                )}
               </div>
             </div>
           )}
@@ -40,8 +40,8 @@ const Card = (props: ICard) => {
     case "image-bg":
       return (
         <figure key={props._key}>
-          <div className="relative flex justify-center text-bg rounded-app shadow-app">
-            {image && (
+          <div className="relative flex justify-center text-bg rounded-app">
+            {image?.asset && (
               <CustomImage
                 {...image}
                 alt={image.alt}
