@@ -16,7 +16,7 @@ export async function generateMetadata() {
     notFound();
   }
   
-  const { title, description, image, } =pageMetadata;
+  const { title, description, image, } = pageMetadata.metadata;
 
   let metadata = {
     ...(title && { title }),
@@ -41,14 +41,14 @@ async function Blogs() {
 
   return (
 <>      
-    <Header items={menu} logo={logo} />
+    <Header menu={menu} logo={logo} />
       <MainHero mainHero={mainHero} />
       <div className="mx-auto mt-8 grid max-w-7xl grid-cols-1 gap-4 px-4 sm:grid-cols-2 md:grid-cols-3">
           {Blogs.map((post, index) => (
             <BlogPosts key={index} {...post} />
           ))}
         </div>
-        <MyFooter items={menu} footer={footer} />
+        <MyFooter menu={menu} footer={footer} />
       </>  );
 }
 

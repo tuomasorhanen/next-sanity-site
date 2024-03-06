@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
-import { IPage } from '../../_lib/types/types';
+import { IMenu} from '../../_lib/types/types';
 import { FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 
 const socialMediaIcons = {
@@ -13,17 +13,9 @@ const socialMediaIcons = {
 
 const year = new Date().getFullYear();
 
-type IMenuProps = {
-  items: IPage[];
-  footer: {
-    socialMedia: any[];
-    companyName: string;
-  };
-  key?: string;
-};
 
-const MyFooter = (props: IMenuProps) => {
-  const { items, footer } = props;
+const MyFooter = (props: IMenu) => {
+  const { menu, footer } = props;
 
   const socialMediaLinks = footer.socialMedia.map((media) => {
     const Icon = socialMediaIcons[media.name.toLowerCase()];
@@ -34,7 +26,7 @@ const MyFooter = (props: IMenuProps) => {
   }
   );
 
-  const filteredItems = items.filter(item => item.showInFooter);
+  const filteredItems = menu.filter(item => item.showInFooter);
   const sortedAndFilteredItems = filteredItems.sort((a, b) => {
     if (a.menuOrder && b.menuOrder) {
       return a.menuOrder - b.menuOrder;

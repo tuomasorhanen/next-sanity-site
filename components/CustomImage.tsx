@@ -1,20 +1,7 @@
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
 import { client } from "../_lib/client/client";
-
-export type ISanityImage = {
-  src?: any;
-  _key?: string;
-  alt?: string;
-  _id?: string;
-  url?: any;
-  _type?: string;
-  asset: {
-    url(url: any): unknown;
-    _ref: string;
-    _type: string;
-  };
-};
+import { ISanityImage } from "../_lib/types/types";
 
 type IImgProps = {
   className?: string;

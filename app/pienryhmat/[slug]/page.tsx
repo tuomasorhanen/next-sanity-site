@@ -38,7 +38,7 @@ async function Group(props: GrouProps) {
 
   return (
 <>      
-    <Header items={menu} logo={logo} />
+    <Header menu={menu} logo={logo} />
     <div key={group._key} className=" pt-24 md:pt-40 px-4">
     <div className="mx-auto max-w-3xl lg:max-w-4xl">
           <Content content={group.content} />
@@ -47,7 +47,7 @@ async function Group(props: GrouProps) {
         <ContactFormSection {...group.form}/>
         )}
             </div>
-      <MyFooter items={menu} footer={footer} />
+      <MyFooter menu={menu} footer={footer} />
       </>  );
 }
 

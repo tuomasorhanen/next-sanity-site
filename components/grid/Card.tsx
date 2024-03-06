@@ -1,4 +1,3 @@
-"use client";
 import { ICard } from "../../_lib/types/types";
 import ButtonRenderer from "../../components/ButtonRenderer";
 import { Content } from "../Content";

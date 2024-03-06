@@ -1,7 +1,7 @@
 import { Disclosure } from '@headlessui/react';
 import React from 'react';
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi';
-import { IFaqList, IFaq } from '../_lib/types/types';
+import { IFaq, IFaqList } from '../_lib/types/types';
 
 const Faq = (props: IFaqList) => {
   const { faqList } = props;

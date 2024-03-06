@@ -15,7 +15,7 @@ export async function generateMetadata({ params: { ...params } }) {
   if (!pageMetadata) {
     notFound();
   }
-  const { title, description, image, } =pageMetadata.metadata;
+  const { title, description, image, } = pageMetadata.metadata;
 
   let metadata = {
     ...(title && { title }),
@@ -42,10 +42,10 @@ async function Slug(props: HomeProps) {
 
   return (
 <>      
-    <Header items={menu} logo={logo} />
+<Header menu={menu} logo={logo} />
       <MainHero mainHero={mainHero} />
       <MapContent content={content} />
-      <MyFooter items={menu} footer={footer} />
+      <MyFooter menu={menu} footer={footer}/>
       </>  );
 }
 

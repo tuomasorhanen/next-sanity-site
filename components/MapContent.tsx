@@ -1,6 +1,4 @@
-
 "use client";
-import { IHero, IHeadingAndTitle } from '../_lib/types/types';
 import Carousel from './carousel/Carousel';
 import Faq from './Faq';
 import ContactFormSection from './forms/ContactFormSection';
@@ -8,10 +6,9 @@ import GridSection from './grid/GridSection';
 import HeadingAndTitle from './headingandTitle/HeadingAndTitle';
 import HeroSection from './hero/HeroSection';
 import PriceTable from './priceTable/PriceTable';
-import UiElement from './uIElements/UiElements';
 
 type IMapContentProps = {
-  content: IHero[] | IHeadingAndTitle[];
+  content: any[];
 };
 
 const MapContent = ({ content }: IMapContentProps) => {
@@ -25,8 +22,6 @@ const MapContent = ({ content }: IMapContentProps) => {
             return <div key={item._key} className='col-span-12'><GridSection {...item} /></div>;
           case 'headingAndTitle':
             return <HeadingAndTitle key={item._key} {...item} />;
-          case 'uiElement':
-            return <UiElement key={item._key} {...item} />;
           case 'faqList':
             return <Faq key={item._key} {...item} />;
           case 'carousel':

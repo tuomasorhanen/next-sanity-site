@@ -1,6 +1,8 @@
 import { groq } from 'next-sanity';
 import { client } from '../client/client';
 
+//This is used by the content.tsx file to resolve internal links in rich text fields.
+
 export const resolveHrefFromRef = async _ref => {
   const internalLinkQuery = groq`*[_id == '${_ref}'][0]{
     "slug": slug.current,

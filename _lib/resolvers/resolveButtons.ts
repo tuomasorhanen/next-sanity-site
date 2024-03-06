@@ -1,6 +1,8 @@
 import { groq } from 'next-sanity';
 import { client } from '../client/client';
 
+//This is used by the ContentService to resolve nested buttons before passing data to the page.
+
 const fetchData = async (query) => {
   return await client.fetch(query);
 };

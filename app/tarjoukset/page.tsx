@@ -14,7 +14,7 @@ export async function generateMetadata() {
   if (!pageMetadata) {
     notFound();
   }
-  const { title, description, image, } =pageMetadata;
+  const { title, description, image, } =pageMetadata.metadata;
 
   let metadata = {
     ...(title && { title }),
@@ -39,14 +39,14 @@ async function Offers() {
 
   return (
 <>      
-    <Header items={menu} logo={logo} />
+    <Header menu={menu} logo={logo} />
       <MainHero mainHero={mainHero} />
       <div className="mx-auto mt-8 grid max-w-7xl grid-cols-1 gap-4 px-4 sm:grid-cols-2 md:grid-cols-3">
           {Offers.map((OfferPost, index) => (
             <OffecCard key={index} {...OfferPost} />
           ))}
         </div>
-        <MyFooter items={menu} footer={footer} />
+        <MyFooter menu={menu} footer={footer} />
       </>  );
 }
 

@@ -1,13 +1,8 @@
-"use client";
-import { useState } from 'react';
 import ContactForm from './ContactForm';
 import { IContactForm } from '../../_lib/types/types';
 
 const ContactFormSection = (props: IContactForm) => {
-  const { _id, layout, _key, thankYouMessage, title, description } = props;
-
-  const [isModalOpen, setModalOpen] = useState(false);
-  const toggleModal = () => setModalOpen(!isModalOpen);
+  const { layout, thankYouMessage, title, description } = props;
 
   switch (layout) {
     case 'simple-right':

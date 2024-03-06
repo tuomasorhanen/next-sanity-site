@@ -1,30 +1,39 @@
 "use client";
 import Link from 'next/link';
-import { useState } from 'react';
-import { IPage } from '../../_lib/types/types';
+import { useEffect, useState } from 'react';
+import { IMenu } from '../../_lib/types/types';
 import CustomImage from '../CustomImage';
 
-type IMenuProps = {
-  items: any[];
-  _key?: string;
-};
-
-const Header = (props: IMenuProps & { logo: any }) => {
-  const { items, logo } = props;
+const Header = (props: IMenu) => {
+  const { menu, logo } = props;
   const [navOpen, setNavOpen] = useState(false);
   const [openSubPage, setOpenSubPage] = useState(null);
-  const processedItems = items.filter(item => item.showInMenu).sort((a, b) => (a.menuOrder ?? 0) - (b.menuOrder ?? 0));
+  const [isMobileView, setIsMobileView] = useState(false);
+  
+  const handleResize = () => {
+    setIsMobileView(window.innerWidth < 1100);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const processedItems = menu.filter(item => item.showInMenu).sort((a, b) => (a.menuOrder ?? 0) - (b.menuOrder ?? 0));
   const sortedItems = processedItems.sort((a, b) => (a.menuOrder ?? 0) - (b.menuOrder ?? 0));
 
   const renderDesktopNav = () => (
     <nav
-      key={props._key}
-      className={`fixed top-0 z-40 hidden w-full bg-bg border-2 border-b-accent md:block`}>
+      className={`fixed top-0 z-40 w-full bg-bg border-2 border-b-accent`}>
       <div className="flex justify-between py-1">
         <Link href="/" className="z-40 flex items-center">
-          <CustomImage {...logo.logo} alt={logo.logo.alt} width={150} aspectRatio={1/1} className="mx-10 w-12 hover:scale-105" />
+          <CustomImage {...logo} alt={logo.alt} width={150} aspectRatio={1/1} className="mx-10 w-12 hover:scale-105" />
         </Link>
-        <div className="z-40 hidden md:block" id="navbar-default">
+        <div className="z-40" id="navbar-default">
           <ul className="mx-10 my-2 flex">
             {sortedItems.map(item => {
               return (
@@ -74,11 +83,11 @@ const Header = (props: IMenuProps & { logo: any }) => {
     };
 
     return (
-      <nav className="nav z-40 md:hidden">
+      <nav className="nav z-40">
         <div className="nav-container">
           <div className="navbar absolute z-50 flex items-center justify-between">
             <Link href="/">
-              <CustomImage {...logo.logo} alt={logo.logo.alt} width={150} aspectRatio={1/1} className="w-10" />
+              <CustomImage {...logo} alt={logo.alt} width={150} aspectRatio={1/1} className="w-10" />
             </Link>
             <div className="flex items-center">
               <div className="menu-toggle" onClick={() => setNavOpen(!navOpen)}>
@@ -152,8 +161,7 @@ const Header = (props: IMenuProps & { logo: any }) => {
 
   return (
     <>
-      {renderDesktopNav()}
-      {renderMobileNav()}
+      {isMobileView ? renderMobileNav() : renderDesktopNav()}
     </>
   );
 };

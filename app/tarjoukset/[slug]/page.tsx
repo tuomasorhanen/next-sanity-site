@@ -13,7 +13,7 @@ export async function generateMetadata({ params: { ...params } }) {
   if (!pageMetadata) {
     notFound();
   }
-  const { title, excerpt, image, } =pageMetadata;
+  const { title, excerpt, image, } = pageMetadata;
 
   let metadata = {
     ...(title && { title }),
@@ -36,13 +36,13 @@ async function Offer(props: HomeProps) {
 
   return (
 <>      
-    <Header items={menu} logo={logo} />
+    <Header menu={menu} logo={logo} />
     <div key={Post._key} className=" pt-24 md:pt-40">
     <div className="sm:-px-6 mx-auto max-w-3xl px-6 pb-12 lg:max-w-4xl">
           <Content content={Post.content} />
         </div>
       </div>
-      <MyFooter items={menu} footer={footer} />
+      <MyFooter menu={menu} footer={footer} />
       </>  );
 }
 

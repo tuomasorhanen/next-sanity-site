@@ -2,6 +2,8 @@ import { groq } from 'next-sanity';
 import { client } from '../client/client';
 import { IPage } from '../types/types';
 
+//This is used by the ContentService to resolve any nested references before passing data to the page.
+
 const fetchReference = async (refId: string, query: string) => {
   if (!refId) return null;
   return client.fetch(query, { refId });
