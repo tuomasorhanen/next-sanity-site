@@ -7,7 +7,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
-      <div className="bg-white text-center px-4 py-24 rounded-lg shadow-lg relative max-w-md w-full mx-2">
+      <div className="bg-white text-center px-4 py-24 rounded-lg shadow-lg relative max-w-md w-full mx-4">
         {children}
         <button className="absolute top-0 right-0 m-4 text-2xl font-bold" onClick={onClose}>&times;</button>
       </div>
