@@ -22,7 +22,7 @@ const PriceTable = (props: IPriceTable) => {
             {locations.map(loc => (
               <button
                 key={loc}
-                className={`px-4 py-2 ${activeLocation === loc ? 'bg-accent text-white rounded-app' : 'bg-transparent'}`}
+                className={`px-4 py-2 ${activeLocation === loc ? 'button' : 'bg-transparent'}`}
                 onClick={() => setActiveLocation(loc)}
               >
                 {loc}
@@ -30,7 +30,7 @@ const PriceTable = (props: IPriceTable) => {
             ))}
           </div>
         )}
-        <h3 className='flex justify-center'>{isAllLocations ? activeLocation : location}</h3>
+        <h2 className='flex justify-center text-2xl'>{isAllLocations ? activeLocation : location}</h2>
         {additionalInfo && (
           <p className='flex justify-center text-center max-w-4xl mx-auto'>{additionalInfo}</p>
         )}

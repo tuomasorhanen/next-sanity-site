@@ -20,11 +20,11 @@ const ButtonRenderer: React.FC<ButtonRendererProps> = ({ button, className }) =>
         return (
           <Link href={navigateToPage || '/etusivu'}>
             <button className={`transition-scale`}>
-              {image?.asset ? (
-                <button className={`${className}`}>
-                  <CustomImage {...image} alt={callToAction} width={50} className="object-cover w-6" />
-                </button>
-              ) : (
+            {image?.asset ? (
+              <div className={`${className}`}>
+                <CustomImage {...image} alt={callToAction} width={50} className="object-cover w-6" />
+              </div>
+            ) : (
                 <span className={buttonClass}>
                   {callToAction}
                 </span>
