@@ -7,7 +7,7 @@ const Faq = (props: IFaqList) => {
   const { faqList } = props;
 
   return (
-    <section key={props._key} className="col-span-12 mt-16">
+    <section key={props._key} className="col-span-12 mt-8 sm:mt-16">
       {faqList.map((faq: IFaq) => (
         <Disclosure as="div" key={faq.question}>
           {({ open }) => (

@@ -43,7 +43,7 @@ const MyFooter = (props: IMenu) => {
 
   return (
     <footer>
-      <div className="mx-auto max-w-7xl overflow-hidden px-4 pt-16 pb-8">
+      <div className="mx-auto max-w-7xl overflow-hidden px-4 mt-8 sm:mt-16 pb-8">
         <nav className="flex columns-2 flex-wrap justify-center space-x-4 sm:space-x-12" aria-label="Footer">
           {updatedItems.map(item => (
             <div key={item.slug.current}>

@@ -93,7 +93,7 @@ const CarouselComponent = (props: ICarousel) => {
 
   
  return (
-  <section key={props._id} className="col-span-12 mt-16">
+  <section key={props._id} className="col-span-12 mt-8 sm:mt-16">
   <Carousel
     showThumbs={false}
     showStatus={false}

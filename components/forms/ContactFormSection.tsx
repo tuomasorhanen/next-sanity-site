@@ -7,7 +7,7 @@ const ContactFormSection = (props: IContactForm) => {
   switch (layout) {
     case 'simple-right':
       return (
-        <div className="mt-16 col-span-12">
+        <div className="mt-8 sm:mt-16 col-span-12">
           <ContactForm thankYouMessage={thankYouMessage} description={description} title={title}/>
         </div>
       );

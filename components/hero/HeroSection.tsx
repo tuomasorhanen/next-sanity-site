@@ -14,7 +14,7 @@ const HeroSection = (props: IHero) => {
       return (
         <section
           key={`${props._key}-simple-image-right`}
-          className="mt-16 col-span-12"
+          className="mt-8 sm:mt-16 col-span-12"
           style={bgColorStyle}
         >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
@@ -56,7 +56,7 @@ const HeroSection = (props: IHero) => {
       return (
         <section
           key={`${props._key}-simple-image-left`}
-          className="mt-16 col-span-12"
+          className="mt-8 sm:mt-16 col-span-12"
           style={bgColorStyle}
         >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
@@ -87,7 +87,7 @@ const HeroSection = (props: IHero) => {
       return (
         <section
         key={`${props._key}-image-bg-center-slim`}
-        className="col-span-12 mt-16 overflow-hidden relative py-8 md:py-12 w-screen place-self-center"
+        className="col-span-12 mt-8 sm:mt-16 overflow-hidden relative py-8 md:py-12 w-screen place-self-center"
         style={bgColorStyle}
       >
         <div className="z-10 relative mx-auto max-w-5xl text-center">
@@ -121,7 +121,7 @@ const HeroSection = (props: IHero) => {
       return (
         <section
         key={`${props._key}-image-bg-center-slim`}
-        className="col-span-12 mt-16 overflow-hidden relative py-8 md:py-12 rounded-app "
+        className="col-span-12 mt-8 sm:mt-16 overflow-hidden relative py-8 md:py-12 rounded-app "
         style={bgColorStyle}
       >
         <div className="z-10 relative mx-auto max-w-5xl text-center px-4 md:px-0">

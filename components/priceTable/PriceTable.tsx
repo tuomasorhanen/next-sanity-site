@@ -15,7 +15,7 @@ const PriceTable = (props: IPriceTable) => {
   );
 
   return (
-    <section className="col-span-12 mt-16">
+    <section className="col-span-12 mt-8 sm:mt-16">
       <div className='border border-accent rounded-app shadow-app p-4'>
         {isAllLocations && (
           <div className="flex justify-center mb-4">
