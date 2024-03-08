@@ -160,6 +160,15 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
           </div>
         </section>
       );
+      case 'heading':
+      return (
+        <section key={mainHero._key} className="col-span-12 pt-[77px] sm:pt-[124px] ">
+          <div className="mx-auto max-w-4xl text-center">
+            <Content content={content} />
+          </div>
+        </section>
+      );
+
       case "none":
         return <div className="mt-[13px] sm:mt-[60px]"></div>
     default:

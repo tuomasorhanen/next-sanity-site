@@ -97,7 +97,7 @@ export interface IHero extends IBase {
   content: any[];
   image?: ISanityImage;
   buttons?: ICallToAction[];
-  layout: 'image-bg-center-slim' | 'simple-image-right' | 'simple-image-left' | 'image-bg-center' | 'image-bg-center-wide' | 'banner' | 'none';
+  layout: 'image-bg-center-slim' | 'simple-image-right' | 'simple-image-left' | 'image-bg-center' | 'image-bg-center-wide' | 'banner' | 'none' | 'heading';
   opacity?: number;
   heroBgColor?: IColor;
   CtaBgColor?: IColor;
