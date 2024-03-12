@@ -3,6 +3,8 @@ import { ICallToAction } from "../_lib/types/types";
 import CustomImage from "./CustomImage";
 import React from "react";
 import { track } from "@vercel/analytics";
+import { sendGTMEvent } from '@next/third-parties/google'
+
 
 interface ButtonRendererProps {
   button: ICallToAction;
@@ -36,6 +38,7 @@ const ButtonRenderer: React.FC<ButtonRendererProps> = ({
                 <div
                   onClick={() => {
                     track(buttonName);
+                    sendGTMEvent({ event: 'buttonClicked', value: {buttonName} })
                   }}
                   className={`${className}`}
                 >
