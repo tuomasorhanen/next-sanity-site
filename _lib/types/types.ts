@@ -48,6 +48,7 @@ export interface IService extends IBase {
 };
 
 export interface IPriceTable extends IBase {
+  layout: 'default-table' | 'cards' | 'no-buttons' | 'no-price';
   location: 'Tampere' | 'Pirkkala' | 'Lielahti' | 'All';
   additionalInfo: string;
   service: IService[];
