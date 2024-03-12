@@ -47,7 +47,7 @@ async function Group(props: GrouProps) {
     "description": group.description,
     "provider": {
       "@type": "Organization",
-      "name": businessName,
+      "name": businessName.companyName,
       "sameAs": `https://${mydomain}`
     }
   };

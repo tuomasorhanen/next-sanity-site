@@ -42,7 +42,6 @@ async function Groups() {
   const mydomain = domain.domain;
   const businessName = await new MetadataService().FetchBusinessName();
 
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -56,7 +55,7 @@ async function Groups() {
         "description": group.description,
         "provider": {
           "@type": "Organization",
-          "name": businessName, 
+          "name": businessName.companyName, 
           "sameAs": `https://${mydomain}`
         },
       }

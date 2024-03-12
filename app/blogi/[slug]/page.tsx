@@ -49,7 +49,7 @@ async function BlogPost(props: BlogsProps) {
     },
     "publisher": {
       "@type": "Organization",
-      "name": businessName,
+      "name": businessName.companyName,
       "url": `https://${mydomain}`
     },
     "description": Post.excerpt,
