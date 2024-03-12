@@ -4,7 +4,7 @@ import { FiChevronDown, FiChevronRight } from 'react-icons/fi';
 import { IFaq, IFaqList } from '../_lib/types/types';
 
 const Faq = (props: IFaqList) => {
-  const { faqList } = props;
+  const { faqList, _key } = props;
 
   return (
     <section key={props._key} className="col-span-12 mt-8 sm:mt-16">

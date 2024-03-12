@@ -34,8 +34,36 @@ async function BlogPost(props: BlogsProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
   const Post = await new BlogService().FetchPost(props.params.slug);
 
+  const jsonLd = {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": Post.title,
+    "image": Post.image.asset.url,
+    "author": {
+      "@type": "Person",
+      "name": "Author Name"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Publisher Name",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://www.example.com/logo.png"
+      }
+    },
+    "description": Post.excerpt,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.example.com/blog-post"
+    }
+  };
+
   return (
 <>      
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <Header menu={menu} logo={logo} />
     <div key={Post._key} className="pt-24 md:pt-40">
     <div className="sm:-px-6 mx-auto max-w-3xl px-6 pb-12 lg:max-w-4xl">
