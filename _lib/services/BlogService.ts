@@ -12,10 +12,20 @@ class BlogService {
 
     public async FetchPost(slug: string): Promise<IRefernceItem | null> {
         let Post = await client.fetch(
-            `*[_type == 'post' && slug.current == '${slug}'][0]`, {}, { cache: "no-store" } 
+            `*[_type == 'post' && slug.current == '${slug}'][0]{..., author->{...}}`, {}, { cache: "no-store" } 
         );
 
         return Post;
+    }
+
+    public async FetchPostImage(slug: string): Promise<string | null> {
+        let imageUrl = await client.fetch(
+            `*[_type == 'post' && slug.current == '${slug}'][0]{
+                "imageUrl": image.asset->url
+              }`, {}, { cache: "no-store" }
+                      );
+
+        return imageUrl.imageUrl;
     }
 }
 

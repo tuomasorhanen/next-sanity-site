@@ -35,9 +35,28 @@ type GrouProps = { params: { slug: string } };
 async function Group(props: GrouProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
   const group = await new GroupService().FetchGroup(props.params.slug);
+  const domain = await new MetadataService().FetchDomain();
+  const businessName = await new MetadataService().FetchBusinessName();
+
+  const jsonLd = {
+    "@context": "http://schema.org",
+    "@type": "Course",
+    "url": `https://${domain}/pienryhmat/${group.slug.current}`,
+    "name": group.title,
+    "description": group.description,
+    "provider": {
+      "@type": "Organization",
+      "name": businessName,
+      "sameAs": `https://${domain}`
+    }
+  };
 
   return (
 <>      
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <Header menu={menu} logo={logo} />
     <div key={group._key} className=" pt-24 md:pt-40 px-4">
     <div className="mx-auto max-w-3xl lg:max-w-4xl">

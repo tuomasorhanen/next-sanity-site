@@ -33,29 +33,31 @@ type BlogsProps = { params: { slug: string } };
 async function BlogPost(props: BlogsProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
   const Post = await new BlogService().FetchPost(props.params.slug);
+  const domain = await new MetadataService().FetchDomain();
+  const businessName = await new MetadataService().FetchBusinessName();
+  const imageUrl = await new BlogService().FetchPostImage(props.params.slug);
 
   const jsonLd = {
     "@context": "http://schema.org",
     "@type": "BlogPosting",
     "headline": Post.title,
-    "image": Post.image.asset.url,
+    "image": imageUrl,
     "author": {
       "@type": "Person",
-      "name": "Author Name"
+      "name": Post.author.name
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Publisher Name",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "http://www.example.com/logo.png"
-      }
+      "name": businessName,
+      "url": `https://${domain}`
     },
     "description": Post.excerpt,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.example.com/blog-post"
-    }
+      "@id": `https://${domain}/blogi/${Post.slug.current}`
+    },
+    "datePublished": Post.publishedAt,
+    "dateModified": Post._updatedAt,
   };
 
   return (

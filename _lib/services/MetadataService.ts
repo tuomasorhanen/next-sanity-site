@@ -47,6 +47,13 @@ class MetadataService {
         return domain;
     }
 
+    public async FetchBusinessName(): Promise<ISiteSettings> {
+        const businessName = await client.fetch(`*[_type == 'siteSettings'][0]{companyName}`);
+        let name = businessName
+
+        return name;
+    }
+
     public async FetchSitemap(): Promise<IPage[]> {
         const pageMap = await client.fetch(`*[_type == 'page']{slug}`);
         let pages = pageMap

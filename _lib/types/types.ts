@@ -74,6 +74,15 @@ export interface IRefernceItem extends IBase {
   excerpt: any[];
   showForm: boolean;
   form: IContactForm;
+  author?: IPerson;
+  publishedAt?: string;
+  _updatedAt?: string;
+};
+
+export interface IPerson extends IBase {
+  name: string;
+  image: ISanityImage;
+  bio: string;
 };
 
 export interface IFaqList extends IBase {
