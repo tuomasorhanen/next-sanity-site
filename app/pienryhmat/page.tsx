@@ -39,6 +39,7 @@ async function Groups() {
 
   const Groups = await new GroupService().FetchGroups();
   const domain = await new MetadataService().FetchDomain();
+  const mydomain = domain.domain;
   const businessName = await new MetadataService().FetchBusinessName();
 
 
@@ -50,13 +51,13 @@ async function Groups() {
       "position": index + 1,
       "item": {
         "@type": "Course",
-        "url": `https://${domain}/pienryhmat/${group.slug.current}`,
+        "url": `https://${mydomain}/pienryhmat/${group.slug.current}`,
         "name": group.title,
         "description": group.description,
         "provider": {
           "@type": "Organization",
           "name": businessName, 
-          "sameAs": `https://${domain}`
+          "sameAs": `https://${mydomain}`
         },
       }
     }))

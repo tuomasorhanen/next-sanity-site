@@ -36,18 +36,19 @@ async function Group(props: GrouProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
   const group = await new GroupService().FetchGroup(props.params.slug);
   const domain = await new MetadataService().FetchDomain();
+  const mydomain = domain.domain;
   const businessName = await new MetadataService().FetchBusinessName();
 
   const jsonLd = {
     "@context": "http://schema.org",
     "@type": "Course",
-    "url": `https://${domain}/pienryhmat/${group.slug.current}`,
+    "url": `https://${mydomain}/pienryhmat/${group.slug.current}`,
     "name": group.title,
     "description": group.description,
     "provider": {
       "@type": "Organization",
       "name": businessName,
-      "sameAs": `https://${domain}`
+      "sameAs": `https://${mydomain}`
     }
   };
 

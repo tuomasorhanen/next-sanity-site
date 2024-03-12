@@ -34,6 +34,7 @@ async function BlogPost(props: BlogsProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
   const Post = await new BlogService().FetchPost(props.params.slug);
   const domain = await new MetadataService().FetchDomain();
+  const mydomain = domain.domain;
   const businessName = await new MetadataService().FetchBusinessName();
   const imageUrl = await new BlogService().FetchPostImage(props.params.slug);
 
@@ -49,12 +50,12 @@ async function BlogPost(props: BlogsProps) {
     "publisher": {
       "@type": "Organization",
       "name": businessName,
-      "url": `https://${domain}`
+      "url": `https://${mydomain}`
     },
     "description": Post.excerpt,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://${domain}/blogi/${Post.slug.current}`
+      "@id": `https://${mydomain}/blogi/${Post.slug.current}`
     },
     "datePublished": Post.publishedAt,
     "dateModified": Post._updatedAt,
