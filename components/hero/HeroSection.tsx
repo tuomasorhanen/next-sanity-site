@@ -22,7 +22,7 @@ const HeroSection = (props: IHero) => {
               <div className="sm:hidden">
                 <CustomImage
                   {...image}
-                  className="w-full rounded-app object-cover "
+                  className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
                   loading="eager"
@@ -42,7 +42,7 @@ const HeroSection = (props: IHero) => {
               {image?.asset && (
                 <CustomImage
                   {...image}
-                  className="w-full rounded-app object-cover "
+                  className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
                   loading="eager"
@@ -64,7 +64,7 @@ const HeroSection = (props: IHero) => {
               {image?.asset && (
                 <CustomImage
                   {...image}
-                  className="w-full rounded-app object-cover "
+                  className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
                   loading="eager"
