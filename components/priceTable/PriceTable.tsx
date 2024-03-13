@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { IPriceTable, IService } from "../../_lib/types/types";
 import ButtonRenderer from "../ButtonRenderer";
 import CustomImage from "../CustomImage";
@@ -6,6 +6,8 @@ import CustomImage from "../CustomImage";
 const PriceTable = (props: IPriceTable) => {
   const { service, location, additionalInfo, layout } = props;
   const [activeLocation, setActiveLocation] = useState("");
+  const priceTableRef = useRef(null); // Create a ref for the price table section
+
 
   const locations = ["Lielahti", "Pirkkala", "Tampere"];
   const isAllLocations = location === "All";
@@ -21,8 +23,11 @@ const PriceTable = (props: IPriceTable) => {
 
   const handleLocationClick = (loc: string) => {
     setActiveLocation(loc);
+    // Check if the priceTableRef.current is not null and scroll into view
+    if (priceTableRef.current) {
+      priceTableRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
-
   switch (layout) {
     case "default-table":
       return (
@@ -89,71 +94,59 @@ const PriceTable = (props: IPriceTable) => {
     case "no-price":
       return (
         <>
-          <section className="col-span-12 mt-8 sm:mt-16">
-            <section
-              key="123345"
-              className="col-span-12 mt-8 sm:mt-16 overflow-hidden relative py-8 md:py-12 rounded-app bg-accent text-bg"
-            >
-              <div className="z-10 relative mx-auto max-w-5xl text-center px-4 md:px-0">
-                <p>
-                  Varaa aika äitiysfysioterapiaan, äitiyshierontaan tai
-                  fysioterapiaan Tampereen keskustaan, Lielahteen tai
-                  Pirkkalaan. Tavoitat minut myös sähköpostilla tai puhelimitse.
-                </p>
-                {isAllLocations && (
-                  <div className="flex justify-center mt-4 gap-2">
-                    {locations.map((loc) => (
-                      <button
-                        key={loc}
-                        className={`px-4 py-2 ${
-                          activeLocation === loc
-                            ? "button border-bg border"
-                            : "button2 text-text"
-                        }`}
-                        onClick={() => setActiveLocation(loc)}
-                      >
-                        {loc}
-                      </button>
-                    ))}
-                  </div>
-                )}
+         <section className="col-span-12 mt-8 sm:mt-16">
+      <section
+        key={service[0]._key}
+        className="col-span-12 overflow-hidden relative py-8 md:py-12 rounded-app bg-accent text-bg"
+      >
+        <div className="z-10 relative mx-auto max-w-5xl text-center px-4 md:px-0">
+          <p>
+            Varaa aika äitiysfysioterapiaan, äitiyshierontaan tai fysioterapiaan Tampereen keskustaan, Lielahteen tai Pirkkalaan. Tavoitat minut myös sähköpostilla tai puhelimitse.
+          </p>
+          {isAllLocations && (
+            <div className="flex justify-center mt-4 gap-2">
+              {locations.map((loc) => (
+                <button
+                  key={loc}
+                  className={`px-4 py-2 ${activeLocation === loc ? "button border-bg border" : "button2 text-text"}`}
+                  onClick={() => handleLocationClick(loc)}
+                >
+                  {loc}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </section>
+    <section ref={priceTableRef} className="col-span-12 mt-8 sm:mt-16">
+      {activeLocation && filteredServices.map((service: IService) => (
+        <div key={service.name} className="mt-4">
+          <h2 className="text-xl">{service.name}</h2>
+          {service.priceOptions.filter((price) => price.location === activeLocation).map((price, index) => (
+            <div key={index} className="flex justify-between">
+              <div className="flex items-center w-full justify-between border-b border-accent pt-2 pb-1">
+                <div>
+                  {price.description && (
+                    <span>{price.description} - </span>
+                  )}
+                  <span>{price.duration} {price.unit}</span>
+                </div>
+                <div className="flex items-center">
+                  <p>{price.price}€</p>
+                  {price.button && (
+                    <ButtonRenderer
+                      button={price.button}
+                      className="ml-2 py-1"
+                    />
+                  )}
+                </div>
               </div>
-            </section>
-            {activeLocation && (
-              <div className=" p-4">
-                {filteredServices.map((service: IService) => (
-                  <div key={service.name} className="mt-4">
-                    <h2 className="text-xl">{service.name}</h2>
-                    {service.priceOptions
-                      .filter((price) => price.location === activeLocation)
-                      .map((price, index) => (
-                        <div key={index} className="flex justify-between">
-                          <div className="flex items-center w-full justify-between border-b border-accent pt-2 pb-1">
-                            <div>
-                              {price.description && (
-                                <span>{price.description} - </span>
-                              )}
-                              <span>
-                                {price.duration} {price.unit}
-                              </span>
-                            </div>
-                            <div className="flex items-center">
-                              <p className="font-bold">{price.price}€</p>
-                              {price.button && (
-                                <ButtonRenderer
-                                  button={price.button}
-                                  className="ml-2 py-1"
-                                />
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                ))}
-              </div>
-            )}
-          </section>
+            </div>
+          ))}
+        </div>
+      ))}
+    </section>
         </>
       );
     default:
