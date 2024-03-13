@@ -18,7 +18,7 @@ module.exports = {
         bg: 'var(--color-bg, #FFFFFF)',
         text: 'var(--color-text, #000000)',
         accent: 'var(--color-accent, #5C949C)',
-        layer: 'var(--color-layer, #FFF7F1)',
+        layer: 'var(--color-layer, #F5F5F5)',
       },
       borderRadius: {
         'app': '10px',

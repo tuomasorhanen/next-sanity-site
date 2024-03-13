@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { ICallToAction } from "../_lib/types/types";
 import CustomImage from "./CustomImage";
@@ -26,7 +27,7 @@ const ButtonRenderer: React.FC<ButtonRendererProps> = ({
       style,
       buttonName,
     } = button;
-    const styleClassName = style === "style1" ? "button" : "button2";
+    const styleClassName = style === "style1" ? "button" : "button2 text-text";
     const buttonClass = `${className} ${styleClassName}`;
 
     switch (linkType) {
@@ -53,6 +54,7 @@ const ButtonRenderer: React.FC<ButtonRendererProps> = ({
                 <span
                   onClick={() => {
                     track(buttonName);
+                    sendGTMEvent({ event: 'buttonClicked', value: {buttonName} })
                   }}
                   className={buttonClass}
                 >
@@ -69,6 +71,7 @@ const ButtonRenderer: React.FC<ButtonRendererProps> = ({
               <button
                 onClick={() => {
                   track(buttonName);
+                  sendGTMEvent({ event: 'buttonClicked', value: {buttonName} })
                 }}
                 className={`${className}`}
               >
@@ -83,6 +86,7 @@ const ButtonRenderer: React.FC<ButtonRendererProps> = ({
               <span
                 onClick={() => {
                   track(buttonName);
+                  sendGTMEvent({ event: 'buttonClicked', value: {buttonName} })
                 }}
                 className={buttonClass}
               >
