@@ -34,9 +34,8 @@ const Header = (props: IMenu) => {
           <CustomImage
             {...logo}
             alt={logo.alt}
-            width={150}
-            aspectRatio={1 / 1}
-            className="mx-10 w-12 hover:scale-105"
+            width={350}
+            className="mx-10 w-28 hover:scale-105"
           />
         </Link>
         <div className="z-40" id="navbar-default">
@@ -104,9 +103,8 @@ const Header = (props: IMenu) => {
               <CustomImage
                 {...logo}
                 alt={logo.alt}
-                width={150}
-                aspectRatio={1 / 1}
-                className="w-10"
+                width={250}
+                className="w-20"
               />
             </Link>
             <div className="flex items-center">
