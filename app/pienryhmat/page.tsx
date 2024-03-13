@@ -55,12 +55,26 @@ async function Groups() {
         "description": group.description,
         "provider": {
           "@type": "Organization",
-          "name": businessName.companyName, 
+          "name": businessName.companyName,
           "sameAs": `https://${mydomain}`
         },
+        "offers": {
+          "@type": "Offer",
+          "price": "166",
+          "priceCurrency": "EUR",
+          "availability": "http://schema.org/InStock",
+          "validFrom": "1.4.2024"
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "part-time",
+          "startDate": "1.4.2024",
+          "endDate": "1.6.2024",
+        }
       }
     }))
   };
+  
 
   return (
 <>      
