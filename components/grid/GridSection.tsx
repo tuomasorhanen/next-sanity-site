@@ -1,6 +1,6 @@
 "use client";
 import Card from './Card';
-import { IGrid, ICard, IRefernceItem } from '../../_lib/types/types';
+import { IGrid, ICard, IRefernceItem, IGroup } from '../../_lib/types/types';
 import BlogPost from '../ReferenceCards/BlogPosts';
 import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -26,7 +26,7 @@ const BlogItem = (item: IRefernceItem) => {
 const OfferItem = (item: IRefernceItem) => {
   return <OffecCard {...item} />;
 }
-const GroupItem = (item: IRefernceItem) => {
+const GroupItem = (item: IGroup) => {
   return <GroupPost {...item} />;
 }
 
@@ -71,7 +71,7 @@ const GridSection = (props: GridSectionProps) => {
     } else if (item._type === 'offers') {
       return OfferItem(item as IRefernceItem);
     } else if (item._type === 'groups') {
-      return GroupItem(item as IRefernceItem);
+      return GroupItem(item as IGroup);
     } else if (item._type === 'post') {
       return BlogItem(item as IRefernceItem);
     } else {

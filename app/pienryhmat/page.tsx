@@ -15,8 +15,8 @@ export async function generateMetadata() {
   if (!pageMetadata) {
     notFound();
   }
-  
-  const { title, description, image, } = pageMetadata.metadata;
+
+  const { title, description, image } = pageMetadata.metadata;
 
   let metadata = {
     ...(title && { title }),
@@ -38,59 +38,18 @@ async function Groups() {
   ]);
 
   const Groups = await new GroupService().FetchGroups();
-  const domain = await new MetadataService().FetchDomain();
-  const mydomain = domain.domain;
-  const businessName = await new MetadataService().FetchBusinessName();
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": Groups.map((group, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "Course",
-        "url": `https://${mydomain}/pienryhmat/${group.slug.current}`,
-        "name": group.title,
-        "description": group.description,
-        "provider": {
-          "@type": "Organization",
-          "name": businessName.companyName,
-          "sameAs": `https://${mydomain}`
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "166",
-          "priceCurrency": "EUR",
-          "availability": "http://schema.org/InStock",
-          "validFrom": "1.4.2024"
-        },
-        "hasCourseInstance": {
-          "@type": "CourseInstance",
-          "courseMode": "part-time",
-          "startDate": "1.4.2024",
-          "endDate": "1.6.2024",
-        }
-      }
-    }))
-  };
-  
-
   return (
-<>      
-<script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    <Header menu={menu} logo={logo} />
+    <>
+      <Header menu={menu} logo={logo} />
       <MainHero mainHero={mainHero} />
       <div className="mx-auto mt-8 grid max-w-7xl grid-cols-1 gap-4 px-4 sm:grid-cols-2 md:grid-cols-3">
-          {Groups.map((groupPost, index) => (
-            <GroupPost key={index} {...groupPost} />
-          ))}
-        </div>
-        <MyFooter menu={menu} footer={footer} />
-      </>  );
+        {Groups.map((groupPost, index) => (
+          <GroupPost key={index} {...groupPost} />
+        ))}
+      </div>
+      <MyFooter menu={menu} footer={footer} />
+    </>
+  );
 }
 
 export default Groups;

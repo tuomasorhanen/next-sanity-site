@@ -17,7 +17,6 @@ export interface ISiteSettings extends IBase {
   keywords: string[];
   domain: string;
   socialMedia?: ISocialMedia[];
-  gtmId?: string;
 };
 
 export interface IPage extends IBase {
@@ -77,6 +76,22 @@ export interface IRefernceItem extends IBase {
   showForm: boolean;
   form: IContactForm;
   author?: IPerson;
+  publishedAt?: string;
+  _updatedAt?: string;
+};
+export interface IGroup extends IBase {
+  title: string;
+  slug: ISlug;
+  image: ISanityImage;
+  description: string;
+  content: any[];
+  excerpt: any[];
+  showForm: boolean;
+  form: IContactForm;
+  location: ILocation;
+  price: IPrice;
+  startDate: string;
+  endDate: string;
   publishedAt?: string;
   _updatedAt?: string;
 };
@@ -196,3 +211,9 @@ interface ISlug {
   current: string;
   _type: string;
 };
+
+interface ILocation {
+  city: string;
+  place: string;
+  address: string;
+}

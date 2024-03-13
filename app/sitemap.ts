@@ -14,8 +14,7 @@ const escapeXml = string => string.replace(/[<>&'"]/g, c => {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const metadataService = new MetadataService();
-  const pageMetadata = await metadataService.FetchDomain();
-  const { domain } = pageMetadata;
+  const domain = await metadataService.FetchDomain();
   const pages = await metadataService.FetchSitemap();
   const posts = await metadataService.FetchBlogSitemap();
   const offers = await metadataService.FetchOfferSitemap();

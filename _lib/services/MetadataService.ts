@@ -42,7 +42,7 @@ class MetadataService {
 
     public async FetchDomain(): Promise<ISiteSettings> {
         const domainData = await client.fetch(`*[_type == 'siteSettings'][0]{domain}`);
-        let domain = domainData
+        let domain = domainData.domain
 
         return domain;
     }

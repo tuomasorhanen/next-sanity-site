@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MetadataService from "../_lib/services/MetadataService";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import { GoogleTagManager } from "@next/third-parties/google";
 
 export async function generateMetadata() {
@@ -14,7 +14,7 @@ export async function generateMetadata() {
     metadataBase: new URL(`https://${domain}`),
     description: description,
     robots: "index, follow",
-    keywords: keywords.join(", "),    
+    keywords: keywords.join(", "),
     openGraph: {
       title: title,
       description: description,
@@ -31,7 +31,7 @@ export async function generateMetadata() {
       msTileColor: "#00aba9",
       themeColor: "#ffffff",
       manifest: "/site.webmanifest",
-    }
+    },
   };
 }
 
@@ -46,8 +46,10 @@ export default function RootLayout({
     <html lang="fi">
       <body className={inter.className}>
         {children}
-        <GoogleTagManager gtmId='GTM-THJFM6P2' />
-      <Analytics mode={'production'}/>
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        )}
+        <Analytics mode={"production"} />
       </body>
     </html>
   );

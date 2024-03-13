@@ -8,6 +8,7 @@ import MainHero from "../../components/hero/MainHero";
 import FaqService from "../../_lib/services/FaqService";
 import Faq from "../../components/Faq";
 import FaqPageComponent from "../../components/FaqPage";
+import Script from "next/script";
 
 export async function generateMetadata() {
   const metadataService = new MetadataService();
@@ -16,8 +17,8 @@ export async function generateMetadata() {
   if (!pageMetadata) {
     notFound();
   }
-  
-  const { title, description, image, } = pageMetadata.metadata;
+
+  const { title, description, image } = pageMetadata.metadata;
 
   let metadata = {
     ...(title && { title }),
@@ -43,25 +44,30 @@ async function FaqPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": Faqs.map((faq, index) => ({
+    mainEntity: Faqs.map((faq) => ({
       "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
+      name: faq.question,
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
+        text: faq.answer,
+      },
+    })),
   };
 
   return (
-<>      
-    <Header menu={menu} logo={logo} />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Header menu={menu} logo={logo} />
       <MainHero mainHero={mainHero} />
       <div className="mx-auto max-w-7xl grid grid-cols-12 px-4">
         <FaqPageComponent Faqs={Faqs} />
-        </div>
-        <MyFooter menu={menu} footer={footer} />
-      </>  );
+      </div>
+      <MyFooter menu={menu} footer={footer} />
+    </>
+  );
 }
 
 export default FaqPage;
