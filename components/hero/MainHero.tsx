@@ -99,7 +99,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
       return (
         <section
           key={`${mainHero._key}-image-bg-center-slim`}
-          className="col-span-12 pt-[77px] sm:pt-[124px] overflow-hidden relative py-12 w-screen place-self-center"
+          className="col-span-12 pt-[77px] sm:pt-[124px] overflow-hidden relative py-12 w-screen place-self-center bg-accent text-bg"
           style={bgColorStyle}
         >
           {image?.asset && (
@@ -170,7 +170,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
       );
 
       case "none":
-        return <div className="mt-[13px] sm:mt-[60px]"></div>
+        return <div className="mt-[45px] sm:mt-[60px]"></div>
     default:
       return <></>;
   }
