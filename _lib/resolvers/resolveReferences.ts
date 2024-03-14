@@ -31,16 +31,33 @@ const resolveReferences = async (page: IPage) => {
             );
           }
           break;
-        case 'priceTable':
-          if (Array.isArray(item.service)) {
-            item.service = await Promise.all(
-              item.service.map(async (service: any) => {
-                return service._ref ? await fetchReference(service._ref, groq`*[_id == $refId][0]`) : service;
-              })
-            );
-          }
-          break;
 
+          case 'priceTable':
+            if (Array.isArray(item.service)) {
+              item.service = await Promise.all(
+                item.service.map(async (service: any) => {
+                  return service._ref ? await fetchReference(service._ref, groq`*[_id == $refId][0]{
+                    ...,
+                    priceOptions[]{
+                      ...,
+                      location->{
+                        ...
+                      }
+                    }
+                  }`) : service;
+                })
+              );
+            }
+          
+            if (Array.isArray(item.location)) {
+              item.location = await Promise.all(
+                item.location.map(async (location: any) => {
+                  return location._ref ? await fetchReference(location._ref, groq`*[_id == $refId][0]`) : location;
+                })
+              );
+            }
+            break;
+          
         case 'grid':
           if (Array.isArray(item.items)) {
             item.items = await Promise.all(

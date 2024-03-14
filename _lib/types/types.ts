@@ -48,10 +48,11 @@ export interface IService extends IBase {
 };
 
 export interface IPriceTable extends IBase {
-  layout: 'default-table' | 'cards' | 'no-buttons' | 'no-price';
-  location: 'Tampere' | 'Pirkkala' | 'Lielahti' | 'All';
-  additionalInfo: string;
+  layout: 'default-table' | 'dropdown-banner';
+  location: ILocation[]
   service: IService[];
+  title?: string;
+  description?: string;
 };
 
 export interface ICallToAction extends IBase{
@@ -193,7 +194,7 @@ export interface IFaq extends IBase {
 //TODO PriceOption is currently required but all fields in price are optional. This needs to be fixed. Furthermore, the location field should be abstracted.
 
 interface IPrice {
-  location?: 'Tampere' | 'Pirkkala' | 'Lielahti' | 'All';
+  location?: ILocation;
   duration?: number;
   unit?: string;
   price?: number;
@@ -213,6 +214,7 @@ interface ISlug {
 };
 
 interface ILocation {
+  title: string;
   city: string;
   place: string;
   address: string;
