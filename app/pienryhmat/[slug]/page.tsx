@@ -6,6 +6,8 @@ import MyFooter from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
 import GroupService from "../../../_lib/services/GroupService";
 import FormSection from "../../../components/forms/FormSection";
+import MapContent from "../../../components/MapContent";
+import ContentService from "../../../_lib/services/ContentService";
 
 export async function generateMetadata({ params: { ...params } }) {
   const metadataService = new MetadataService();
@@ -30,19 +32,20 @@ export async function generateMetadata({ params: { ...params } }) {
   return metadata;
 }
 
+  //TODO add schemas based on group data
+
 type GrouProps = { params: { slug: string } };
 
 async function Group(props: GrouProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
   const group = await new GroupService().FetchGroup(props.params.slug);
+  const content = await new ContentService().Fetch(props.params.slug);
+
   return (
     <>
       <Header menu={menu} logo={logo} />
-      <div key={group._key} className=" pt-24 md:pt-40 px-4">
-        <div className="mx-auto max-w-3xl lg:max-w-4xl">
-          <Content content={group.content} />
-        </div>
-        {group.showForm && <FormSection {...group.form} />}
+      <div className="mt-[45px] sm:mt-[60px]">
+          <MapContent content={content} />
       </div>
       <MyFooter menu={menu} footer={footer} />
     </>

@@ -10,8 +10,8 @@ function formatDate(dateStr) {
 }
 
 const GroupPost = (group: IGroup) => {
-  const formattedStartDate = formatDate(group.startDate); // Format start date
-  const formattedEndDate = formatDate(group.endDate); // Format end date
+  const formattedStartDate = formatDate(group.startDate);
+  const formattedEndDate = formatDate(group.endDate); 
 
   return (
     <section>
@@ -31,14 +31,10 @@ const GroupPost = (group: IGroup) => {
             <h2 className="text-xl font-bold pb-2">{group.title}</h2>
             <Content content={group.excerpt} />
           </div>
-          <div className="absolute bottom-0 right-0 bg-bg font-bold px-3 py-1 rounded-tl-app">
-            <p>{group.location.city}</p>
-          </div>
          
         </div>
       </Link>
     </section>
   );
 };
-
 export default GroupPost;
