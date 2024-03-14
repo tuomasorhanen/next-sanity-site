@@ -5,7 +5,7 @@ import { Content } from "../../../components/Content";
 import MyFooter from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
 import GroupService from "../../../_lib/services/GroupService";
-import ContactFormSection from "../../../components/forms/ContactFormSection";
+import FormSection from "../../../components/forms/FormSection";
 
 export async function generateMetadata({ params: { ...params } }) {
   const metadataService = new MetadataService();
@@ -42,7 +42,7 @@ async function Group(props: GrouProps) {
         <div className="mx-auto max-w-3xl lg:max-w-4xl">
           <Content content={group.content} />
         </div>
-        {group.showForm && <ContactFormSection {...group.form} />}
+        {group.showForm && <FormSection {...group.form} />}
       </div>
       <MyFooter menu={menu} footer={footer} />
     </>

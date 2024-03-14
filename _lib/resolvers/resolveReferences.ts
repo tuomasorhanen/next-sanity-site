@@ -57,6 +57,12 @@ const resolveReferences = async (page: IPage) => {
               );
             }
             break;
+
+        case 'contactForm':
+          if (item.form && item.form._ref) {
+            item.form = await fetchReference(item.form._ref, groq`*[_id == $refId][0]`);
+          }
+          break;
           
         case 'grid':
           if (Array.isArray(item.items)) {

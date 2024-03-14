@@ -1,7 +1,7 @@
 "use client";
 import Carousel from './carousel/Carousel';
 import Faq from './Faq';
-import ContactFormSection from './forms/ContactFormSection';
+import FormSection from './forms/FormSection';
 import GridSection from './grid/GridSection';
 import HeadingAndTitle from './headingandTitle/HeadingAndTitle';
 import HeroSection from './hero/HeroSection';
@@ -27,7 +27,7 @@ const MapContent = ({ content }: IMapContentProps) => {
           case 'carousel':
             return <Carousel key={item._key} {...item} />;
           case 'contactForm':
-            return <ContactFormSection key={item._key} {...item} />;
+            return <FormSection key={item._key} {...item} />;
           case 'priceTable':
             return <PriceTable key={item._key} {...item} />;
           default:

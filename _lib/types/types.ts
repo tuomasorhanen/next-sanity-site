@@ -165,9 +165,7 @@ export interface IReference extends IBase {
 
 export interface IContactForm extends IBase {
   layout: 'simple-right';
-  thankYouMessage: string;
-  title: string;
-  description: string;
+ form: IForm;
 };
 
 interface IMetadata {
@@ -219,3 +217,34 @@ interface ILocation {
   place: string;
   address: string;
 }
+
+  
+  interface IFormField {
+    label: string;
+    name: string;
+    type: 'text' | 'textarea' | 'email' | 'number' | 'select' | 'checkbox' | 'radio';
+    options?: string[];
+    placeholder?: string;
+    required?: boolean;
+    description?: string;
+  }
+  
+  interface IFormFieldsArray {
+    type: 'object';
+    fields: IFormField[];
+  }
+  
+  export interface IForm extends IBase {
+    name: 'form';
+    title: 'Form';
+    buttonText: string;
+    type: 'document';
+    fields: Array<{
+      name: string;
+      title: string;
+      type: 'string' | 'text' | 'array';
+      description?: string;
+      of?: IFormFieldsArray[];
+    }>;
+  }
+  
