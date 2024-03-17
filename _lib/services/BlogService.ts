@@ -1,31 +1,21 @@
 import { client } from "../client/client";
-import { IRefernceItem } from "../types/types";
+import { IPost, IRefernceItem } from "../types/types";
 
 class BlogService {
-    public async FetchBlogs(): Promise<IRefernceItem[]> {
+    public async FetchBlogs(): Promise<IPost[]> {
         let Blogs = await client.fetch(
-            `*[_type == 'post']`, {}, { cache: "no-store" } 
+            `*[_type == 'post']{..., author->{...}}`, {}, { cache: "no-store" } 
         );
 
         return Blogs;
     }
 
-    public async FetchPost(slug: string): Promise<IRefernceItem | null> {
+    public async FetchPost(slug: string): Promise<IPost | null> {
         let Post = await client.fetch(
             `*[_type == 'post' && slug.current == '${slug}'][0]{..., author->{...}}`, {}, { cache: "no-store" } 
         );
 
         return Post;
-    }
-
-    public async FetchPostImage(slug: string): Promise<string | null> {
-        let imageUrl = await client.fetch(
-            `*[_type == 'post' && slug.current == '${slug}'][0]{
-                "imageUrl": image.asset->url
-              }`, {}, { cache: "no-store" }
-                      );
-
-        return imageUrl.imageUrl;
     }
 }
 

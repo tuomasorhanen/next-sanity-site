@@ -89,10 +89,23 @@ export interface IGroup extends IBase {
   excerpt: any[];
   showForm: boolean;
   form: IContactForm;
-  location: ILocation;
   price: IPrice;
   startDate: string;
   endDate: string;
+  publishedAt?: string;
+  _updatedAt?: string;
+};
+
+export interface IPost extends IBase {
+  title: string;
+  slug: ISlug;
+  image: ISanityImage;
+  description: string;
+  content: any[];
+  excerpt: any[];
+  showForm: boolean;
+  form: IContactForm;
+  author?: IPerson;
   publishedAt?: string;
   _updatedAt?: string;
 };

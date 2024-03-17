@@ -13,8 +13,6 @@ const GroupPost = (group: IGroup) => {
   const formattedStartDate = formatDate(group.startDate);
   const formattedEndDate = formatDate(group.endDate); 
 
-  console.log(group);
-
   return (
     <section>
       <Link href={`/pienryhmat/${group.slug.current}`}>
