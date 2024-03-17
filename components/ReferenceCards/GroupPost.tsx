@@ -13,6 +13,8 @@ const GroupPost = (group: IGroup) => {
   const formattedStartDate = formatDate(group.startDate);
   const formattedEndDate = formatDate(group.endDate); 
 
+  console.log(group);
+
   return (
     <section>
       <Link href={`/pienryhmat/${group.slug.current}`}>
@@ -23,13 +25,17 @@ const GroupPost = (group: IGroup) => {
             alt={group.image.alt}
             className="w-full object-cover rounded-t-app"
           />
-          <div className="absolute top-0 right-0 bg-layer font-bold px-3 py-1 rounded-bl-app">
+          <div className="absolute top-0 right-0 bg-layer border-accent border  rounded-tr-app font-bold px-3 py-1 rounded-bl-app">
             <p>{group.price.duration} {group.price.unit}</p>
             <p>{group.price.price} €</p>
           </div>
-          <div className="px-6 py-2">
+          <div className="px-4 py-2">
             <h2 className="text-xl font-bold pb-2">{group.title}</h2>
             <Content content={group.excerpt} />
+            <div className="border-t border-accent mt-2 pt-2">
+            <p>{formattedStartDate} - {formattedEndDate}</p>
+            <p>{group.price.location.title}</p>
+            </div>
           </div>
          
         </div>
