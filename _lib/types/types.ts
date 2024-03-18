@@ -17,6 +17,16 @@ export interface ISiteSettings extends IBase {
   keywords: string[];
   domain: string;
   socialMedia?: ISocialMedia[];
+  contact?: IContact;
+};
+
+export interface IContact extends IBase {
+  email: string;
+  phone: string;
+  locations: ILocation[];
+  showEmailInFooter: boolean;
+  showPhoneInFooter: boolean;
+  showLocationsInFooter: boolean;
 };
 
 export interface IPage extends IBase {
@@ -35,7 +45,7 @@ export interface IPage extends IBase {
 export interface IMenu {
   menu: IPage[];
   logo?: ISiteSettings['logo'];
-  footer?: Pick<ISiteSettings, 'socialMedia' | 'companyName'>;
+  footer?: Pick<ISiteSettings, 'socialMedia' | 'companyName' | 'contact'>;
 }
 
 export interface IService extends IBase {

@@ -28,10 +28,11 @@ const Header = (props: IMenu) => {
     .sort((a, b) => (a.menuOrder ?? 0) - (b.menuOrder ?? 0));
 
   const renderDesktopNav = () => (
-    <nav className={`fixed top-0 z-40 w-full bg-bg border-2 border-b-accent hidden md:block`}>
+    <nav className={`fixed top-0 z-40 w-full bg-bg border-2 border-b-accent hidden md:block`} aria-label="Primary navigation">
       <div className="flex justify-between py-1">
-        <Link href="/" className="z-40 flex items-center">
+        <Link href="/" className="z-40 flex items-center" aria-label="logo to home">
           <CustomImage
+          aria-label="logo to home"
             {...logo}
             alt={logo.alt}
             width={550}
@@ -44,11 +45,12 @@ const Header = (props: IMenu) => {
             {processedItems.map((item) => {
               return (
                 <li key={item.slug.current} className="group relative">
-                  <Link href={"/" + item.slug.current} aria-current="page">
+                  <Link href={"/" + item.slug.current} aria-label={item.name}>
                     <span className="transition-color flex items-center px-2 py-2 text-text duration-300 ease-in-out hover:text-accent">
                       {item.name.toUpperCase()}
                       {item.hasSubPages && (
                         <svg
+                        aria-haspopup="true" aria-expanded={openSubPage === item.slug.current}
                           className="ml-2 h-4 w-4"
                           fill="none"
                           stroke="currentColor"
@@ -97,7 +99,7 @@ const Header = (props: IMenu) => {
     };
 
     return (
-      <nav className="nav z-40 md:hidden">
+      <nav className="nav z-40 md:hidden" aria-label="Primary navigation">
         <div className="nav-container">
           <div className="navbar absolute z-50 flex items-center justify-between">
             <Link href="/">
@@ -110,7 +112,7 @@ const Header = (props: IMenu) => {
           />
             </Link>
             <div className="flex items-center">
-              <div className="menu-toggle" onClick={() => setNavOpen(!navOpen)}>
+              <div className="menu-toggle" onClick={() => setNavOpen(!navOpen)} aria-controls="mobile-menu" aria-expanded={navOpen}>
                 <div className={navOpen ? "hamBox hamBoxOpen" : "hamBox"}>
                   <span
                     className={
@@ -138,6 +140,7 @@ const Header = (props: IMenu) => {
                 <li className="nav-item" key={item.slug.current}>
                   <div className="flex items-center justify-between">
                     <Link
+                    aria-label={item.name}
                       href={"/" + item.slug.current}
                       onClick={() => setNavOpen(!navOpen)}
                       style={{
@@ -152,6 +155,7 @@ const Header = (props: IMenu) => {
 
                     {item.hasSubPages && (
                       <button
+                        aria-haspopup="true" aria-expanded={openSubPage === item.slug.current}
                         onClick={() => toggleSubPages(item.slug.current)}
                         className="chevron-button"
                         style={{
