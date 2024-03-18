@@ -12,8 +12,8 @@ class MenuService {
     );
     let logo: IMenu["logo"] = logoResult.logo;
 
-    let footer: Pick<ISiteSettings, 'socialMedia' | 'companyName'> = await client.fetch(
-      `*[_type == 'siteSettings'][0]{socialMedia, companyName}`
+    let footer: Pick<ISiteSettings, 'socialMedia' | 'companyName' | 'contact'> = await client.fetch(
+      `*[_type == 'siteSettings'][0]{socialMedia, companyName, contact{..., locations[]->{...}}}`
     );
 
     return { menu, logo, footer };
