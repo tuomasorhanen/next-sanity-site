@@ -34,8 +34,9 @@ const Header = (props: IMenu) => {
           <CustomImage
             {...logo}
             alt={logo.alt}
-            width={150}
-            className="mx-10 w-10 hover:scale-105"
+            width={550}
+            aspectRatio={5.5/1}
+            className="mx-10 w-64 h-auto hover:scale-105"
           />
         </Link>
         <div className="z-40" id="navbar-default">
@@ -101,11 +102,12 @@ const Header = (props: IMenu) => {
           <div className="navbar absolute z-50 flex items-center justify-between">
             <Link href="/">
               <CustomImage
-                {...logo}
-                alt={logo.alt}
-                width={150}
-                className="w-10"
-              />
+            {...logo}
+            alt={logo.alt}
+            width={550}
+            aspectRatio={5.5/1}
+            className="w-56"
+          />
             </Link>
             <div className="flex items-center">
               <div className="menu-toggle" onClick={() => setNavOpen(!navOpen)}>
