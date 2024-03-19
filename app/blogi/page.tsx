@@ -37,6 +37,11 @@ async function Blogs() {
     new HeroService().Fetch("blogi"),
   ]);
 
+
+  if (!mainHero) {
+    notFound();
+  }
+
   const Blogs = await new BlogService().FetchBlogs();
 
   return (

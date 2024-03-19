@@ -38,6 +38,10 @@ async function Slug(props: HomeProps) {
     new HeroService().Fetch(props.params.slug),
   ]);
 
+  if (!mainHero) {
+    notFound();
+  }
+
   const content = await new ContentService().Fetch(props.params.slug);
 
   return (

@@ -37,6 +37,10 @@ async function Groups() {
     new HeroService().Fetch("pienryhmat"),
   ]);
 
+  if (!mainHero) {
+    notFound();
+  }
+
   const Groups = await new GroupService().FetchGroups();
   return (
     <>

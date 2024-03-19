@@ -11,6 +11,11 @@ import MetadataService from "../_lib/services/MetadataService";
 export async function generateMetadata() {
   const metadataService = new MetadataService();
   const pageMetadata = await metadataService.FetchPageMetadata("etusivu");
+
+  if (!pageMetadata) {
+    notFound();
+  }
+  
   const { title, description, image, } = pageMetadata.metadata;
 
   let metadata = {
@@ -32,11 +37,12 @@ async function Home() {
     new HeroService().Fetch("etusivu"),
   ]);
 
-  const content = await new ContentService().Fetch("etusivu");
-
   if (!mainHero) {
     notFound();
   }
+
+  const content = await new ContentService().Fetch("etusivu");
+
   return (
 <>      
     <Header menu={menu} logo={logo} />

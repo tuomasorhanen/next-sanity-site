@@ -1,12 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Gideon+Roman&family=Oswald:wght@200..700&family=Protest+Riot&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html, body, #__next {
-    font-family: 'Gideon Roman', serif;
     -webkit-font-smoothing: antialiased;
     height: 100%;
     margin: 0;
@@ -16,9 +13,6 @@
     @apply bg-bg font-extralight text-text;
   }
 
-  h1, h2, h3, h4, h5, h6, p {
-    @apply font-gideon;
-  }
   h1 {
     font-size: 36px; 
     line-height: 120%;

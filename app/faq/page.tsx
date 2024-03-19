@@ -6,9 +6,7 @@ import MyFooter from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import MainHero from "../../components/hero/MainHero";
 import FaqService from "../../_lib/services/FaqService";
-import Faq from "../../components/Faq";
 import FaqPageComponent from "../../components/FaqPage";
-import Script from "next/script";
 
 export async function generateMetadata() {
   const metadataService = new MetadataService();
@@ -38,6 +36,10 @@ async function FaqPage() {
     new MenuService().Fetch(),
     new HeroService().Fetch("faq"),
   ]);
+
+  if (!mainHero) {
+    notFound();
+  }
 
   const Faqs = await new FaqService().FetchFaqs();
 

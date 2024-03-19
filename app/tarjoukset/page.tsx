@@ -11,9 +11,11 @@ import MainHero from "../../components/hero/MainHero";
 export async function generateMetadata() {
   const metadataService = new MetadataService();
   const pageMetadata = await metadataService.FetchPageMetadata("tarjoukset");
+
   if (!pageMetadata) {
     notFound();
   }
+
   const { title, description, image, } =pageMetadata.metadata;
 
   let metadata = {
@@ -34,6 +36,10 @@ async function Offers() {
     new MenuService().Fetch(),
     new HeroService().Fetch("tarjoukset"),
   ]);
+
+  if (!mainHero) {
+    notFound();
+  }
 
   const Offers = await new OfferService().FetchOffers();
 

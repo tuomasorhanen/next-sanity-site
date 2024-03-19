@@ -40,6 +40,10 @@ async function BlogPost(props: BlogsProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
   const Post = await new BlogService().FetchPost(props.params.slug);
   const formattedDate = formatDate(Post.publishedAt);
+
+  if (!Post) {
+    notFound();
+  }
   
   return (
    <>

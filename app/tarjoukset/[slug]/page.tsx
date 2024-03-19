@@ -34,6 +34,10 @@ async function Offer(props: HomeProps) {
   const { menu, logo, footer } = await new MenuService().Fetch();
   const Post = await new OfferService().FetchOfferPost(props.params.slug);
 
+  if (!Post) {
+    notFound();
+  }
+
   return (
 <>      
     <Header menu={menu} logo={logo} />

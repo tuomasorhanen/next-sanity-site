@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Gideon_Roman } from "next/font/google";
 import "./globals.css";
 import MetadataService from "../_lib/services/MetadataService";
 import { Analytics } from "@vercel/analytics/react";
@@ -30,7 +30,12 @@ export async function generateMetadata() {
   };
 }
 
-const inter = Inter({ subsets: ["latin"] });
+const gideon = Gideon_Roman({
+  weight: '400',
+  subsets: ['latin'],
+  style: "normal",
+  display: "auto",
+})
 
 export default function RootLayout({
   children,
@@ -39,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fi">
-      <body className={inter.className}>
+      <body className={gideon.className}>
         {children}
         {process.env.NEXT_PUBLIC_GTM_ID && (
           <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />

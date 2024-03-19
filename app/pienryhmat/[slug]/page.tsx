@@ -41,6 +41,10 @@ async function Group(props: GrouProps) {
   const group = await new GroupService().FetchGroup(props.params.slug);
   const content = await new ContentService().Fetch(props.params.slug);
 
+  if (!group) {
+    notFound();
+  }
+
   return (
     <>
       <Header menu={menu} logo={logo} />

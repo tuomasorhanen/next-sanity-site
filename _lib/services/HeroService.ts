@@ -23,6 +23,11 @@ class HeroService {
                 }
               }`,
         );
+
+        if (!HeroData) {
+            return null;
+        }
+
         return HeroData.hero;
     }
 }

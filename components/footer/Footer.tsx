@@ -43,14 +43,14 @@ const MyFooter = (props: IMenu) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const socialMediaLinks = footer.socialMedia.map((media) => {
+  const socialMediaLinks = footer.socialMedia.map((media, index) => {
     const Icon = socialMediaIcons[media.name.toLowerCase()];
     return (
       <a
         href={media.url}
         className="hover:text-accent transition-colors ease-in-out duration-300"
         aria-label={media.name}
-        key={media._key}
+        key={`social-media-${media.name}-${index}`} // Ensure unique keys by combining media name and index
       >
         <span className="sr-only">{media.name}</span>
         <Icon className="h-6 w-6" aria-hidden="true" />
@@ -60,7 +60,10 @@ const MyFooter = (props: IMenu) => {
 
   if (footer.contact.showPhoneInFooter && footer.contact.phone) {
     socialMediaLinks.push(
-      <div className="relative group hover:text-accent transition-colors ease-linear duration-300">
+      <div
+        className="relative group hover:text-accent transition-colors ease-linear duration-300"
+        key="123354325345345"
+      >
         <a
           href={`tel:${footer.contact.phone}`}
           className="flex items-center"
@@ -77,7 +80,10 @@ const MyFooter = (props: IMenu) => {
 
   if (footer.contact.showEmailInFooter && footer.contact.email) {
     socialMediaLinks.push(
-      <div className="relative group hover:text-accent transition-colors ease-in-out duration-300">
+      <div
+        className="relative group hover:text-accent transition-colors ease-in-out duration-300"
+        key="3982374029384"
+      >
         <a
           href={`mailto:${footer.contact.email}`}
           aria-label={`Email ${footer.contact.email}`}
@@ -135,7 +141,7 @@ const MyFooter = (props: IMenu) => {
                   className="relative group hover:text-accent transition-colors ease-in-out duration-300"
                   aria-label={`Location details for ${location.city}`}
                   onClick={() => setActiveLocation(index)}
-                  key={index}
+                  key={location.address}
                 >
                   <p>{location.city}</p>
                   <div
