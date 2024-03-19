@@ -50,7 +50,6 @@ const Header = (props: IMenu) => {
                       {item.name.toUpperCase()}
                       {item.hasSubPages && (
                         <svg
-                        aria-haspopup="true" aria-expanded={openSubPage === item.slug.current}
                           className="ml-2 h-4 w-4"
                           fill="none"
                           stroke="currentColor"

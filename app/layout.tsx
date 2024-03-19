@@ -25,12 +25,7 @@ export async function generateMetadata() {
     },
     icons: {
       icon: "/favicon.ico",
-      appleTouchIcon: "/apple-touch-icon.png",
-      maskIcon: "/safari-pinned-tab.svg",
-      msTileImage: "/mstile-150x150.png",
-      msTileColor: "#00aba9",
       themeColor: "#ffffff",
-      manifest: "/site.webmanifest",
     },
   };
 }
