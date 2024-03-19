@@ -15,7 +15,7 @@ const Card = (props: ICard) => {
               <CustomImage
                 {...image}
                 alt={image.alt}
-                width={645}
+                width={553}
                 className="object-cover rounded-t-app "
               />
               <div className="p-4 hyphenate">

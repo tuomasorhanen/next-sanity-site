@@ -4,7 +4,7 @@ import { IMenu, IPage, ISiteSettings } from "../types/types";
 class MenuService {
   public async Fetch(): Promise<IMenu> {
     let menu: IPage[] = await client.fetch(
-      `*[_type == 'page' && showInMenu == true || showInFooter == true]{ name, slug, menuOrder, title, showInMenu, hasSubPages, showInFooter, subPages[]->{slug, name, _id}}`, {}, { cache: "no-store" }
+      `*[_type == 'page' && showInMenu == true || showInFooter == true]{ name, slug, menuOrder, title, showInMenu, hasSubPages, showInFooter, subPages[]->{slug, name, _id}}`,
     );
 
     let logoResult = await client.fetch(

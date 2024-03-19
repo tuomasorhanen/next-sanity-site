@@ -13,28 +13,28 @@ class MetadataService {
     }
 
     public async FetchPageMetadata(slug: string): Promise<IPage> {
-        const pageData = await client.fetch(`*[slug.current == '${slug}'][0]{metadata{..., image{..., asset->{...,}}}}`, {}, { cache: "no-store" } );
+        const pageData = await client.fetch(`*[slug.current == '${slug}'][0]{metadata{..., image{..., asset->{...,}}}}`,);
         let metadata = pageData
 
         return metadata;
     }
 
     public async FetchBlogPostMetadata(slug: string): Promise<IRefernceItem> {
-        const pageData = await client.fetch(`*[_type == 'post' && slug.current == '${slug}'][0]{title, excerpt, image{..., asset->{...,}}}`, {}, { cache: "no-store" } );
+        const pageData = await client.fetch(`*[_type == 'post' && slug.current == '${slug}'][0]{title, excerpt, image{..., asset->{...,}}}`,);
         let blogMetadata = pageData
 
         return blogMetadata;
     }
 
     public async FetchOfferMetadata(slug: string): Promise<IRefernceItem> {
-        const pageData = await client.fetch(`*[_type == 'offers' && slug.current == '${slug}'][0]{title, excerpt, image{..., asset->{...,}}}`, {}, { cache: "no-store" } );
+        const pageData = await client.fetch(`*[_type == 'offers' && slug.current == '${slug}'][0]{title, excerpt, image{..., asset->{...,}}}`,);
         let offerMetadata = pageData
 
         return offerMetadata;
     }
 
     public async FetchGroupMetadata(slug: string): Promise<IRefernceItem> {
-        const pageData = await client.fetch(`*[_type == 'groups' && slug.current == '${slug}'][0]{title, excerpt, image{..., asset->{...,}}}`, {}, { cache: "no-store" } );
+        const pageData = await client.fetch(`*[_type == 'groups' && slug.current == '${slug}'][0]{title, excerpt, image{..., asset->{...,}}}`,);
         let groupMetadata = pageData
 
         return groupMetadata;
