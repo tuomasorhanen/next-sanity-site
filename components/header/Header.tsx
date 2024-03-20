@@ -32,7 +32,6 @@ const Header = (props: IMenu) => {
       <div className="flex justify-between py-1">
         <Link href="/" className="z-40 flex items-center" aria-label="logo to home">
           <CustomImage
-          aria-label="logo to home"
             {...logo}
             alt={logo.alt}
             width={550}
@@ -101,7 +100,7 @@ const Header = (props: IMenu) => {
       <nav className="nav z-40 md:hidden" aria-label="Primary navigation">
         <div className="nav-container">
           <div className="navbar absolute z-50 flex items-center justify-between">
-            <Link href="/">
+            <Link href="/" aria-label="logo and home navigation">
               <CustomImage
             {...logo}
             alt={logo.alt}
@@ -111,7 +110,7 @@ const Header = (props: IMenu) => {
           />
             </Link>
             <div className="flex items-center">
-              <div className="menu-toggle" onClick={() => setNavOpen(!navOpen)} aria-controls="mobile-menu" aria-expanded={navOpen}>
+              <div className="menu-toggle" onClick={() => setNavOpen(!navOpen)}>
                 <div className={navOpen ? "hamBox hamBoxOpen" : "hamBox"}>
                   <span
                     className={
@@ -154,9 +153,10 @@ const Header = (props: IMenu) => {
 
                     {item.hasSubPages && (
                       <button
-                        aria-haspopup="true" aria-expanded={openSubPage === item.slug.current}
                         onClick={() => toggleSubPages(item.slug.current)}
                         className="chevron-button"
+                        aria-label="toggle subpages"
+                        title="toggle subpages"
                         style={{
                           top: navOpen ? "0" : "120px",
                           transitionDelay: navOpen
