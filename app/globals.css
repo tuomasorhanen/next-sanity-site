@@ -295,7 +295,7 @@ z-index: 1000;
 @keyframes fadeInEffect {
   0% {
     opacity: 0;
-    transform: translateY(20vh);
+    transform: translateY(10vh);
     visibility: hidden;
   }
   1% {
@@ -311,7 +311,7 @@ z-index: 1000;
 .fade-in {
   opacity: 0;
   visibility: hidden;
-  animation: fadeInEffect 1200ms ease-out forwards;
-  animation-delay: 1s;
+  animation: fadeInEffect 800ms ease-out forwards;
+  animation-delay: 0.5s;
   will-change: opacity, transform, visibility;
 }
