@@ -299,5 +299,5 @@ z-index: 1000;
 /* The .fade-in class initiates the animation */
 .fade-in {
   animation: fadeInEffect 800ms ease-out forwards;
-  animation-delay: 0.5s;
+  animation-delay: 0.2s
 }
