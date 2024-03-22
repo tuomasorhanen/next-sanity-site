@@ -10,7 +10,7 @@ const HeadingAndTitle = (props: IHeadingAndTitle) => {
   switch (style) {
     case 'centered':
       return (
-        <section key={props._key} className="col-span-12 mt-8 sm:mt-16 " ref={fadeInRef}>
+        <section key={props._key} className="col-span-12 mt-8 sm:mt-16 hidden-initial" ref={fadeInRef}>
           <div className="mx-auto max-w-4xl text-center">
             <Content content={content} />
           </div>
@@ -18,7 +18,7 @@ const HeadingAndTitle = (props: IHeadingAndTitle) => {
       );
     case 'left':
       return (
-        <section key={props._key} className="col-span-12 mt-8 sm:mt-16 " ref={fadeInRef}>
+        <section key={props._key} className="col-span-12 mt-8 sm:mt-16 hidden-initial" ref={fadeInRef}>
           <div className="mx-auto max-w-4xl">
             <Content content={content} />
           </div>

@@ -1,18 +1,17 @@
 "use client";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 const useFadeIn = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('fade-in');
         }
       });
-    });
+    }, { threshold: 0.1 });
 
     const currentElement = domRef.current;
     if (currentElement) {
@@ -28,4 +27,5 @@ const useFadeIn = () => {
 
   return domRef;
 };
+
 export default useFadeIn;

@@ -292,26 +292,24 @@ z-index: 1000;
   word-wrap: break-word;
 }
 
+/* Initially, elements are not visible but prepared for animation */
+.hidden-initial {
+  opacity: 0;
+  transform: translateY(10vh);
+  visibility: hidden;
+}
+
+/* Define the fadeInEffect animation */
 @keyframes fadeInEffect {
-  0% {
-    opacity: 0;
-    transform: translateY(10vh);
-    visibility: hidden;
-  }
-  1% {
-    visibility: visible;
-  }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
   }
 }
 
+/* The .fade-in class initiates the animation */
 .fade-in {
-  opacity: 0;
-  visibility: hidden;
   animation: fadeInEffect 800ms ease-out forwards;
   animation-delay: 0.5s;
-  will-change: opacity, transform, visibility;
 }

@@ -7,7 +7,7 @@ const FormSection = (props: IContactForm) => {
   switch (layout) {
     case 'simple-right':
       return (
-        <div className="mt-8 sm:mt-16 col-span-12">
+        <div className="mt-8 sm:mt-16 col-span-12 hidden-initial">
           <DynamicForm form={form} />
         </div>
       );

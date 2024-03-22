@@ -81,7 +81,7 @@ const GridSection = (props: GridSectionProps) => {
     }
   };
 
-  const marginTopClass = marginTop === 'small' ? 'mt-8' : 'mt-16';
+  const marginTopClass = marginTop === 'small' ? 'mt-8 hidden-initial' : 'mt-16 hidden-initial';
 
   switch (style) {
     case 'carousel':

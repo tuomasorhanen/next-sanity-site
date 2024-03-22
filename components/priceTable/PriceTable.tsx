@@ -51,7 +51,7 @@ const PriceTable = (props: IPriceTable) => {
 switch (layout) {
   case "default-table":
     return (
-<section ref={mergedRef} className="col-span-12 mt-8 sm:mt-16">
+<section ref={mergedRef} className="col-span-12 mt-8 sm:mt-16 hidden-initial">
           <div className="text-center">
             {layout === "default-table" && (
               <>
@@ -101,7 +101,7 @@ switch (layout) {
     case "dropdown-banner":
     return (
       <>
-        <section className="col-span-12 mt-8 sm:mt-16" ref={mergedRef}>
+        <section className="col-span-12 mt-8 sm:mt-16 hidden-initial" ref={mergedRef}>
           <section className="col-span-12 overflow-hidden relative py-8 rounded-app bg-accent text-bg">
             <div className="z-10 relative mx-auto max-w-5xl text-center px-4 md:px-0">
               {title && <h1>{title}</h1>}

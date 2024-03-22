@@ -10,7 +10,6 @@ import {
 import { IMenu } from "../../_lib/types/types";
 import { FaLinkedin, FaLocationDot, FaXTwitter } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import useFadeIn from "../../_lib/hooks/useFadeIn";
 
 const socialMediaIcons = {
   facebook: FaFacebookF,
@@ -26,7 +25,6 @@ const year = new Date().getFullYear();
 
 const MyFooter = (props: IMenu) => {
   const { menu, footer } = props;
-  const fadeInRef = useFadeIn();
   const [activeLocation, setActiveLocation] = useState<number | null>(null);
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -113,7 +111,7 @@ const MyFooter = (props: IMenu) => {
   }));
 
   return (
-    <footer ref={fadeInRef}>
+    <footer>
       <div className="mx-auto overflow-visible max-w-7xl px-4 mt-8 sm:mt-16 pb-8">
         <nav
           className="flex columns-2 flex-wrap justify-center space-x-4 sm:space-x-12"
