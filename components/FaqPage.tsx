@@ -1,3 +1,4 @@
+"use client";
 import { Disclosure, Transition } from "@headlessui/react";
 import React from "react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
