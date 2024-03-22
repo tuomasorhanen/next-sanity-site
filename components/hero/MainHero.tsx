@@ -57,7 +57,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
       return (
         <section
           key={`${mainHero._key}-simple-image-left`}
-          className="flex items-center pt-[77px] sm:pt-[124px]"
+          className="flex items-center pt-[124px]"
           style={bgColorStyle}
         >
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:py-16">
@@ -99,7 +99,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
       return (
         <section
           key={`${mainHero._key}-image-bg-center-slim`}
-          className="col-span-12 pt-[77px] sm:pt-[124px] overflow-hidden relative py-12 w-screen place-self-center bg-accent text-bg"
+          className="col-span-12 pt-[124px] overflow-hidden relative py-12 w-screen place-self-center bg-accent text-bg"
           style={bgColorStyle}
         >
           {image?.asset && (
@@ -162,7 +162,7 @@ const MainHero = ({ mainHero }: { mainHero: IHero }) => {
       );
       case 'heading':
       return (
-        <section key={mainHero._key} className="col-span-12 pt-[77px] sm:pt-[124px] ">
+        <section key={mainHero._key} className="col-span-12 pt-[124px] ">
           <div className="mx-auto max-w-4xl text-center">
             <Content content={content} />
           </div>

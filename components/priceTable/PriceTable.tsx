@@ -51,7 +51,7 @@ const PriceTable = (props: IPriceTable) => {
 switch (layout) {
   case "default-table":
     return (
-<section ref={mergedRef} className="col-span-12 mt-8 sm:mt-16 hidden-initial">
+<section ref={fadeInRef} className="col-span-12 mt-8 sm:mt-16 hidden-initial">
           <div className="text-center">
             {layout === "default-table" && (
               <>

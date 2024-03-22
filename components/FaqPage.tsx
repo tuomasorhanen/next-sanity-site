@@ -8,7 +8,7 @@ import useFadeIn from "../_lib/hooks/useFadeIn";
 const FaqPageComponent = ({ Faqs }: { Faqs: IFaq[] }) => {
   const fadeInRef = useFadeIn();
   return (
-    <section className="col-span-12 mt-8 sm:mt-16 hidden-initial">
+    <section className="col-span-12 mt-8 sm:mt-16 hidden-initial" ref={fadeInRef}>
       {Faqs.map((faq: IFaq) => (
         <Disclosure as="div" key={faq.question}>
           {({ open }) => (

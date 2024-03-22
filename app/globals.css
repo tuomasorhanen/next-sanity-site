@@ -99,6 +99,7 @@
 }
 
 .navbar {
+  @apply bg-bg;
   top: 0;
   left: 0;
   width: 100%;
@@ -135,19 +136,6 @@
   padding: 1em;
 }
 
-.hamBox:hover {
-  @apply bg-accent;
-}
-
-.hamBoxOpen {
-  @apply bg-accent;
-}
-
-.hamBox:hover .lineTop,
-.hamBox:hover .lineBottom {
-  background: white;
-}
-
 .lineTop,
 .lineBottom {
   margin: 0 auto;
@@ -174,13 +162,13 @@
 .lineTop.spin {
   top: 1.3em;
   transform: rotate(135deg);
-  background: #fff;
+  background: black;
 }
 
 .lineBottom.spin {
   bottom: 1.3em;
   transform: rotate(225deg);
-  background: #fff;
+  background: black;
 }
 
 ul.nav-links {

@@ -1,7 +1,9 @@
+"use client";
 import Link from 'next/link';
 import { IRefernceItem } from '../../_lib/types/types';
 import CustomImage from '../CustomImage';
 import { Content } from '../Content';
+import useFadeIn from '../../_lib/hooks/useFadeIn';
 
 function formatDate(dateStr) {
   const date = new Date(dateStr);
@@ -10,8 +12,10 @@ function formatDate(dateStr) {
 
 const BlogPost = (blogPost: IRefernceItem) => {
   const formattedDate = formatDate(blogPost.publishedAt);
+  const fadeInRef = useFadeIn();
+
   return (
-    <section>
+    <section ref={fadeInRef} className='hidden-initial'>
       <Link href={`/blogi/${blogPost.slug.current}`}>
         <div className="transition-scale-small bg-layer shadow-app rounded-app">
           <CustomImage
