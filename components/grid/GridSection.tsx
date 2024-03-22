@@ -32,8 +32,12 @@ const GroupItem = (item: IGroup) => {
 }
 
 const GridSection = (props: GridSectionProps) => {
-  const { columns, items, style, marginTop } = props;
+  const { columns, items, style, marginTop, animation } = props;
   const fadeInRef = useFadeIn();
+
+  const sectionClassName = `${animation === 'fade-in' ? 'hidden-initial' : ''} ${marginTop === 'small' ? 'mt-8' : 'mt-16'}`;
+  const sectionProps = animation === 'fade-in' ? { ref: fadeInRef } : {};
+
   const [columnStyles, setColumnStyles] = useState({});
   const [slidesPerView, setSlidesPerView] = useState(1);
 
@@ -81,12 +85,10 @@ const GridSection = (props: GridSectionProps) => {
     }
   };
 
-  const marginTopClass = marginTop === 'small' ? 'mt-8 hidden-initial' : 'mt-16 hidden-initial';
-
   switch (style) {
     case 'carousel':
       return (
-        <section className={marginTopClass} ref={fadeInRef}>
+        <section className={sectionClassName} {...sectionProps}>
         <Swiper
           modules={[Navigation]}
           spaceBetween={16}
@@ -106,7 +108,7 @@ const GridSection = (props: GridSectionProps) => {
       );
     case'default':
       return (
-        <section key={props._key} className={marginTopClass} ref={fadeInRef}>
+        <section key={props._key} className={sectionClassName} {...sectionProps}>
     <div className="grid gap-2 md:gap-4" style={columnStyles}>
       {itemsArray.map((item, index) => (
         <figure key={item._id || index}>{renderGridItem(item)}</figure>

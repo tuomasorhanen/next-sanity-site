@@ -1,14 +1,11 @@
-"use client";
 import { Disclosure, Transition } from "@headlessui/react";
 import React from "react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { IFaq } from "../_lib/types/types";
-import useFadeIn from "../_lib/hooks/useFadeIn";
 
 const FaqPageComponent = ({ Faqs }: { Faqs: IFaq[] }) => {
-  const fadeInRef = useFadeIn();
   return (
-    <section className="col-span-12 mt-8 sm:mt-16 hidden-initial" ref={fadeInRef}>
+    <section className="col-span-12 mt-8 sm:mt-16">
       {Faqs.map((faq: IFaq) => (
         <Disclosure as="div" key={faq.question}>
           {({ open }) => (

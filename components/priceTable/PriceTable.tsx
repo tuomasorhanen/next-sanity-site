@@ -4,16 +4,18 @@ import ButtonRenderer from "../ButtonRenderer";
 import useFadeIn from "../../_lib/hooks/useFadeIn";
 
 const PriceTable = (props: IPriceTable) => {
-  const { service, location, layout, description, title } = props;
+  const { service, location, layout, description, title, animation } = props;
 
   const fadeInRef = useFadeIn();
 
+  const sectionClassName = `col-span-12 mt-8 sm:mt-16 ${animation === 'fade-in' ? 'hidden-initial' : ''}`;
+  const sectionProps = animation === 'fade-in' ? { ref: fadeInRef } : {};
 
   // Set initially active location based on layout type
   const [activeLocation, setActiveLocation] = useState(layout === "default-table" ? location[0] : null);
   const priceTableRef = useRef<HTMLDivElement | null>(null);
 
-  const filteredServices = activeLocation
+  const filteredServices = activeLocation 
     ? service.filter((s) =>
         s.priceOptions.some((price) => price.location.city === activeLocation.city)
       )
@@ -51,7 +53,7 @@ const PriceTable = (props: IPriceTable) => {
 switch (layout) {
   case "default-table":
     return (
-<section ref={fadeInRef} className="col-span-12 mt-8 sm:mt-16 hidden-initial">
+<section className={sectionClassName} {...sectionProps}>
           <div className="text-center">
             {layout === "default-table" && (
               <>
@@ -101,7 +103,7 @@ switch (layout) {
     case "dropdown-banner":
     return (
       <>
-        <section className="col-span-12 mt-8 sm:mt-16 hidden-initial" ref={mergedRef}>
+        <section className={sectionClassName} {...sectionProps}>
           <section className="col-span-12 overflow-hidden relative py-8 rounded-app bg-accent text-bg">
             <div className="z-10 relative mx-auto max-w-5xl text-center px-4 md:px-0">
               {title && <h1>{title}</h1>}

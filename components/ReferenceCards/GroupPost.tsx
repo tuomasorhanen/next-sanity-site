@@ -1,9 +1,7 @@
-"use client";
 import Link from "next/link";
 import { IGroup } from "../../_lib/types/types";
 import CustomImage from "../CustomImage";
 import { Content } from "../Content";
-import useFadeIn from "../../_lib/hooks/useFadeIn";
 
 // Helper function to format dates
 function formatDate(dateStr) {
@@ -14,11 +12,9 @@ function formatDate(dateStr) {
 const GroupPost = (group: IGroup) => {
   const formattedStartDate = formatDate(group.startDate);
   const formattedEndDate = formatDate(group.endDate); 
-  const fadeInRef = useFadeIn();
-
 
   return (
-    <section className="hidden-initial" ref={fadeInRef}>
+    <section>
       <Link href={`/pienryhmat/${group.slug.current}`}>
         <div className="transition-scale-small bg-layer shadow-app rounded-app relative overflow-hidden">
           <CustomImage

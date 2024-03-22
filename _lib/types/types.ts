@@ -63,6 +63,7 @@ export interface IPriceTable extends IBase {
   service: IService[];
   title?: string;
   description?: string;
+  animation?: 'fade-in' | 'none';
 };
 
 export interface ICallToAction extends IBase{
@@ -128,6 +129,7 @@ export interface IPerson extends IBase {
 
 export interface IFaqList extends IBase {
   faqList: IFaq[];
+  animation?: 'fade-in' | 'none';
 };
 
 //Src, Alt and Url are optional because images are resolved in the CustomImage component which receives only set asset._ref value.
@@ -151,6 +153,7 @@ export interface IHero extends IBase {
   opacity?: number;
   heroBgColor?: IColor;
   CtaBgColor?: IColor;
+  animation?: 'fade-in' | 'none';
 };
 
 export interface ICard extends IBase {
@@ -166,19 +169,13 @@ export interface IGrid extends IBase {
   columns: IColumns;
   items: ICard[] | IRefernceItem[];
   style: 'default' | 'carousel';
-};
-
-export interface ICarousel extends IBase{
-  title: string;
-  carouselTextColor?: IColor;
-  carouselBgColor?: IColor;
-  opacity?: number;
-  carouselItems: any[];
+  animation?: 'fade-in' | 'none';
 };
 
 export interface IHeadingAndTitle extends IBase {
   content: any[];
   style: 'centered' | 'left';
+  animation?: 'fade-in' | 'none';
 };
 
 export interface IReference extends IBase {
@@ -188,6 +185,7 @@ export interface IReference extends IBase {
 
 export interface IContactForm extends IBase {
   layout: 'simple-right';
+  animation: 'fade-in' | 'none';
  form: IForm;
 };
 
@@ -205,6 +203,7 @@ interface ISocialMedia extends IBase{
 //Color is coming in as RGBA string from Sanity and any type works just fine here.
 interface IColor {
   value: any;
+  label: string;
 };
 
 export interface IFaq extends IBase {

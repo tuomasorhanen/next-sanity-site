@@ -5,9 +5,12 @@ import CustomImage from "../CustomImage";
 import useFadeIn from "../../_lib/hooks/useFadeIn";
 
 const HeroSection = (props: IHero) => {
-  const { image, buttons, layout, opacity, CtaBgColor, content } = props;
+  const { image, buttons, layout, opacity, CtaBgColor, content, animation } = props;
 
   const fadeInRef = useFadeIn();
+
+  const sectionClassName = animation === 'fade-in' ? 'hidden-initial' : '';
+  const sectionProps = animation === 'fade-in' ? { ref: fadeInRef } : {};
   
   const bgColorStyle = CtaBgColor ? { backgroundColor: CtaBgColor.value } : {};
   const opacityStyle = opacity ? { opacity: opacity / 100 } : {};
@@ -17,8 +20,8 @@ const HeroSection = (props: IHero) => {
       return (
         <section
           key={`${props._key}-simple-image-right`}
-          className="mt-8 sm:mt-16 col-span-12 hidden-initial"
-          ref={fadeInRef}
+          className={`mt-8 sm:mt-16 col-span-12 ${sectionClassName}`}
+          {...sectionProps}
           style={bgColorStyle}
         >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
@@ -59,8 +62,8 @@ const HeroSection = (props: IHero) => {
         <section
         ref={fadeInRef}
           key={`${props._key}-simple-image-right`}
-          className="mt-8 sm:mt-16 col-span-12 hidden-initial"
-          style={bgColorStyle}
+          className={`mt-8 sm:mt-16 col-span-12 ${sectionClassName}`}
+          {...sectionProps}          style={bgColorStyle}
         >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             {image?.asset && (
@@ -100,8 +103,8 @@ const HeroSection = (props: IHero) => {
         <section
         ref={fadeInRef}
           key={`${props._key}-simple-image-left`}
-          className="mt-8 sm:mt-16 col-span-12 hidden-initial"
-          style={bgColorStyle}
+          className={`mt-8 sm:mt-16 col-span-12 ${sectionClassName}`}
+          {...sectionProps}          style={bgColorStyle}
         >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             <div className="">
@@ -129,9 +132,9 @@ const HeroSection = (props: IHero) => {
     case "image-bg-center-wide":
       return (
         <section
-        ref={fadeInRef}
         key={`${props._key}-image-bg-center-slim`}
-        className="col-span-12 mt-8 sm:mt-16 overflow-hidden relative py-8 md:py-12 w-screen place-self-center hidden-initial"
+        className={`col-span-12 mt-8 sm:mt-16 overflow-hidden relative py-8 md:py-12 w-screen place-self-center ${sectionClassName}`}
+        {...sectionProps}
         style={bgColorStyle}
       >
         <div className="z-10 relative mx-auto max-w-5xl text-center">
@@ -163,9 +166,9 @@ const HeroSection = (props: IHero) => {
     case "image-bg-center-slim":
       return (
         <section
-        ref={fadeInRef}
         key={`${props._key}-image-bg-center-slim`}
-        className="col-span-12 mt-8 sm:mt-16 overflow-hidden relative py-8 md:py-12 rounded-app bg-accent text-bg hidden-initial"
+        className={`col-span-12 mt-8 sm:mt-16 overflow-hidden relative py-8 md:py-12 rounded-app bg-accent text-bg ${sectionClassName}`}
+        {...sectionProps}
         style={bgColorStyle}
       >
         <div className="z-10 relative mx-auto max-w-5xl text-center px-4 md:px-0">
