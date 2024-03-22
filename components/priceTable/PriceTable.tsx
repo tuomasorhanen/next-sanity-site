@@ -1,9 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { IPriceTable } from "../../_lib/types/types";
 import ButtonRenderer from "../ButtonRenderer";
+import useFadeIn from "../../_lib/hooks/useFadeIn";
 
 const PriceTable = (props: IPriceTable) => {
   const { service, location, layout, description, title } = props;
+
+  const fadeInRef = useFadeIn();
+
+
   // Set initially active location based on layout type
   const [activeLocation, setActiveLocation] = useState(layout === "default-table" ? location[0] : null);
   const priceTableRef = useRef<HTMLDivElement | null>(null);
@@ -30,10 +35,23 @@ const PriceTable = (props: IPriceTable) => {
     setActiveLocation(loc);
   };
 
+  const mergedRef = useCallback(node => {
+    // Assign to priceTableRef
+    priceTableRef.current = node;
+  
+    // Assign to fadeInRef if it's a function (common pattern for custom hooks)
+    if (typeof fadeInRef === 'function') {
+      (fadeInRef as React.MutableRefObject<HTMLElement>).current = node;
+    } else if (fadeInRef) {
+      // Assign to fadeInRef if it's an object with a current property
+      fadeInRef.current = node;
+    }
+  }, [fadeInRef]);
+
 switch (layout) {
   case "default-table":
     return (
-<section ref={priceTableRef} className="col-span-12 mt-8 sm:mt-16">
+<section ref={mergedRef} className="col-span-12 mt-8 sm:mt-16">
           <div className="text-center">
             {layout === "default-table" && (
               <>
@@ -83,7 +101,7 @@ switch (layout) {
     case "dropdown-banner":
     return (
       <>
-        <section className="col-span-12 mt-8 sm:mt-16">
+        <section className="col-span-12 mt-8 sm:mt-16" ref={mergedRef}>
           <section className="col-span-12 overflow-hidden relative py-8 rounded-app bg-accent text-bg">
             <div className="z-10 relative mx-auto max-w-5xl text-center px-4 md:px-0">
               {title && <h1>{title}</h1>}

@@ -11,6 +11,7 @@ type IMapContentProps = {
   content: any[];
 };
 
+
 const MapContent = ({ content }: IMapContentProps) => {
   return (
     <main className="mx-auto max-w-7xl grid grid-cols-12 px-4">

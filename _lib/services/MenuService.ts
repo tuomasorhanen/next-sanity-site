@@ -13,7 +13,7 @@ class MenuService {
     let logo: IMenu["logo"] = logoResult.logo;
 
     let footer: Pick<ISiteSettings, 'socialMedia' | 'companyName' | 'contact'> = await client.fetch(
-      `*[_type == 'siteSettings'][0]{socialMedia, companyName, contact{..., locations[]->{...}}}`, {}, { cache: "no-store" } 
+      `*[_type == 'siteSettings'][0]{socialMedia, companyName, contact{..., locations[]->{...}}}`, {}, { cache: "no-store" }  
     );
 
     return { menu, logo, footer };

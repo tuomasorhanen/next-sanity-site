@@ -11,6 +11,7 @@ import { Navigation} from 'swiper/modules';
 import { SwiperNavButtons } from './SwiperNavButton';
 import OffecCard from '../ReferenceCards/OfferCard';
 import GroupPost from '../ReferenceCards/GroupPost';
+import useFadeIn from '../../_lib/hooks/useFadeIn';
 
 SwiperCore.use([Navigation]);
 
@@ -32,6 +33,7 @@ const GroupItem = (item: IGroup) => {
 
 const GridSection = (props: GridSectionProps) => {
   const { columns, items, style, marginTop } = props;
+  const fadeInRef = useFadeIn();
   const [columnStyles, setColumnStyles] = useState({});
   const [slidesPerView, setSlidesPerView] = useState(1);
 
@@ -84,7 +86,7 @@ const GridSection = (props: GridSectionProps) => {
   switch (style) {
     case 'carousel':
       return (
-        <section className={marginTopClass}>
+        <section className={marginTopClass} ref={fadeInRef}>
         <Swiper
           modules={[Navigation]}
           spaceBetween={16}
@@ -104,7 +106,7 @@ const GridSection = (props: GridSectionProps) => {
       );
     case'default':
       return (
-        <section key={props._key} className={marginTopClass}>
+        <section key={props._key} className={marginTopClass} ref={fadeInRef}>
     <div className="grid gap-2 md:gap-4" style={columnStyles}>
       {itemsArray.map((item, index) => (
         <figure key={item._id || index}>{renderGridItem(item)}</figure>

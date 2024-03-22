@@ -2,10 +2,13 @@ import { IHero } from "../../_lib/types/types";
 import ButtonRenderer from "../../components/ButtonRenderer";
 import { Content } from "../Content";
 import CustomImage from "../CustomImage";
+import useFadeIn from "../../_lib/hooks/useFadeIn";
 
 const HeroSection = (props: IHero) => {
   const { image, buttons, layout, opacity, CtaBgColor, content } = props;
 
+  const fadeInRef = useFadeIn();
+  
   const bgColorStyle = CtaBgColor ? { backgroundColor: CtaBgColor.value } : {};
   const opacityStyle = opacity ? { opacity: opacity / 100 } : {};
 
@@ -15,6 +18,7 @@ const HeroSection = (props: IHero) => {
         <section
           key={`${props._key}-simple-image-right`}
           className="mt-8 sm:mt-16 col-span-12"
+          ref={fadeInRef}
           style={bgColorStyle}
         >
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
@@ -25,7 +29,6 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  loading="eager"
                 />
               </div>
             )}
@@ -45,7 +48,6 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  loading="eager"
                 />
               )}
             </div>
@@ -55,6 +57,7 @@ const HeroSection = (props: IHero) => {
     case "simple-image-right-centered":
       return (
         <section
+        ref={fadeInRef}
           key={`${props._key}-simple-image-right`}
           className="mt-8 sm:mt-16 col-span-12"
           style={bgColorStyle}
@@ -67,7 +70,6 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  loading="eager"
                 />
               </div>
             )}
@@ -87,7 +89,6 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  loading="eager"
                 />
               )}
             </div>
@@ -97,6 +98,7 @@ const HeroSection = (props: IHero) => {
     case "simple-image-left":
       return (
         <section
+        ref={fadeInRef}
           key={`${props._key}-simple-image-left`}
           className="mt-8 sm:mt-16 col-span-12"
           style={bgColorStyle}
@@ -109,7 +111,6 @@ const HeroSection = (props: IHero) => {
                   className="w-full rounded-app object-cover"
                   alt={image.alt}
                   width={607}
-                  loading="eager"
                 />
               )}
             </div>
@@ -128,6 +129,7 @@ const HeroSection = (props: IHero) => {
     case "image-bg-center-wide":
       return (
         <section
+        ref={fadeInRef}
         key={`${props._key}-image-bg-center-slim`}
         className="col-span-12 mt-8 sm:mt-16 overflow-hidden relative py-8 md:py-12 w-screen place-self-center"
         style={bgColorStyle}
@@ -152,7 +154,6 @@ const HeroSection = (props: IHero) => {
               className="h-full w-full object-cover"
               alt={image.alt}
               width={1960}
-              loading="eager"
             />
           </div>
         )}
@@ -162,6 +163,7 @@ const HeroSection = (props: IHero) => {
     case "image-bg-center-slim":
       return (
         <section
+        ref={fadeInRef}
         key={`${props._key}-image-bg-center-slim`}
         className="col-span-12 mt-8 sm:mt-16 overflow-hidden relative py-8 md:py-12 rounded-app bg-accent text-bg"
         style={bgColorStyle}
@@ -186,7 +188,6 @@ const HeroSection = (props: IHero) => {
               className="h-full w-full object-cover"
               alt={image.alt}
               width={1960}
-              loading="eager"
             />
           </div>
         )}

@@ -291,3 +291,27 @@ z-index: 1000;
   hyphens: auto;
   word-wrap: break-word;
 }
+
+@keyframes fadeInEffect {
+  0% {
+    opacity: 0;
+    transform: translateY(20vh);
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  visibility: hidden;
+  animation: fadeInEffect 1200ms ease-out forwards;
+  animation-delay: 1s;
+  will-change: opacity, transform, visibility;
+}
