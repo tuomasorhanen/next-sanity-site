@@ -18,7 +18,7 @@ export async function generateMetadata() {
     openGraph: {
       title: title,
       description: description,
-      image: image.asset.url,
+      images: image.asset.url,
       url: new URL(`https://${domain}`),
       type: "website",
       locale: "fi_FI",
