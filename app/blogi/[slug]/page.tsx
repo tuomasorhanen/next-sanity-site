@@ -29,6 +29,9 @@ export async function generateMetadata({ params: { ...params } }) {
       ...(description && { description: description }),
       ...(image && image && { images: image.asset.url }),
     },
+    alternates: {
+      canonical: `/blogi/${params.slug}`,
+    },
   };
 
   return metadata;

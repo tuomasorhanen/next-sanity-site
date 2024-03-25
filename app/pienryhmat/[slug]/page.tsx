@@ -27,6 +27,9 @@ export async function generateMetadata({ params: { ...params } }) {
       ...(excerpt && { description: excerpt }),
       ...(image && image && { images: image.asset.url }),
     },
+    alternates: {
+      canonical: `/pienryhmat/${params.slug}`,
+    },
   };
 
   return metadata;

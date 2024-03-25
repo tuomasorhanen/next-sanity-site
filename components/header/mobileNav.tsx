@@ -26,7 +26,7 @@ const MobileNav = ({ menu, logo }: IMenu) => {
             alt={logo.alt}
             width={550}
             aspectRatio={5.5/1}
-            className="w-56"
+            className="h-10 w-auto"
           />
             </Link>
             <div className="flex items-center">

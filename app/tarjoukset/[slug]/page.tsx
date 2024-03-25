@@ -23,6 +23,9 @@ export async function generateMetadata({ params: { ...params } }) {
       ...(excerpt && { description: excerpt }),
       ...(image && image && { images: image.asset.url }),
     },
+    alternates: {
+      canonical: `/tarjoukset/${params.slug}`,
+    },
   };
 
   return metadata;
