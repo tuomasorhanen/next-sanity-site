@@ -27,6 +27,6 @@
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "display": "standalone",
-    "start_url": "https://www.fysiosarianne.fi",
+    "start_url": "https://fysio-draft.vercel.app/",
     "prefer_related_applications": false
 }
