@@ -23,7 +23,7 @@ const DesktopNav = ({ menu, logo }: IMenu) => {
             alt={logo.alt}
             width={550}
             aspectRatio={5.5 / 1}
-            className="mx-10 w-64 h-auto hover:scale-105"
+            className="mx-10 h-12 w-auto hover:scale-105"
           />
         </Link>
         <div className="z-40" id="navbar-default">

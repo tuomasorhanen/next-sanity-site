@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import ContentService from "../../_lib/services/ContentService";
 import HeroService from "../../_lib/services/HeroService";
 import MenuService from "../../_lib/services/MenuService";
@@ -23,7 +23,10 @@ export async function generateMetadata({ params: { ...params } }) {
     openGraph: {
       ...(title && { title: title }),
       ...(description && { description: description }),
-      ...(image && image && { image: image.asset.url }),
+      ...(image && image && { images: image.asset.url }),
+    },
+    alternates: {
+      canonical: `/${params.slug}`,
     },
   };
 
@@ -43,6 +46,10 @@ async function Slug(props: HomeProps) {
   }
 
   const content = await new ContentService().Fetch(props.params.slug);
+
+  if (props.params.slug === "etusivu") {
+    return permanentRedirect("/");
+  }
 
   return (
 <>      
