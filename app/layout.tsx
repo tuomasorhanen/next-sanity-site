@@ -43,7 +43,7 @@ export async function generateMetadata() {
     },
     manifest: '/site.webmanifest',
     generator: 'Next.js',
-    applicationName: 'Villa Karu',
+    applicationName: 'Fysiosarianne',
     author: {
       name: 'Tuomas Orhanen',
       url: 'https://github.com/tuomasorhanen'
