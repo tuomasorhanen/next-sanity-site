@@ -5,7 +5,7 @@ import resolveReferences from "../resolvers/resolveReferences";
 class ContentService {
     public async Fetch(slug: string) {
         let content = await client.fetch(
-            `*[slug.current == '${slug}'][0]{content}`, {}, { cache: "no-store" } 
+            `*[slug.current == '${slug}'][0]{content}`,
         );
 
         content = await resolveReferences(content);

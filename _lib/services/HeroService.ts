@@ -21,7 +21,7 @@ class HeroService {
                     }
                   }
                 }
-              }`, {}, { cache: "no-store" } 
+              }`,
         );
 
         if (!HeroData) {
