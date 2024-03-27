@@ -43,6 +43,8 @@ const DynamicForm = ({ form }) => {
   }, {});
 
   const [formData, setFormData] = useState(initialFormState);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleChange = (name, value) => {
     setFormData(prevData => ({
       ...prevData,
@@ -52,7 +54,7 @@ const DynamicForm = ({ form }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-  
+
     await fetch('/api/sendEmail', {
       method: 'POST',
       headers: {
@@ -62,7 +64,16 @@ const DynamicForm = ({ form }) => {
     });
 
     setFormData(initialFormState);
+    setIsSubmitted(true);
   };
+
+  if (isSubmitted) {
+    return (
+      <div className="text-center p-4 bg-layer border-2 border-accent rounded-app shadow-app max-w-xl mx-auto">
+        {form.thankYouMessage}
+      </div>
+    );
+  }
 
   return (
     <div>

@@ -256,6 +256,7 @@ interface ILocation {
     name: 'form';
     title: 'Form';
     buttonText: string;
+    thankYouMessage: string;
     type: 'document';
     fields: Array<{
       name: string;
