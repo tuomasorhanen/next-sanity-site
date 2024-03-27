@@ -53,7 +53,7 @@ const GroupPost = (group: IGroup) => {
                 {slug && (
                    <button className="button">
                    <Link href={`/pienryhmat/${slug.current}`}>
-                     lue lisää
+                     Lue lisää
                    </Link>
                    </button>
                 )}
