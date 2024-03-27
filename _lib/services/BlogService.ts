@@ -1,5 +1,5 @@
 import { client } from "../client/client";
-import { IPost, IRefernceItem } from "../types/types";
+import { IPost} from "../types/types";
 
 class BlogService {
     public async FetchBlogs(): Promise<IPost[]> {
