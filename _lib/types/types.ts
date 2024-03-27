@@ -85,8 +85,7 @@ export interface IRefernceItem extends IBase {
   description: string;
   content: any[];
   excerpt: any[];
-  showForm: boolean;
-  form: IContactForm;
+
   author?: IPerson;
   publishedAt?: string;
   _updatedAt?: string;
@@ -98,8 +97,7 @@ export interface IGroup extends IBase {
   description: string;
   content: any[];
   excerpt: any[];
-  showForm: boolean;
-  form: IContactForm;
+
   price: IPrice;
   startDate: string;
   endDate: string;
